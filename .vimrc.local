@@ -1,0 +1,134 @@
+colorscheme Tomorrow-Night-Eighties
+let g:spf13_no_autochdir = 1
+set relativenumber
+set wrap
+set nospell
+set noexpandtab
+set foldmethod=syntax
+
+"""" Mappings """"
+
+    " Leader key definition
+    let mapleader=","
+
+    " Maps to make handling windows a bit easier
+    set splitbelow
+    set splitright
+    noremap <silent> ,h :wincmd h<CR>
+    noremap <silent> ,j :wincmd j<CR>
+    noremap <silent> ,k :wincmd k<CR>
+    noremap <silent> ,l :wincmd l<CR>
+    noremap <silent> ,wc :close<CR>
+    noremap <silent> ,wo <C-W>o
+    noremap <silent> ,ml <C-W>L
+    noremap <silent> ,mk <C-W>K
+    noremap <silent> ,mh <C-W>H
+    noremap <silent> ,mj <C-W>J
+
+    " Edit the vimrc file
+    nmap <silent> ,ev :e $MYVIMRC<CR>
+    nmap <silent> ,sv :so $MYVIMRC<CR>
+
+    " Remap jj to esc
+    imap jj <esc>
+    imap kk <esc>
+    cmap jj <esc>
+    cmap kk <esc>
+
+    " Remap j and k to navigate in a long wrapped line display in two in the
+    " editor
+    nnoremap j gj
+    nnoremap k gk
+
+    " Bubble single lines (kicks butt)
+    " http://vimcasts.org/episodes/bubbling-text/
+    nmap <C-Up> ddkP
+    nmap <C-Down> ddp
+
+    " Bubble multiple lines
+    vmap <C-Up> xkP`[V`]
+    vmap <C-Down> xp`[V`]
+
+    " Shortcuts
+    " Change Working Directory to that of the current file
+    cmap cwd lcd %:p:h<CR>
+    cmap cd. lcd %:p:h<CR>
+
+    " Visual shifting (does not exit Visual mode)
+    vnoremap < <gv
+    vnoremap > >gv
+
+    " Allow using the repeat operator with a visual selection (!)
+    " http://stackoverflow.com/a/8064607/127816
+    vnoremap . :normal .<CR>
+
+    " For when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
+
+    " Saves file when Vim window loses focus
+    au FocusLost * :wa
+
+    " Code folding options
+    nmap <leader>f0 :set foldlevel=0<CR>
+    nmap <leader>f1 :set foldlevel=1<CR>
+    nmap <leader>f2 :set foldlevel=2<CR>
+    nmap <leader>f3 :set foldlevel=3<CR>
+    nmap <leader>f4 :set foldlevel=4<CR>
+    nmap <leader>f5 :set foldlevel=5<CR>
+    nmap <leader>f6 :set foldlevel=6<CR>
+    nmap <leader>f7 :set foldlevel=7<CR>
+    nmap <leader>f8 :set foldlevel=8<CR>
+    nmap <leader>f9 :set foldlevel=9<CR>
+
+    " Autoindent the whole file
+    map <leader>i ggVG=
+
+    " Remove highlight search
+    map <C-l> <C-l>:nohl<CR>
+
+"""" Plugins """"
+
+    " Airline
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+    let g:airline_left_sep = '»'
+    let g:airline_left_sep = '▶'
+    let g:airline_right_sep = '«'
+    let g:airline_right_sep = '◀'
+    let g:airline_symbols.linenr = '␊'
+    let g:airline_symbols.linenr = '␤'
+    let g:airline_symbols.linenr = '¶'
+    let g:airline_symbols.branch = '⎇'
+    let g:airline_symbols.paste = 'ρ'
+    let g:airline_symbols.paste = 'Þ'
+    let g:airline_symbols.paste = '∥'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_symbols.whitespace = 'Ξ'
+    let g:airline_theme='murmur'
+
+    " Ctrlp
+    let g:ctrlp_working_path_mode = 0
+
+    " Indent guides
+    let g:indent_guides_enable_on_vim_startup = 0
+
+    "UnBundle 'scrooloose/syntastic'
+
+    " Highlight EOL whitespace,
+    " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+    " highlight ExtraWhitespace ctermbg=darkred guibg=#382424
+    " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+    " autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    " " the above flashes annoyingly while typing, be calmer in insert mode
+    " autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    " autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    "
+    function! s:FixWhitespace(line1,line2)
+        let l:save_cursor = getpos(".")
+        silent! execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//'
+        call setpos('.', l:save_cursor)
+    endfunction
+
+    " Run :FixWhitespace to remove end of line white space.
+    command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)"
