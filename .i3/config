@@ -170,13 +170,16 @@ client.unfocused				#2d2d2d  	#2d2d2d 	#777777
 client.focused_inactive			#5d5d5d 	#555555 	#EEEEEE
 client.urgent			        #383a3b 	#383a3b 	#ee0000
 
-bindsym $mod+b workspace back_and_forth
-
 # Assigned Ctrl-Mod-L to lock screen via i3lock-wrapper script
-bindsym $mod+control+l exec --no-startup-id /home/mat/scripts/i3lock-wrapper.sh
+bindsym $mod+control+l exec --no-startup-id ~/scripts/i3lock-wrapper.sh
 
-new_window none
+new_window 1pixel
 new_float 1pixel
+
+# next/previous workspace
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+Tab workspace back_and_forth
 
 # Sound keymaps
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
@@ -185,5 +188,12 @@ bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
 
 bindsym $mod+control+v exec "terminator -x alsamixer"
+
+# bar toggle, hide or show 
+bindsym $mod+b bar mode toggle
+
+# Border controls
+bindsym $mod+shift+b exec i3-msg border toggle
+
 # Run unclutter when starting
 exec --no-startup-id unclutter
