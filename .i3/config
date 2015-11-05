@@ -171,7 +171,7 @@ client.focused_inactive			#5d5d5d 	#555555 	#EEEEEE
 client.urgent			        #383a3b 	#383a3b 	#ee0000
 
 # Assigned Ctrl-Mod-L to lock screen via i3lock-wrapper script
-bindsym $mod+control+l exec --no-startup-id ~/scripts/i3lock-wrapper.sh
+bindsym $mod+control+l exec --no-startup-id ~/scripts/i3lock-wrapper.sh --logo
 
 new_window 1pixel
 new_float 1pixel
