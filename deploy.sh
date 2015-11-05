@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo "Copying zshrc"
-cp -v  ~/dotfiles/.zshrc ~/
+echo "setxkbmap -option caps:escape" >> ~/.zshrc
+echo "export EDITOR=vim" >> ~/.zshrc
 echo
 
 echo "Copying vimrc"
