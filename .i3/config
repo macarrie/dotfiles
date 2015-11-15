@@ -198,3 +198,4 @@ bindsym $mod+shift+b exec i3-msg border toggle
 # Run unclutter when starting
 exec --no-startup-id unclutter
 exec --no-startup-id dropbox start
+exec --no-startup-id feh --bg-fill ~/Pictures/wallhaven-42442.png
