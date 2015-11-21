@@ -192,8 +192,8 @@ bindsym Mod1+Shift+Tab workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
 # Sound keymaps
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioRaiseVolume exec ~/scripts/volumeplus.sh
+bindsym XF86AudioLowerVolume exec ~/scripts/volumeminus.sh
 bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
 
@@ -213,3 +213,4 @@ exec --no-startup-id unclutter
 exec --no-startup-id dropbox start
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill ~/Pictures/totoro.png
+exec --no-startup-id xautolock -locker '~/scripts/i3lock-wrapper.sh' -time 5 -notify 30 -notifier "notify-send 'Autolock in 30s' -u critical -t 15000"

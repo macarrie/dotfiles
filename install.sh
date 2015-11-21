@@ -47,6 +47,8 @@ installUtilities() {
 	$INSTALL synaptic
 	# Graphical terminal emulator/"multiplexer"
 	$INSTALL terminator
+	# Notifications lib
+	$INSTALL libnotify-bin
 }
 
 installLatex() {
