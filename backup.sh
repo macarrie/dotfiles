@@ -14,7 +14,7 @@ echo
 
 echo "Copying i3 config"
 cp -v -r ~/.i3 ~/dotfiles
-cp -v ~/.i3status.conf ~/dotfiles/.i3status.conf
+cp -v ~/.i3blocks.conf ~/dotfiles/.i3blocks.conf
 echo
 
 echo "Copying fonts"
