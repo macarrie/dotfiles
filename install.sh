@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APT="apt-get --yes -s"
+APT="apt-get --yes"
 UPDATE="apt-get update"
 INSTALL="$APT install"
 REMOVE="$APT remove"
@@ -15,8 +15,9 @@ all() {
 	installWeb
 	installDesktop
 	installThemes
-	#installZsh
-	#installSpf13
+	installMedias
+	installZsh
+	installSpf13
 
 	# Deploy config
 	sh deploy.sh
@@ -49,6 +50,10 @@ installUtilities() {
 	$INSTALL terminator
 	# Notifications lib
 	$INSTALL libnotify-bin
+	# Wireshark
+	$INSTALL wireshark
+	# John The Ripper
+	$INSTALL john
 }
 
 installLatex() {
@@ -68,7 +73,7 @@ installWeb() {
 
 installDesktop() {
 	# i3 WM
-	$INSTALL i3 i3lock i3status
+	$INSTALL i3 i3lock i3status i3blocks
 	# Unclutter for hiding mouse
 	$INSTALL unclutter
 }
@@ -80,12 +85,19 @@ installThemes() {
 	$INSTALL scrot
 	# Image manipulation
 	$INSTALL imagemagick
-	# GTk Theme utility
+	# GTK Theme utility
 	$INSTALL lxappearance
-	#TODO
+
 	#moka-icon-theme
+	$ADDREPO ppa:moka/stable
+	$UPDATE
+	$INSTALL moka-icon-theme
 	#numix-gtk-theme
+
 	#arc-theme
+	sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.10/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+	$UPDATE
+	$INSTALL arc-theme
 }
 
 installFileTools() {
