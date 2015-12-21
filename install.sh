@@ -7,6 +7,7 @@ REMOVE="$APT remove"
 ADDREPO="add-apt-repository --yes"
 
 all() {
+
 	# Upgrade packages
 	upgradePackages
 
@@ -74,6 +75,8 @@ installWeb() {
 installDesktop() {
 	# i3 WM
 	$INSTALL i3 i3lock i3status i3blocks
+	# xautolock
+	$INSTALL xautolock
 	# Unclutter for hiding mouse
 	$INSTALL unclutter
 }
@@ -95,9 +98,10 @@ installThemes() {
 	#numix-gtk-theme
 
 	#arc-theme
-	sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.10/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-	$UPDATE
-	$INSTALL arc-theme
+	cd /tmp
+	wget http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.04/all/arc-theme-solid_1450051815.946cbf5_all.deb
+	sudo gdebi arc-theme-solid_1450051815.946cbf5_all.deb
+	cd -
 }
 
 installFileTools() {
