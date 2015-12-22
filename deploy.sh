@@ -12,6 +12,10 @@ echo "Copying scripts"
 cp -v -r ~/dotfiles/scripts ~/
 echo
 
+echo "Coying dunstrc"
+cp -v ~/dotfiles/dunstrc ~/.config/dunst/
+echo
+
 echo "Copying i3 config"
 cp -v -r ~/dotfiles/.i3 ~/
 cp -v ~/dotfiles/.i3blocks.conf ~/
