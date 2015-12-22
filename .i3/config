@@ -21,8 +21,8 @@ set $mod Mod4
 	set $primary					#5294E2
 	set $workspace_active			#5294E2
 	set $workspace_inactive			#676E7A
-	set $container_focused			#5294E2
-	set $container_focused_bg		#404552
+	set $container_focused			#EEEEEE
+	set $container_focused_bg		#5294E2
 	set $container_unfocused		#666666
 	set $container_unfocused_bg		#2F343F
 
@@ -209,6 +209,10 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # scratchpad
 bindsym $mod+m move scratchpad
 bindsym $mod+o scratchpad show
+
+# Screenshots
+bindsym Print exec scrot '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
+bindsym $mod+Print exec scrot -u '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
 
 # Startup apps
 exec --no-startup-id dunst

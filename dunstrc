@@ -1,5 +1,5 @@
 [global]
-    font = "PragmataPro 10"
+    font = "Cabin 10"
     allow_markup = yes
     format = "<b>%s %p</b>\n%b"
     sort = yes
