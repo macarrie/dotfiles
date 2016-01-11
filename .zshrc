@@ -23,7 +23,7 @@ ZSH_THEME="amuse"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
  COMPLETION_WAITING_DOTS="true"
@@ -49,7 +49,7 @@ plugins=(git svn)
 
 # User configuration
 
-export PATH="/usr/ccs/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/opt/Samcef/V8.2-01/Samcef-V131/lin/bin/:/bin:/usr/bin:/usr/local/bin:/net/ens/herbrete/public/jflap/bin:"
+export PATH="/usr/ccs/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/opt/Samcef/V8.2-01/Samcef-V131/lin/bin/:/bin:/usr/bin:/usr/local/bin:"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -79,11 +79,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH=$PATH:~/s8/image/free-image-pokora/pandore-visu/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/s8/image/free-image-pokora/pandore-visu/lib
-
-setxkbmap -option caps:escape
+export PATH=$PATH:~/Android/Sdk/platform-tools:~/Android/Sdk/tools
 export EDITOR=vim
-
-# Thefuck alias
-alias fuck='TF_ALIAS=fuck eval $(thefuck $(fc -ln -1))'
