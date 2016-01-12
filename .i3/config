@@ -209,6 +209,11 @@ new_float 	pixel $borderSize
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # scratchpad
+exec i3-sensible-terminal -name scratchpad
+for_window [instance="scratchpad"] floating enable;
+for_window [instance="scratchpad"] floating_minimum_size 100 x 100
+for_window [instance="scratchpad"] floating_maximum 100 x 100;
+for_window [instance="scratchpad"] move scratchpad;
 bindsym $mod+m move scratchpad
 bindsym $mod+o scratchpad show
 
@@ -224,4 +229,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill ~/Pictures/totoro.png
 exec --no-startup-id xautolock -locker '~/scripts/i3lock-wrapper.sh --logo' -time 10 -notify 30 -notifier "notify-send 'Autolock in 30s' 'Réveille toi, tocard' -u critical -t 15000"
 exec --no-startup-id setxkbmap -option caps:escape
-exec --no-startup-id syndaemon -d
+exec --no-startup-id syndaemon -i 0.5 -d
