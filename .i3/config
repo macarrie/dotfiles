@@ -218,8 +218,11 @@ bindsym $mod+m move scratchpad
 bindsym $mod+o scratchpad show
 
 # Screenshots
-bindsym Print exec scrot '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
-bindsym $mod+Print exec scrot -u '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
+bindsym Print 		exec scrot '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
+bindsym $mod+Print 	exec scrot -u '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
+
+# Chrome shortcut
+bindsym $mod+c exec chromium-browser
 
 # Startup apps
 exec --no-startup-id dunst
