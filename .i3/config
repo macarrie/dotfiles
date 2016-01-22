@@ -193,8 +193,8 @@ bindsym $mod+Tab 		workspace back_and_forth
 #bindsym XF86AudioLowerVolume 	exec ~/scripts/volumeminus.sh
 bindsym XF86AudioRaiseVolume 	exec "amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks"
 bindsym XF86AudioLowerVolume 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
-bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle"
-bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle"
+bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks"
+bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle && pkill -SIGRTMIN+10 i3blocks"
 bindsym $mod+control+v			exec "terminator -x alsamixer"
 
 # bar toggle, hide or show 
@@ -239,3 +239,6 @@ exec --no-startup-id xautolock -locker '~/scripts/i3lock-wrapper.sh --logo' -tim
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id syndaemon -i 0.5 -d
 exec --no-startup-id synclient tapbutton1=1 # Kali bugfix
+
+# Set volume to 20% at startup
+exec "amixer -q set Master 20% unmute && pkill -SIGRTMIN+10 i3blocks"
