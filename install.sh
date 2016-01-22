@@ -152,6 +152,11 @@ installZsh() {
 	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
+createRootLinks() {
+	ln -s /home/mat/.oh-my-zsh /root/.oh-my-zsh
+	ln -s /home/mat/.zshrc /root/.zshrc
+}
+
 cleanPackages() {
 	$REMOVE abiword
 	$REMOVE brasero
