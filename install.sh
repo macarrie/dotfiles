@@ -9,22 +9,23 @@ ADDREPO="add-apt-repository --yes"
 all() {
 
 	# Upgrade packages
-	upgradePackages
+	#upgradePackages
 
 	# Install packages
-	installUtilities
-	installWeb
-	installDesktop
-	installThemes
-	installMedias
-	installZsh
-	installSpf13
+	#installUtilities
+	#installWeb
+	#installDesktop
+	#installThemes
+	#installMedias
+	#installZsh
+	#installSpf13
 
 	# Deploy config
 	sh deploy.sh
+	createRootLinks
 
 	# Remove unwanted packages
-	cleanPackages
+	#cleanPackages
 }
 
 upgradePackages() {
@@ -69,7 +70,7 @@ installWeb() {
 	$INSTALL openssl
 	$INSTALL curl
 	# Chromium
-	$INSTALL chromium-browser
+	$INSTALL chromium
 	# Chromium flash plugin
 	$INSTALL pepperflashplugin-nonfree
 }
@@ -155,8 +156,11 @@ installZsh() {
 }
 
 createRootLinks() {
+	# ZSH
 	ln -s /home/mat/.oh-my-zsh /root/.oh-my-zsh
 	ln -s /home/mat/.zshrc /root/.zshrc
+	# Vim
+	ln -s /home/mat/.vimrc.local /root/.vimrc.local
 }
 
 cleanPackages() {
