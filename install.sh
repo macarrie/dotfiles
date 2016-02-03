@@ -53,6 +53,8 @@ installUtilities() {
 	$INSTALL libnotify-bin
 	# Wireshark
 	$INSTALL wireshark
+	# tcpdump
+	$INSTALL tcpdump
 	# John The Ripper
 	$INSTALL john
 }
