@@ -6,6 +6,7 @@ echo
 
 echo "Copying vimrc"
 cp -v ~/dotfiles/.vimrc.local ~/.vimrc.local
+cp -v ~/dotfiles/.vimrc.before.local ~/.vimrc.before.local
 echo
 
 echo "Copying scripts"
