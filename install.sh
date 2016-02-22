@@ -6,10 +6,16 @@ INSTALL="$APT install"
 REMOVE="$APT remove"
 ADDREPO="add-apt-repository --yes"
 
-all() {
+usage() {
+	echo "Usage: $0 (packages || config)"
+}
 
+installPackages() {
 	# Upgrade packages
 	upgradePackages
+
+	# Kali add-apt-repository
+	fixKaliAddRepo
 
 	# Install packages
 	installUtilities
@@ -17,20 +23,35 @@ all() {
 	installDesktop
 	installThemes
 	installMedias
-	#installZsh
-	#installSpf13
-
-	# Deploy config
-	sh deploy.sh
-	createRootLinks
 
 	# Remove unwanted packages
 	cleanPackages
 }
 
+installConfig() {
+	# Upgrade packages
+	upgradePackages
+
+	installZsh
+	installSpf13
+	 
+	setupCronJobs
+
+	# Deploy config
+	sh deploy.sh
+	createRootLinks
+}
+
 upgradePackages() {
 	$UPDATE
 	$APT upgrade
+}
+
+fixKaliAddRepo() {
+	sudo cat /home/${USER}/dotfiles/add_repo_script > /usr/sbin/add-apt-repository
+	sudo chmod o+x /usr/sbin/add-apt-repository
+	sudo chown root:root /usr/sbin/add-apt-repository
+	$UPDATE
 }
 
 installUtilities() {
@@ -107,10 +128,12 @@ installThemes() {
 	#numix-gtk-theme
 
 	#arc-theme
-	cd /tmp
-	wget http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.04/all/arc-theme-solid_1450051815.946cbf5_all.deb
-	sudo gdebi arc-theme-solid_1450051815.946cbf5_all.deb
-	cd -
+	# A changer
+
+	#cd /tmp
+	#wget http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.04/all/arc-theme-solid_1450051815.946cbf5_all.deb
+	#sudo gdebi arc-theme-solid_1450051815.946cbf5_all.deb
+	#cd -
 }
 
 installFileTools() {
@@ -163,10 +186,15 @@ installZsh() {
 
 createRootLinks() {
 	# ZSH
-	ln -s /home/mat/.oh-my-zsh /root/.oh-my-zsh
-	ln -s /home/mat/.zshrc /root/.zshrc
+	ln -s /home/${USER}/.oh-my-zsh /root/.oh-my-zsh
+	ln -s /home/${USER}/.zshrc /root/.zshrc
 	# Vim
-	ln -s /home/mat/.vimrc.local /root/.vimrc.local
+	ln -s /home/${USER}/.vimrc.local /root/.vimrc.local
+}
+
+setupCronJobs() {
+	echo "*/15 * * * * DISPLAY=:0.0 /home/mat/scripts/random_wallpaper.sh" > /tmp/cronjob.txt
+	sudo crontab -u ${USER} /tmp/cronjob.txt
 }
 
 cleanPackages() {
@@ -188,4 +216,15 @@ cleanPackages() {
 }
 
 # Procede installation
-all
+if [ $# -ne 1 ]
+then
+	usage
+	exit 1
+else
+	if [ $1 = 'packages' ]
+	then
+		installPackages
+	else
+		installConfig
+	fi
+fi

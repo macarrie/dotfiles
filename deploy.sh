@@ -16,6 +16,11 @@ cp -v -r ~/dotfiles/scripts ~/
 echo
 
 echo "Coying dunstrc"
+if [ ! -e /home/${USER}/.config/dunst/ ]
+then
+	mkdir -p /home/${USER}/.config/dunst
+fi
+
 cp -v ~/dotfiles/dunstrc ~/.config/dunst/
 echo
 
