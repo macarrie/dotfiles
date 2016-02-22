@@ -9,14 +9,14 @@ ADDREPO="add-apt-repository --yes"
 all() {
 
 	# Upgrade packages
-	#upgradePackages
+	upgradePackages
 
 	# Install packages
-	#installUtilities
-	#installWeb
-	#installDesktop
-	#installThemes
-	#installMedias
+	installUtilities
+	installWeb
+	installDesktop
+	installThemes
+	installMedias
 	#installZsh
 	#installSpf13
 
@@ -25,7 +25,7 @@ all() {
 	createRootLinks
 
 	# Remove unwanted packages
-	#cleanPackages
+	cleanPackages
 }
 
 upgradePackages() {
@@ -58,6 +58,10 @@ installUtilities() {
 	$INSTALL tcpdump
 	# John The Ripper
 	$INSTALL john
+	# ACK
+	$INSTALL ack-grep
+	# htop
+	$INSTALL htop
 }
 
 installLatex() {
@@ -82,6 +86,8 @@ installDesktop() {
 	$INSTALL xautolock
 	# Unclutter for hiding mouse
 	$INSTALL unclutter
+	#i3lock wrapper script dependency
+	$INSTALL bc
 }
 
 installThemes() {

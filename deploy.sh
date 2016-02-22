@@ -2,6 +2,8 @@
 
 echo "Copying zshrc"
 cp -v ~/dotfiles/.zshrc ~/.zshrc
+rm ~/.oh-my-zsh/themes/amuse.zsh-theme
+ln -s ~/dotfiles/amuse.zsh-theme ~/.oh-my-zsh/themes/amuse.zsh-theme
 echo
 
 echo "Copying vimrc"
