@@ -1,0 +1,11 @@
+As root:
+
+adduser ${login}
+usermod -aG root ${login}
+
+As ${login}:
+
+git clone http://github.com/macarrie/dotfiles
+cd dotfiles
+sudo ./install.sh 
+
