@@ -193,7 +193,7 @@ createRootLinks() {
 }
 
 setupCronJobs() {
-	echo "*/15 * * * * DISPLAY=:0.0 /home/mat/scripts/random_wallpaper.sh" > /tmp/cronjob.txt
+	echo "*/15 * * * * DISPLAY=:0.0 /home/${USER}/scripts/random_wallpaper.sh" > /tmp/cronjob.txt
 	sudo crontab -u ${USER} /tmp/cronjob.txt
 }
 
