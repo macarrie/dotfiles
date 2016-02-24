@@ -45,10 +45,10 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+a kill
+bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb '$bg' -nf '#eee' -sb '$bg' -sf '$primary' -fn 'pango:Inconsolata for Powerline' -p '>>'
+bindsym $mod+d exec dmenu_run -nb '$bg' -nf '#eee' -sb '$bg' -sf '$primary' -p '>>'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -93,10 +93,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+q focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+shift+a focus child
 
 # switch to workspace
 bindsym $mod+ampersand 	workspace 1
@@ -181,7 +181,7 @@ client.focused					$container_focused_bg		$container_focused_bg		$container_focu
 client.unfocused				$container_unfocused_bg		$container_unfocused_bg		$container_unfocused
 
 # Assigned Ctrl-Mod-L to lock screen via i3lock-wrapper script
-bindsym $mod+control+l exec --no-startup-id ~/scripts/i3lock-wrapper.sh --logo
+bindsym $mod+control+l exec --no-startup-id xautolock -locknow
 
 # next/previous workspace
 bindsym Mod1+Tab 		workspace next
@@ -192,7 +192,9 @@ bindsym $mod+Tab 		workspace back_and_forth
 #bindsym XF86AudioRaiseVolume 	exec ~/scripts/volumeplus.sh
 #bindsym XF86AudioLowerVolume 	exec ~/scripts/volumeminus.sh
 bindsym XF86AudioRaiseVolume 	exec "amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks"
+bindsym $mod+Prior			 	exec "amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks"
 bindsym XF86AudioLowerVolume 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
+bindsym $mod+Next			 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
 bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks"
 bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle && pkill -SIGRTMIN+10 i3blocks"
 bindsym $mod+control+v			exec "terminator -x alsamixer"
@@ -201,7 +203,7 @@ bindsym $mod+control+v			exec "terminator -x alsamixer"
 bindsym $mod+b bar mode toggle
 
 # Border controls
-bindsym $mod+t border normal 0
+bindsym $mod+t border normal $borderSize
 bindsym $mod+y border pixel $borderSize
 bindsym $mod+u border none
 new_window 	pixel $borderSize
