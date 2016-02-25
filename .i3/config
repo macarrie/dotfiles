@@ -92,6 +92,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# Toggle sticky window
+bindsym $mod+shift+s sticky toggle
+
 # focus the parent container
 bindsym $mod+a focus parent
 
@@ -225,8 +228,9 @@ bindsym $mod+o scratchpad show
 bindsym Print 		exec scrot '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
 bindsym $mod+Print 	exec scrot -u '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
 
-# Chrome shortcut
+# Apps shortcuts
 bindsym $mod+c exec chromium
+bindsym $mod+shift+Return exec nautilus
 
 # Wallchanger shortcut
 bindsym $mod+w exec ~/scripts/random_wallpaper.sh
