@@ -3,7 +3,7 @@ let g:spf13_no_autochdir = 1
 set relativenumber
 set wrap
 set nospell
-set noexpandtab
+set expandtab
 set foldmethod=syntax
 
 """" Mappings """"
@@ -89,23 +89,8 @@ set foldmethod=syntax
 """" Plugins """"
 
     " Airline
-	Bundle 'vim-airline/vim-airline-themes'
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
-    let g:airline_left_sep = '»'
-    let g:airline_left_sep = '▶'
-    let g:airline_right_sep = '«'
-    let g:airline_right_sep = '◀'
-    let g:airline_symbols.linenr = '␊'
-    let g:airline_symbols.linenr = '␤'
-    let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.paste = 'ρ'
-    let g:airline_symbols.paste = 'Þ'
-    let g:airline_symbols.paste = '∥'
+    let g:airline_powerline_fonts=1
     let g:airline#extensions#tabline#enabled = 1
-    let g:airline_symbols.whitespace = 'Ξ'
     let g:airline_theme='murmur'
 
     " Ctrlp
@@ -114,7 +99,43 @@ set foldmethod=syntax
     " Indent guides
     let g:indent_guides_enable_on_vim_startup = 0
 
+    " Enable rainbow parenthesis
+    let g:rainbow_active = 1
+
+
+    " Remove unused SPF13 plugins
 	UnBundle 'scrooloose/syntastic'
+    UnBundle 'vim-scripts/sessionman.vim'
+    UnBundle 'jistr/vim-nerdtree-tabs'
+    UnBundle 'nathanaelkane/vim-indent-guides'
+    UnBundle 'tpope/vim-abolish.git'
+    UnBundle 'kana/vim-textobj-user'
+    UnBundle 'kana/vim-textobj-indent'
+    UnBundle 'reedes/vim-litecorrect'
+    UnBundle 'reedes/vim-textobj-sentence'
+    UnBundle 'reedes/vim-textobj-quote'
+    UnBundle 'reedes/vim-wordy'
+    UnBundle 'mattn/webapi-vim'
+    UnBundle 'mattn/gist-vim'
+    UnBundle 'tpope/vim-commentary'
+    UnBundle 'Shougo/neosnippet'
+    UnBundle 'Shougo/neosnippet-snippets'
+    UnBundle 'spf13/PIV'
+    UnBundle 'arnaud-lb/vim-php-namespace'
+    UnBundle 'beyondwords/vim-twig'
+    UnBundle 'klen/python-mode'
+    UnBundle 'yssource/python.vim'
+    UnBundle 'pythoncomplete'
+    UnBundle 'groenewege/vim-less'
+    UnBundle 'briancollins/vim-jst'
+    UnBundle 'kchmck/vim-coffee-script'
+    UnBundle 'gorodinskiy/vim-coloresque'
+    UnBundle 'tpope/vim-haml'
+    UnBundle 'rust-lang/rust.vim'
+    UnBundle 'tpope/vim-cucumber'
+    UnBundle 'cespare/vim-toml'
+    UnBundle 'quentindecock/vim-cucumber-align-pipes'
+    UnBundle 'saltstack/salt-vim'
 
     " Highlight EOL whitespace,
     " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
@@ -133,3 +154,6 @@ set foldmethod=syntax
 
     " Run :FixWhitespace to remove end of line white space.
     command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)"
+
+	au Filetype ruby,javascript,html,eruby,scss set shiftwidth=2
+	au Filetype ruby,javascript,html,eruby,scss set tabstop=2
