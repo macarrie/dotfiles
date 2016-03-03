@@ -129,8 +129,10 @@ bindsym $mod+Shift+agrave 		move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Escape		exec "i3-nagbar -t warning -m 'Power menu' -b 'Logout' 'i3-msg-exit' -b 'Hibernate' 'xautolock -now && systemctl hibernate' -b 'Reboot' 'systemctl reboot' -b 'Shutdown' 'systemctl poweroff -i'"
+bindsym $mod+Shift+e	exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -216,11 +218,11 @@ new_float 	pixel $borderSize
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # scratchpad
-exec i3-sensible-terminal -name scratchpad
-for_window [instance="scratchpad"] floating enable;
-for_window [instance="scratchpad"] floating_minimum_size 100 x 100
-for_window [instance="scratchpad"] floating_maximum 100 x 100;
-for_window [instance="scratchpad"] move scratchpad;
+exec i3-sensible-terminal --title "scratchpad"
+for_window [title="scratchpad"] floating enable;
+for_window [title="scratchpad"] floating_minimum_size 100 x 100
+for_window [title="scratchpad"] floating_maximum 100 x 100;
+for_window [title="scratchpad"] move scratchpad;
 bindsym $mod+m move scratchpad
 bindsym $mod+o scratchpad show
 
@@ -231,6 +233,13 @@ bindsym $mod+Print 	exec scrot -u '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshot
 # Apps shortcuts
 bindsym $mod+c exec chromium
 bindsym $mod+shift+Return exec nautilus
+
+# Autopositionning settings
+for_window [window_role="browser"]			border none
+for_window [window_role="pop-up"] 			floating enable
+for_window [window_role="task_dialog"] 		floating enable
+for_window [title="/usr/bin/alsamixer"]		floating enable
+for_window [title="Telegram Web"]			floating enable
 
 # Wallchanger shortcut
 bindsym $mod+w exec ~/scripts/random_wallpaper.sh
