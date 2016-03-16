@@ -56,9 +56,13 @@ bindsym $mod+shift+d exec --no-startup-id i3-dmenu-desktop
 
 # Change focus
 bindsym $mod+Left 	focus left
+bindsym $mod+h		focus left
 bindsym $mod+Down 	focus down
+bindsym $mod+j		focus down
 bindsym $mod+Up 	focus up
+bindsym $mod+k		focus up
 bindsym $mod+Right 	focus right
+bindsym $mod+l		focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -73,10 +77,10 @@ bindsym $mod+Shift+Up 		move up
 bindsym $mod+Shift+Right 	move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen

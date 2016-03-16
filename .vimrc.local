@@ -81,7 +81,7 @@ set foldmethod=syntax
     nmap <leader>f9 :set foldlevel=9<CR>
 
     " Autoindent the whole file
-    map <leader>i ggVG=
+    map <leader>i mzgg=G`z
 
     " Remove highlight search
     map <C-l> <C-l>:nohl<CR>
@@ -118,8 +118,9 @@ set foldmethod=syntax
     UnBundle 'mattn/webapi-vim'
     UnBundle 'mattn/gist-vim'
     UnBundle 'tpope/vim-commentary'
-    "UnBundle 'Shougo/neosnippet'
-    "UnBundle 'Shougo/neosnippet-snippets'
+    UnBundle 'Shougo/neocomplete.vim.git'
+    UnBundle 'Shougo/neosnippet'
+    UnBundle 'Shougo/neosnippet-snippets'
     UnBundle 'spf13/PIV'
     UnBundle 'arnaud-lb/vim-php-namespace'
     UnBundle 'beyondwords/vim-twig'
