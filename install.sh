@@ -30,12 +30,12 @@ installPackages() {
 
 installConfig() {
 	# Upgrade packages
-	upgradePackages
+	# upgradePackages
 
 	installZsh
-	installSpf13
+	
 	 
-	setupCronJobs
+	 #setupCronJobs
 
 	# Deploy config
 	sh deploy.sh
@@ -71,6 +71,8 @@ installUtilities() {
 	$INSTALL synaptic
 	# Graphical terminal emulator/"multiplexer"
 	$INSTALL terminator
+	# Vim
+	$INSTALL vim
 	# Notifications lib
 	$INSTALL libnotify-bin
 	# Wireshark
@@ -170,13 +172,6 @@ installSpotify() {
 	$INSTALL spotify-client
 }
 
-installSpf13() {
-	# Install vim
-	$INSTALL vim
-	# Get Spf13
-	curl http://j.mp/spf13-vim3 -L -o - | sh
-}
-
 installZsh() {
 	# Install zsh
 	$INSTALL zsh
@@ -189,7 +184,7 @@ createRootLinks() {
 	ln -s /home/${USER}/.oh-my-zsh /root/.oh-my-zsh
 	ln -s /home/${USER}/.zshrc /root/.zshrc
 	# Vim
-	ln -s /home/${USER}/.vimrc.local /root/.vimrc.local
+	ln -s /home/${USER}/.vimrc /root/.vimrc
 }
 
 setupCronJobs() {

@@ -7,8 +7,9 @@ ln -s ~/dotfiles/amuse.zsh-theme ~/.oh-my-zsh/themes/amuse.zsh-theme
 echo
 
 echo "Copying vimrc"
-cp -v ~/dotfiles/.vimrc.local ~/.vimrc.local
-cp -v ~/dotfiles/.vimrc.before.local ~/.vimrc.before.local
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+cp -v ~/dotfiles/.vimrc ~/.vimrc
+vim +PluginInstall +qall
 echo
 
 echo "Copying scripts"

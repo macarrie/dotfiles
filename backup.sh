@@ -5,8 +5,7 @@ cp -v ~/.zshrc ~/dotfiles
 echo
 
 echo "Copying vimrc"
-cp -v ~/.vimrc.local ~/dotfiles
-cp -v ~/.vimrc.before.local ~/dotfiles
+cp -v ~/.vimrc ~/dotfiles
 echo
 
 echo "Copying scripts"
