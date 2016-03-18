@@ -75,6 +75,9 @@ set nocompatible        " Must be first line
     set splitbelow                  " Puts new split windows to the bottom of the current
 
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+
+    " Max 80 chars per line
+    set colorcolumn=81
 "}
 
 if has('clipboard')
