@@ -111,6 +111,7 @@ endif
 
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
+    highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
     set ruler                   " Show the ruler
     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
