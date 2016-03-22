@@ -44,6 +44,7 @@ set nocompatible        " Must be first line
     Plugin 'tpope/vim-fugitive'
     Plugin 'godlygeek/tabular'
     Plugin 'luochen1990/rainbow'
+    Plugin 'ervandew/supertab'
 
     call vundle#end() 
 " }
@@ -142,8 +143,8 @@ endif
     set wildmenu                    " Show list instead of just completing
     set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-    set scrolljump=10                " Lines to scroll when cursor leaves screen
-    set scrolloff=1                 " Minimum lines to keep above and below cursor
+    set scrolljump=1                " Lines to scroll when cursor leaves screen
+    set scrolloff=10                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
@@ -295,6 +296,10 @@ endif
         nnoremap <Leader>u :UndotreeToggle<CR>
         " If undotree is opened, it is likely one wants to interact with it.
         let g:undotree_SetFocusWhenToggle=1
+    " }
+
+    " Supertab {
+        let g:SuperTabDefaultCompletionType = "<c-n>"
     " }
 
     " Highlight EOL whitespace,
