@@ -135,6 +135,9 @@ installThemes() {
 	#wget http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.04/all/arc-theme-solid_1450051815.946cbf5_all.deb
 	#sudo gdebi arc-theme-solid_1450051815.946cbf5_all.deb
 	#cd -
+
+    # Font awesome
+    $INSTALL fonts-font-awesome
 }
 
 installFileTools() {

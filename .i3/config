@@ -1,25 +1,26 @@
 # i3 Config
+# vim: set syntax=sh:
 
 set $mod Mod4
 
 # Colors definitions
 ####################
 	# NUMIX
-	#set $bg							#2D2D2D
+	#set $bg						#2D2D2D
 	#set $bg_accent					#383838
 	#set $primary					#D64937
 	#set $workspace_active			#D64937
-	#set $workspace_inactive			#999999
+	#set $workspace_inactive		#999999
 	#set $container_focused			#EEEEEE
 	#set $container_focused_bg		#D64937
 	#set $container_unfocused		#EEEEEE
-	#set $container_unfocused_bg		#D64937
+	#set $container_unfocused_bg	#D64937
 
 	#ARC
 	set $bg							#2F343F
 	set $bg_accent					#404552
 	set $primary					#5294E2
-	set $workspace_active			#5294E2
+	set $workspace_active			#FFFFFF
 	set $workspace_inactive			#676E7A
 	set $container_focused			#EEEEEE
 	set $container_focused_bg		#5294E2
@@ -105,29 +106,36 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+shift+a focus child
 
+# Workspace definitions
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
+
 # switch to workspace
-bindsym $mod+ampersand 	workspace 1
-bindsym $mod+eacute 	workspace 2
+bindsym $mod+ampersand 	workspace $ws1
+bindsym $mod+eacute 	workspace $ws2
 bindsym $mod+quotedbl 	workspace 3
 bindsym $mod+apostrophe workspace 4
 bindsym $mod+parenleft 	workspace 5
 bindsym $mod+minus 		workspace 6
 bindsym $mod+egrave 	workspace 7
-bindsym $mod+underscore workspace 8
-bindsym $mod+ccedilla 	workspace 9
-bindsym $mod+agrave 	workspace 10
+bindsym $mod+underscore workspace $ws8
+bindsym $mod+ccedilla 	workspace $ws9
+bindsym $mod+agrave 	workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+ampersand 	move container to workspace 1
-bindsym $mod+Shift+eacute 		move container to workspace 2
+bindsym $mod+Shift+ampersand 	move container to workspace $ws1
+bindsym $mod+Shift+eacute 		move container to workspace $ws2
 bindsym $mod+Shift+quotedbl 	move container to workspace 3
 bindsym $mod+Shift+apostrophe 	move container to workspace 4
 bindsym $mod+Shift+5 			move container to workspace 5
 bindsym $mod+Shift+minus 		move container to workspace 6
 bindsym $mod+Shift+egrave 		move container to workspace 7
-bindsym $mod+Shift+underscore 	move container to workspace 8
-bindsym $mod+Shift+ccedilla 	move container to workspace 9
-bindsym $mod+Shift+agrave 		move container to workspace 10
+bindsym $mod+Shift+underscore 	move container to workspace $ws8
+bindsym $mod+Shift+ccedilla 	move container to workspace $ws9
+bindsym $mod+Shift+agrave 		move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -172,6 +180,7 @@ bar {
 		position top
 		workspace_buttons yes
         status_command i3blocks
+        strip_workspace_numbers yes
 		# status_command ~/.i3/status.sh
 		font pango:Cabin, FontAwesome 11px
 		workspace_buttons yes
