@@ -33,7 +33,7 @@ installConfig() {
 	# upgradePackages
 
 	installZsh
-	 
+
 	 #setupCronJobs
 
 	# Deploy config

@@ -1,5 +1,6 @@
 " Vim config
 " Mainly stolen from spf13 config
+" vim: set sw=4 ts=4 sts=4 et tw=80 foldmarker={,} foldlevel=0 foldmethod=marker:
 
 set nocompatible        " Must be first line
 
@@ -80,14 +81,16 @@ set nocompatible        " Must be first line
     set colorcolumn=81
 "}
 
-if has('clipboard')
-    if has('unnamedplus')  " When possible use + register for copy-paste
-        set clipboard=unnamed,unnamedplus
-    else         " On mac and Windows, use * register for copy-paste
-        set clipboard=unnamed
+" Clipboard {
+    " Share vim and system clipboard if possible
+    if has('clipboard')
+        if has('unnamedplus')  " When possible use + register for copy-paste
+            set clipboard=unnamed,unnamedplus
+        else         " On mac and Windows, use * register for copy-paste
+            set clipboard=unnamed
+        endif
     endif
-endif
-
+" }
 
 " Modifs history {
     set history=1000                    " Store a ton of history (default is 20)
@@ -275,16 +278,22 @@ endif
     " Tabularize {
         nmap <Leader>a& :Tabularize /&<CR>
         vmap <Leader>a& :Tabularize /&<CR>
+
         nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
         vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+
         nmap <Leader>a=> :Tabularize /=><CR>
         vmap <Leader>a=> :Tabularize /=><CR>
+
         nmap <Leader>a: :Tabularize /:<CR>
         vmap <Leader>a: :Tabularize /:<CR>
+
         nmap <Leader>a:: :Tabularize /:\zs<CR>
         vmap <Leader>a:: :Tabularize /:\zs<CR>
+
         nmap <Leader>a, :Tabularize /,<CR>
         vmap <Leader>a, :Tabularize /,<CR>
+
         nmap <Leader>a,, :Tabularize /,\zs<CR>
         vmap <Leader>a,, :Tabularize /,\zs<CR>
         nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
@@ -296,7 +305,9 @@ endif
         " If undotree is opened, it is likely one wants to interact with it.
         let g:undotree_SetFocusWhenToggle=1
     " }
+" }
 
+" Helper functions {
     " Highlight EOL whitespace,
     " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
     " highlight ExtraWhitespace ctermbg=darkred guibg=#382424
@@ -305,7 +316,7 @@ endif
     " " the above flashes annoyingly while typing, be calmer in insert mode
     " autocmd InsertLeave * match ExtraWhitespace /\s\+$/
     " autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    "
+
     function! s:FixWhitespace(line1,line2)
         let l:save_cursor = getpos(".")
         silent! execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//'
@@ -314,7 +325,10 @@ endif
 
     " Run :FixWhitespace to remove end of line white space.
     command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)"
+" }
 
-	au Filetype ruby,javascript,html,eruby,scss set shiftwidth=2
-	au Filetype ruby,javascript,html,eruby,scss set tabstop=2
+" Use local config if present {
+    if filereadable(expand("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
 " }

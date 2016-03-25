@@ -1,37 +1,37 @@
 #!/bin/bash
 
-echo "Copying zshrc"
-cp -v ~/dotfiles/.zshrc ~/.zshrc
-rm ~/.oh-my-zsh/themes/amuse.zsh-theme
-ln -s ~/dotfiles/amuse.zsh-theme ~/.oh-my-zsh/themes/amuse.zsh-theme
+echo "Linking zshrc"
+ln -s /home/${USER}/dotfiles/.zshrc /home/${USER}/.zshrc
+rm /home/${USER}/.oh-my-zsh/themes/amuse.zsh-theme
+ln -s /home/${USER}/dotfiles/amuse.zsh-theme /home/${USER}/.oh-my-zsh/themes/amuse.zsh-theme
 echo
 
-echo "Copying vimrc"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp -v ~/dotfiles/.vimrc ~/.vimrc
+echo "Deploying vim config"
+git clone https://github.com/VundleVim/Vundle.vim.git --depth=1 /home/${USER}/.vim/bundle/Vundle.vim
+ln -s /home/${USER}/dotfiles/.vimrc /home/${USER}/.vimrc
 vim +PluginInstall +qall
 mkdir ~/.vimtmp
 echo
 
-echo "Copying scripts"
-cp -v -r ~/dotfiles/scripts ~/
+echo "Linking scripts folder"
+ln -s /home/${USER}/dotfiles/scripts /home/${USER}/scripts
 echo
 
-echo "Coying dunstrc"
+echo "Linking dunstrc"
 if [ ! -e /home/${USER}/.config/dunst/ ]
 then
 	mkdir -p /home/${USER}/.config/dunst
 fi
 
-cp -v ~/dotfiles/dunstrc ~/.config/dunst/
+ln -s /home/${USER}/dotfiles/dunstrc /home/${USER}/.config/dunst/dunstrc
 echo
 
-echo "Copying i3 config"
-cp -v -r ~/dotfiles/.i3 ~/
-cp -v ~/dotfiles/.i3blocks.conf ~/
+echo "Linking i3 config"
+ln -s /home/${USER}/dotfiles/.i3blocks.conf /home/${USER}/.i3blocks.conf
+ln -s /home/${USER}/dotfiles/.i3 /home/${USER}/.i3
 echo
 
 echo "Copying fonts"
-cp -v -r ~/dotfiles/.fonts ~/
+cp -v -r /home/${USER}/dotfiles/.fonts /home/${USER}/
 fc-cache -fv
 echo
