@@ -1,41 +1,89 @@
 #!/bin/bash
+HOME=$HOME
+DOTFILES=$HOME/dotfiles
 
-echo "Linking zshrc"
-ln -s /home/${USER}/dotfiles/.zshrc /home/${USER}/.zshrc
-rm /home/${USER}/.oh-my-zsh/themes/amuse.zsh-theme
-ln -s /home/${USER}/dotfiles/amuse.zsh-theme /home/${USER}/.oh-my-zsh/themes/amuse.zsh-theme
-echo
+create_link() {
+    if [ $# -ne 1 ]
+    then
+        echo "create_link requires the path to be given as parameter"
+    else
+        # Check source existence
+        if [ ! -e $DOTFILES/$1 ]
+        then 
+            # Source file doesn't exists, ERROR
+            echo "Source file ($DOTFILES/$1) doesn't exist" >&2
+        else
+            # Source file exists
+            # Check destination existence
+            if [ -e $HOME/$1 ]
+            then
+                # If it's already an symlink
+                if [ -L $HOME/$1 ]
+                then
+                    # Remove it
+                    echo "WARNING: Symlink already exists. Symlink removed" >&2
+                    rm $HOME/$1
+                else
+                    # Creating backup and deploying
+                    echo "Existing $1 backuped to $1.bak"
+                    mv $HOME/$1 $HOME/$1.bak
+                fi
+            fi
 
-echo "Deploying vim config"
-git clone https://github.com/VundleVim/Vundle.vim.git --depth=1 /home/${USER}/.vim/bundle/Vundle.vim
-ln -s /home/${USER}/dotfiles/.vimrc /home/${USER}/.vimrc
+            # Creating symlink
+            ln -s $DOTFILES/$1 $HOME/$1
+            echo "$DOTFILES/$1 -> $HOME/$1"
+        fi
+    fi
+}
+
+echo "========== ZSH"
+echo "=============================="
+create_link ".zshrc"
+create_link ".oh-my-zsh/themes/amuse.zsh-theme"
+echo -e "\n"
+
+
+echo "========== VIM"
+echo "=============================="
+git clone https://github.com/VundleVim/Vundle.vim.git --depth=1 $HOME/.vim/bundle/Vundle.vim
+create_link ".vimrc"
 vim +PluginInstall +qall
 mkdir ~/.vimtmp
-echo
+echo -e "\n"
 
-echo "Linking scripts folder"
-ln -s /home/${USER}/dotfiles/scripts /home/${USER}/scripts
-echo
 
-echo "Linking dunstrc"
-if [ ! -e /home/${USER}/.config/dunst/ ]
+echo "========== SCRIPTS"
+echo "=============================="
+create_link "scripts"
+echo -e "\n"
+
+
+echo "========== DUNST"
+echo "=============================="
+if [ ! -e $HOME/.config/dunst/ ]
 then
-	mkdir -p /home/${USER}/.config/dunst
+    mkdir -p $HOME/.config/dunst
 fi
+create_link "dunstrc"
+echo -e "\n"
 
-ln -s /home/${USER}/dotfiles/dunstrc /home/${USER}/.config/dunst/dunstrc
-echo
 
-echo "Linking i3 config"
-ln -s /home/${USER}/dotfiles/.i3blocks.conf /home/${USER}/.i3blocks.conf
-ln -s /home/${USER}/dotfiles/.i3 /home/${USER}/.i3
-echo
+echo "========== I3"
+echo "=============================="
+create_link ".i3"
+create_link ".i3blocks.conf"
+echo -e "\n"
 
-echo "Fix GTK3 black borders"
-cp -v /home/${USER}/dotfiles/gtk3_fix.css /home/${USER}/.config/gtk-3.0/gtk.css
-echo
 
-echo "Copying fonts"
-cp -v -r /home/${USER}/dotfiles/.fonts /home/${USER}/
-fc-cache -fv
-echo
+echo "========== GTK FIX"
+echo "=============================="
+cp -v $DOTFILES/gtk3_fix.css $HOME/.config/gtk-3.0/gtk.css
+echo -e "\n"
+
+
+echo "========== FONTS"
+echo "=============================="
+cp -v -r $DOTFILES/.fonts $HOME/
+echo "Updating font cache"
+fc-cache -f

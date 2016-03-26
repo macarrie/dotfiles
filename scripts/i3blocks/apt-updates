@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# -4 is for deducing the simulation note
+nb=`apt-get --simulate dist-upgrade | wc -l`
+echo `expr $nb - 4`

@@ -305,6 +305,11 @@ set nocompatible        " Must be first line
         " If undotree is opened, it is likely one wants to interact with it.
         let g:undotree_SetFocusWhenToggle=1
     " }
+
+    " OverCommandLine {
+        nnoremap <Leader>o :OverCommandLine<CR>
+        vnoremap <Leader>o :OverCommandLine<CR>
+    " }
 " }
 
 " Helper functions {
