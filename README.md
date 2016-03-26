@@ -1,5 +1,3 @@
-# Script adapted for a Kali Rolling install
-
 ### As root:
 
 ``` bash
@@ -17,7 +15,7 @@
 > sudo reboot
 ```
 
-* Install user config (Oh-my-zsh + spf-13 + deploy dotfiles)
+* Install user config (Oh-my-zsh + dotfiles)
 
 ``` bash
 > ./install.sh config
