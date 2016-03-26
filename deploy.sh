@@ -15,16 +15,14 @@ create_link() {
         else
             # Source file exists
             # Check destination existence
-            if [ -e $HOME/$1 ]
+            if [ -L $HOME/$1 ]
             then
-                # If it's already an symlink
-                if [ -L $HOME/$1 ]
+                # Remove it if it is a symlink
+                echo "WARNING: Symlink already exists. Symlink removed" >&2
+                rm $HOME/$1
+            else
+                if [ -e $HOME/$1 ]
                 then
-                    # Remove it
-                    echo "WARNING: Symlink already exists. Symlink removed" >&2
-                    rm $HOME/$1
-                else
-                    # Creating backup and deploying
                     echo "Existing $1 backuped to $1.bak"
                     mv $HOME/$1 $HOME/$1.bak
                 fi
@@ -65,7 +63,17 @@ if [ ! -e $HOME/.config/dunst/ ]
 then
     mkdir -p $HOME/.config/dunst
 fi
-create_link "dunstrc"
+create_link ".config/dunst/dunstrc"
+echo -e "\n"
+
+
+echo "========== TERMINATOR"
+echo "=============================="
+if [ ! -e $HOME/.config/terminator/ ]
+then
+    mkdir -p $HOME/.config/dunst
+fi
+create_link ".config/terminator/config"
 echo -e "\n"
 
 
