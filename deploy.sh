@@ -31,6 +31,10 @@ ln -s /home/${USER}/dotfiles/.i3blocks.conf /home/${USER}/.i3blocks.conf
 ln -s /home/${USER}/dotfiles/.i3 /home/${USER}/.i3
 echo
 
+echo "Fix GTK3 black borders"
+cp -v /home/${USER}/dotfiles/gtk3_fix.css /home/${USER}/.config/gtk-3.0/gtk.css
+echo
+
 echo "Copying fonts"
 cp -v -r /home/${USER}/dotfiles/.fonts /home/${USER}/
 fc-cache -fv
