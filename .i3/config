@@ -253,6 +253,10 @@ for_window [window_role="pop-up"] 			floating enable
 for_window [window_role="task_dialog"] 		floating enable
 for_window [title="/usr/bin/alsamixer"]		floating enable
 for_window [title="Telegram Web"]			floating enable
+assign [window_role="browser"] $ws1
+assign [title="Telegram Web"]  $ws9
+assign [class="Kodi"]          $ws8
+assign [class="Spotify"]       $ws10
 
 # Wallchanger shortcut
 bindsym $mod+w exec ~/scripts/random_wallpaper.sh
