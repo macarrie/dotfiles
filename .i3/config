@@ -256,7 +256,7 @@ for_window [title="/usr/bin/alsamixer"]		floating enable
 for_window [title="Telegram Web"]			floating enable
 assign [window_role="browser"] $ws1
 assign [title="Telegram Web"]  $ws9
-assign [class="Kodi"]          $w s8
+assign [class="Kodi"]          $ws8
 assign [class="Spotify"]       $ws10
 
 # Wallchanger shortcut
