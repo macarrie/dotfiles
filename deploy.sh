@@ -50,6 +50,12 @@ vim +PluginInstall +qall
 mkdir ~/.vimtmp
 echo -e "\n"
 
+echo "========== TMUX"
+echo "=============================="
+pip install --user powerline-status
+create_link ".tmux.conf"
+echo -e "\n"
+
 
 echo "========== SCRIPTS"
 echo "=============================="

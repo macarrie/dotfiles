@@ -265,6 +265,7 @@ set nocompatible        " Must be first line
         let g:ctrlp_working_path_mode = 0
         let g:ctrlp_extensions = ['funky']
         nnoremap <Leader>fu :CtrlPFunky<Cr>
+        let g:ctrlp_show_hidden = 1
     " }
 
     " Indent guides {

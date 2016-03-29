@@ -56,6 +56,8 @@ installUtilities() {
 	$INSTALL terminator
 	# Vim
 	$INSTALL vim
+    # Tmux
+    $INSTALL tmux
 	# Notifications lib
 	$INSTALL libnotify-bin
 	# Wireshark
