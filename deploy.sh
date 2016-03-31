@@ -52,7 +52,10 @@ echo -e "\n"
 
 echo "========== TMUX"
 echo "=============================="
+# Powerline
 pip install --user powerline-status
+# Plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 create_link ".tmux.conf"
 echo -e "\n"
 

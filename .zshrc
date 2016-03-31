@@ -53,7 +53,7 @@ plugins=(git vi-mode sudo)
 
 # User configuration
 
-  export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -67,6 +67,8 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+
+export EDITOR=vim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -85,6 +87,8 @@ source $ZSH/oh-my-zsh.sh
 alias tmux='tmux -2'
 alias tls='tmux ls'
 alias tma='tmux a'
+alias e=$EDITOR
+alias mkdir='mkdir -p'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 eval $(thefuck --alias)
