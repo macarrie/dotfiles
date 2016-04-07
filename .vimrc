@@ -236,6 +236,9 @@ set nocompatible        " Must be first line
     " Autoindent the whole file
     map <leader>i mzgg=G`z
 
+    " Marks shortcuts
+    map <Leader>m :marks<CR>
+
     " Remove highlight search
     map <C-l> <C-l>:nohl<CR>
 " }
@@ -265,6 +268,7 @@ set nocompatible        " Must be first line
         let g:ctrlp_working_path_mode = 0
         let g:ctrlp_extensions = ['funky']
         nnoremap <Leader>fu :CtrlPFunky<Cr>
+        nnoremap <Leader>b  :CtrlPBuffer<CR>
         let g:ctrlp_show_hidden = 1
     " }
 
