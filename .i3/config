@@ -237,7 +237,7 @@ for_window [title="scratchpad"] floating enable;
 for_window [title="scratchpad"] floating_minimum_size 100 x 100
 for_window [title="scratchpad"] floating_maximum 100 x 100;
 for_window [title="scratchpad"] move scratchpad;
-bindsym $mod+m move scratchpad
+bindsym $mod+shift+o move scratchpad
 bindsym $mod+o scratchpad show
 
 # Screenshots
