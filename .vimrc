@@ -94,15 +94,14 @@ set nocompatible        " Must be first line
 
 " Modifs history {
     set history=1000                    " Store a ton of history (default is 20)
-    set backup                  " Backups are nice ...
+    set nobackup                  " Disable backups and swapfiles
+    set noswapfile
     if has('persistent_undo')
-        set undofile                " So is persistent undo ...
+        set undofile                " Enable persistent undo
         set undolevels=1000         " Maximum number of changes that can be undone
         set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
     endif
 
-    set backupdir=~/.vimtmp
-    set directory=~/.vimtmp
     set undodir=~/.vimtmp
 " }
 
@@ -151,6 +150,7 @@ set nocompatible        " Must be first line
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
     set foldmethod=syntax
+    set foldlevelstart=20
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
