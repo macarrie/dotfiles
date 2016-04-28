@@ -66,6 +66,7 @@ set nocompatible        " Must be first line
     set wrap
     set nospell
     set expandtab
+    set copyindent                  " Copy indenting style of current file when autoidenting
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
     set tabstop=4                   " An indentation every four columns
@@ -180,7 +181,7 @@ set nocompatible        " Must be first line
 
     " Edit the vimrc file
     nmap <silent> ,ev :e $MYVIMRC<CR>
-    nmap <silent> ,sv :so $MYVIMRC<CR>
+    nmap <silent> ,sv :so $MYVIMRC<CR>:AirlineRefresh<CR>
 
     " Remap jj to esc
     imap jj <esc>
@@ -281,28 +282,32 @@ set nocompatible        " Must be first line
     " }
 
     " Tabularize {
-        nmap <Leader>a& :Tabularize /&<CR>
-        vmap <Leader>a& :Tabularize /&<CR>
+        nmap <Leader>t& :Tabularize /&<CR>
+        vmap <Leader>t& :Tabularize /&<CR>
 
-        nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-        vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+        nmap <Leader>t= :Tabularize /^[^=]*\zs=<CR>
+        vmap <Leader>t= :Tabularize /^[^=]*\zs=<CR>
 
-        nmap <Leader>a=> :Tabularize /=><CR>
-        vmap <Leader>a=> :Tabularize /=><CR>
+        nmap <Leader>t=> :Tabularize /=><CR>
+        vmap <Leader>t=> :Tabularize /=><CR>
 
-        nmap <Leader>a: :Tabularize /:<CR>
-        vmap <Leader>a: :Tabularize /:<CR>
+        nmap <Leader>t: :Tabularize /:<CR>
+        vmap <Leader>t: :Tabularize /:<CR>
 
-        nmap <Leader>a:: :Tabularize /:\zs<CR>
-        vmap <Leader>a:: :Tabularize /:\zs<CR>
+        nmap <Leader>t:: :Tabularize /:\zs<CR>
+        vmap <Leader>t:: :Tabularize /:\zs<CR>
 
-        nmap <Leader>a, :Tabularize /,<CR>
-        vmap <Leader>a, :Tabularize /,<CR>
+        nmap <Leader>t, :Tabularize /,<CR>
+        vmap <Leader>t, :Tabularize /,<CR>
 
-        nmap <Leader>a,, :Tabularize /,\zs<CR>
-        vmap <Leader>a,, :Tabularize /,\zs<CR>
-        nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-        vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        nmap <Leader>t,, :Tabularize /,\zs<CR>
+        vmap <Leader>t,, :Tabularize /,\zs<CR>
+        nmap <Leader>t<Bar> :Tabularize /<Bar><CR>
+        vmap <Leader>t<Bar> :Tabularize /<Bar><CR>
+    " }
+
+    " Ack {
+        nnoremap <leader>a :Ack 
     " }
 
     " UndoTree {
