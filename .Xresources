@@ -1,12 +1,21 @@
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
+rofi.width: 100
+rofi.padding: 450
 rofi.fuzzy: true
+rofi.eh: 2
+rofi.separator-style: none
+rofi.fixed-num-lines: true
+rofi.lines: 10
+rofi.mesg: ' '
 rofi.color-enabled: true
-rofi.color-window: #2F343F, #4D97F5, #1E232E
-rofi.color-normal: #2F343F, #C1C1C1, #2F343F, #394249, #FFFFFF
-rofi.color-active: #2F343F, #80CBC4, #2F343F, #394249, #80CBC4
-rofi.color-urgent: #2F343F, #FF1844, #2F343F, #394249, #FF1844
+rofi.color-window: argb:AA000000, #4D97F5
+rofi.color-normal: argb:00000000, #C1C1C1, argb:00000000, argb:00000000, #4D97F5
+rofi.color-active: argb:00000000, #91D687, argb:00000000, argb:00000000, #5ADB48
+rofi.color-urgent: argb:00000000, #FF1844, argb:00000000, argb:00000000, #FF1844
 rofi.hide-scrollbar: true
-rofi.bw: 3
+rofi.bw: 0
 rofi.font: Inconsolata for Powerline 12
+rofi.fake-transparency: true
+!rofi.fullscreen: true

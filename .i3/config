@@ -145,7 +145,7 @@ bindsym $mod+Tab 		workspace back_and_forth
 bindsym $mod+x [urgent=latest] focus
 
 # Rofi window switcher
-bindsym $mod+BackSpace exec --no-startup-id rofi -show window -sidebar-mode
+bindsym $mod+BackSpace exec --no-startup-id rofi -show window
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
