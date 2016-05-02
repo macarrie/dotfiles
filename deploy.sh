@@ -98,6 +98,11 @@ echo "=============================="
 cp -v $DOTFILES/gtk3_fix.css $HOME/.config/gtk-3.0/gtk.css
 echo -e "\n"
 
+echo "========== XRESOURCES"
+echo "=============================="
+create_link ".Xresources"
+echo -e "\n"
+
 
 echo "========== FONTS"
 echo "=============================="

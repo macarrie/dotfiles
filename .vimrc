@@ -66,7 +66,6 @@ set nocompatible        " Must be first line
     set wrap
     set nospell
     set expandtab
-    set copyindent                  " Copy indenting style of current file when autoidenting
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
     set tabstop=4                   " An indentation every four columns

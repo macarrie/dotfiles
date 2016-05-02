@@ -92,6 +92,8 @@ installDesktop() {
 	$INSTALL i3 i3lock i3status i3blocks
 	# xautolock
 	$INSTALL xautolock
+    # Rofi
+    $INSTALL rofi
 	# Unclutter for hiding mouse
 	$INSTALL unclutter
 	#i3lock wrapper script dependency

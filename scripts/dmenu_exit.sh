@@ -2,7 +2,8 @@
 #
 # Show session menu
 
-DMENU="dmenu -i -nb $1 -nf #eeeeee -sb $1 -sf $2"
+#DMENU="dmenu -i -nb $1 -nf #eeeeee -sb $1 -sf $2"
+DMENU="rofi -dmenu"
 
 choice=$(echo -e "Logout\nHibernate\nReboot\nShutdown" | $DMENU)
 
