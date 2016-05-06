@@ -11,21 +11,26 @@ set $mod Mod4
 	#set $primary					#D64937
 	#set $workspace_active			#D64937
 	#set $workspace_inactive		#999999
-	#set $container_focused			#EEEEEE
-	#set $container_focused_bg		#D64937
-	#set $container_unfocused		#EEEEEE
-	#set $container_unfocused_bg	#D64937
+	#set $focused			#EEEEEE
+	#set $focused_bg		#D64937
+	#set $unfocused		#EEEEEE
+	#set $unfocused_bg	#D64937
 
-	#ARC
-	set $bg							#2F343F
-	set $bg_accent					#404552
-	set $primary					#5294E2
-	set $workspace_active			#FFFFFF
-	set $workspace_inactive			#676E7A
-	set $container_focused			#EEEEEE
-	set $container_focused_bg		#5294E2
-	set $container_unfocused		#666666
-	set $container_unfocused_bg		#2F343F
+	#arc
+	set $bg                     #2F343F
+	set $bg_accent              #404552
+	set $primary                #5294E2
+	set $workspace_active       #FFFFFF
+	set $workspace_inactive     #676E7A
+	set $focused                #EEEEEE
+	set $focused_bg             #3971B8
+	set $focused_border         #3971B8
+    set $focused_indicator      #6EAAF7
+	set $unfocused              #666666
+	set $unfocused_bg           #1E232E
+	set $unfocused_border       #1E232E
+    set $unfocused_indicator    #FF0000
+    set $urgent                 #FF3863
 
 set $borderSize 3
 
@@ -53,7 +58,7 @@ bindsym $mod+d exec rofi -show run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+Shift+d exec i3-dmenu-desktop --dmenu='rofi -dmenu'
+bindsym $mod+Shift+d exec i3-dmenu-desktop --dmenu='rofi -dmenu -p "Desktop run: "'
 
 # Change focus
 bindsym $mod+Left 	focus left
@@ -203,9 +208,11 @@ bar {
 }
 
 # colors
-# class							border						backgr.						text
-client.focused					$container_focused_bg		$container_focused_bg		$container_focused
-client.unfocused				$container_unfocused_bg		$container_unfocused_bg		$container_unfocused
+# class							border					backgr.				text                indicator
+client.focused					$focused_border		    $focused_bg		    $focused_text       $focused_indicator
+client.unfocused				$unfocused_border		$unfocused_bg		$unfocused_text     $unfocused_indicator
+client.focused_inactive			$unfocused_border		$unfocused_bg		$unfocused_text     $unfocused_indicator
+client.urgent                   $urgent                 $urgent             #EEEEEE             $urgent
 
 # Assigned Ctrl-Mod-L to lock screen via i3lock-wrapper script
 bindsym $mod+control+l exec --no-startup-id xautolock -locknow
@@ -221,15 +228,8 @@ bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle && pkill -SIGRT
 bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle && pkill -SIGRTMIN+10 i3blocks"
 bindsym $mod+control+v			exec "terminator -x alsamixer"
 
-# bar toggle, hide or show 
+# bar toggle, hide or show
 bindsym $mod+b bar mode toggle
-
-# Border controls
-bindsym $mod+t border normal $borderSize
-bindsym $mod+y border pixel $borderSize
-bindsym $mod+u border none
-new_window 	pixel $borderSize
-new_float 	pixel $borderSize
 
 # Caps lock control
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
@@ -237,8 +237,6 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # scratchpad
 exec i3-sensible-terminal --title "scratchpad"
 for_window [title="scratchpad"] floating enable;
-for_window [title="scratchpad"] floating_minimum_size 100 x 100
-for_window [title="scratchpad"] floating_maximum 100 x 100;
 for_window [title="scratchpad"] move scratchpad;
 bindsym $mod+shift+o move scratchpad
 bindsym $mod+o scratchpad show
@@ -258,10 +256,18 @@ for_window [window_role="task_dialog"] 		floating enable
 for_window [title="/usr/bin/alsamixer"]		floating enable
 for_window [title="Telegram Web"]			floating enable
 for_window [class="Spotify"]                border none
+for_window [class="X-terminal-emulator"]	border pixel $borderSize
 assign [window_role="browser"] $ws1
 assign [title="Telegram Web"]  $ws9
 assign [class="Kodi"]          $ws8
 assign [class="Spotify"]       $ws10
+
+ #Border controls
+bindsym $mod+t border normal $borderSize
+bindsym $mod+y border pixel $borderSize
+bindsym $mod+u border none
+new_window 	pixel $borderSize
+new_float 	pixel $borderSize
 
 # Wallchanger shortcut
 bindsym $mod+w exec ~/scripts/random_wallpaper.sh
