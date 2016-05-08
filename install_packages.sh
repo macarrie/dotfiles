@@ -52,8 +52,9 @@ installUtilities() {
 	$INSTALL python-pip
 	# apt GUI
 	$INSTALL synaptic
-	# Graphical terminal emulator/"multiplexer"
-	$INSTALL terminator
+	# URxvt
+    $INSTALL rxvt-unicode-256color
+    update-alternativves --set x-terminal-emulator $(which urxvt)
 	# Vim
 	$INSTALL vim
     # Tmux
