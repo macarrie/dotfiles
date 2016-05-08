@@ -43,7 +43,7 @@ URxvt*scrollBar: false
 URxvt*internalBorder: 0
 URxvt*bordeless: true
 
-URxvt*foreground: #AAAAAA
-URxvt*background: #2F343F
+*foreground: #AAAAAA
+*background: #2F343F
 ! Change default dark blue for better visibility
 *color12: #729FCF
