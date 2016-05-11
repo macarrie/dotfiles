@@ -212,7 +212,7 @@ bar {
 client.focused					$focused_border		    $focused_bg		    $focused_text       $focused_indicator
 client.unfocused				$unfocused_border		$unfocused_bg		$unfocused_text     $unfocused_indicator
 client.focused_inactive			$unfocused_border		$unfocused_bg		$unfocused_text     $unfocused_indicator
-client.urgent                   $urgent                 $urgent             #EEEEEE             $urgent
+client.urgent                   $urgent                 $urgent             #444444             $urgent
 
 # Assigned Ctrl-Mod-L to lock screen via i3lock-wrapper script
 bindsym $mod+control+l exec --no-startup-id xautolock -locknow
@@ -282,6 +282,7 @@ exec --no-startup-id xautolock -locker '~/scripts/i3lock-wrapper.sh --logo' -tim
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id syndaemon -i 0.5 -d
 exec --no-startup-id synclient tapbutton1=1 # Kali bugfix
+exec --no-startup-id xset b off
 
 # Set volume to 20% at startup
 exec "amixer -q set Master 20% unmute && pkill -SIGRTMIN+10 i3blocks"

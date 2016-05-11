@@ -110,7 +110,7 @@ set nocompatible        " Must be first line
     set mousehide               " Hide the mouse cursor while typing
 
     set tabpagemax=15               " Only show 15 tabs
-    set showmode                    " Display the current mode
+    set noshowmode                  " Do not display the current mode (already covered by Airline)
 
     set cursorline                  " Highlight current line
 

@@ -103,3 +103,4 @@ man() {
 }
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export RAILS_LOGGER='default'
