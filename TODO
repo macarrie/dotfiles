@@ -1,0 +1,4 @@
+- Font setup
+- Move startup execs from i3 config to xinitrc
+- Remove dotfiles .fonts and replace with corresponding packages installs (because AUR)
+- Missing nm-applet icon

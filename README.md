@@ -1,34 +1,64 @@
-### As root:
+## Arch linux install steps
 
-``` bash
-> setxkbmap fr
-> adduser ${username}
-> usermod -aG root ${username}
+* Boot into live archiso
+* Set azerty keymap
+```bash
+# loadkeys fr
 ```
 
-### As username
+### Disk setup
 
-* Install packages
-
-``` bash
-> sudo ./install.sh packages
-> sudo reboot
+* Identify drives and create partitions. At least a root partition is needed, and swap is recommended
+```bash
+# lsblk
+# cfdisk /dev/sdx
+```
+* Make root partition ext4 and swapon
+```bash
+# mkfs.ext4 /dev/sdxY
+# mkswap /dev/sdxZ
+# swapon /dev/sdxZ
+```
+* Mount root partition
+```bash
+# mount /dev/sdaXY /mnt
 ```
 
-* Install user config (Oh-my-zsh + dotfiles)
+### Base system installation
 
-``` bash
-> ./install.sh config
+* Edit pacman mirror list
+```bash
+# vi /etc/pacman.d/mirrorlist
 ```
-
-* Remove Gnome 3 default `notification-daemon` to replace it with `dunst`
-
-``` bash
-> sudo apt-get remove notification-daemon
-> sudo reboot
+* Install system
+```bash
+# pacstrap -i /mnt base base-devel
 ```
+* Generate fstab
+```bash
+# genfstab -p /mnt >> /mnt/etc/fstab
+```
+* Arch-root into freshly installed system
+```bash
+# arch-chroot /mnt /bin/bash
+```
+* Retrieve and execute install script
+```bash
+# pacman -S git
+# git clone https://github.com/macarrie/dotfiles --branch arch
+# cd dotfiles
+# ./systeminstall.sh
+```
+* Reboot
 
-* Add wallpapers to `~/Pictures`
+### User setup
+* Login as newly created user and execute user install script
+```bash
+$ cd dotfiles
+$ ./userinstall.sh
+```
+* Reboot
+* Add wallpapers to `~/Pictures` (create folder if needed)
 * Set GTK theme with `lxappearance`
 * Meow
 * Prout

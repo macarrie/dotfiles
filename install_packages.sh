@@ -1,189 +1,150 @@
-APT="apt-get --yes"
-UPDATE="apt-get update"
-INSTALL="$APT install"
-REMOVE="$APT remove"
-ADDREPO="add-apt-repository --yes"
+PACKAGE_MANAGER="yaourt "
+UPDATE="$PACKAGE_MANAGER -Syu"
+INSTALL="$PACKAGE_MANAGER -S --noconfirm"
+REMOVE="$PACKAGE_MANAGER -R"
 
 all() {
-	# Upgrade packages
-	upgradePackages
+    # Upgrade packages
+    $UPDATE
 
-	# Kali add-apt-repository
-	fixKaliAddRepo
-
-	# Install packages
-	installUtilities
-    installLatex
-	installWeb
-	installDesktop
-	installThemes
+    # Install packages
+    installXorg
+    installVirtualboxSpecifics
+    installDev
+    installUtilities
+    #installLatex
+    installWeb
+    installDesktop
+    installThemes
     installFileTools
-	installMedias
-    installZsh
-
-	# Remove unwanted packages
-	cleanPackages
+    installMedias
 }
 
-upgradePackages() {
-	$UPDATE
-	$APT upgrade
+installXorg() {
+    # X server
+    $INSTALL xorg-server xorg-server-utils xorg-xinit
+    # Access x clipboard
+    $INSTALL xclip
+    # xautolock
+    $INSTALL xautolock
 }
 
-fixKaliAddRepo() {
-	sudo cat /home/${USER}/dotfiles/add_repo_script > /usr/sbin/add-apt-repository
-	sudo chmod o+x /usr/sbin/add-apt-repository
-	sudo chown root:root /usr/sbin/add-apt-repository
-	$UPDATE
+installVirtualboxSpecifics() {
+    # Install packages needed to run X in an Arhc Virtualbox
+    # Not needed for regular install
+    $INSTALL virtualbox-guest-modules-arch
 }
 
 installUtilities() {
-	# Battery stats
-	$INSTALL acpi
-	# Multi-monitor utility
-	$INSTALL arandr
-	# deb packages installer
-	$INSTALL gdebi
-	# Partition manager
-	$INSTALL gparted gpart
-	# Java 8
-	$INSTALL oracle-java8-installer
-	# Python package installer
-	$INSTALL python-pip
-	# apt GUI
-	$INSTALL synaptic
-	# URxvt
-    $INSTALL rxvt-unicode-256color
-    update-alternativves --set x-terminal-emulator $(which urxvt)
-	# Vim
-	$INSTALL vim
+    # Synaptics drivers
+    $INSTALL xf86-input-synaptics
+    # Sound
+    $INSTALL alsa-utils
+    # Network
+    $INSTALL networkmanager network-manager-applet
+    sudo systemctl enable NetworkManager.service
+    # System stats
+    $INSTALL sysstat
+    # Battery stats
+    $INSTALL acpi
+    # Cron jobs handler
+    $INSTALL cronie
+    sudo systemctl enable cronie.service
+    # Notifications
+    $INSTALL libnotify dunst
+    # Multi-monitor utility
+    $INSTALL xrandr arandr
+    # URxvt
+    $INSTALL rxvt-unicode-256xresources
+    # ZSH
+    installZsh
+    # htop
+    $INSTALL htop
+}
+
+installDev() {
+    # Python pip
+    $INSTALL python-pip
+    # Vim
+    $INSTALL vim
     # Tmux
     $INSTALL tmux
-	# Notifications lib
-	$INSTALL libnotify-bin
-	# Wireshark
-	$INSTALL wireshark
-	# tcpdump
-	$INSTALL tcpdump
-	# John The Ripper
-	$INSTALL john
-	# ACK
-	$INSTALL ack-grep
-	# htop
-	$INSTALL htop
+    # ACK
+    $INSTALL ack
 }
 
 installLatex() {
-	# Install LaTeX basic packages
-	$INSTALL texlive-base
+    # Install LaTeX basic packages
+    $INSTALL texlive-most
 }
 
 installWeb() {
-	# SSL
-	$INSTALL openssl
-	$INSTALL curl
-	# Chromium
-	$INSTALL chromium
-	# Chromium flash plugin
-	$INSTALL pepperflashplugin-nonfree
+    # SSL
+    $INSTALL openssl
+    # Fetching utilities
+    $INSTALL curl wget
+    # Chromium
+    $INSTALL chromium
 }
 
 installDesktop() {
-	# i3 WM
-	$INSTALL i3 i3lock i3status i3blocks
-	# xautolock
-	$INSTALL xautolock
+    # i3 WM
+    $INSTALL i3-gaps i3lock i3blocks
     # Rofi
     $INSTALL rofi
-	# Unclutter for hiding mouse
-	$INSTALL unclutter
-	#i3lock wrapper script dependency
-	$INSTALL bc
+    # Unclutter for hiding mouse
+    $INSTALL unclutter
+    #i3lock wrapper script dependency
+    $INSTALL bc
+    # Basic compositing
+    $INSTALL compton
 }
 
 installThemes() {
-	# feh for setting background
-	$INSTALL feh
-	# Take screenshots
-	$INSTALL scrot
-	# Image manipulation
-	$INSTALL imagemagick
-	# GTK Theme utility
-	$INSTALL lxappearance
-
-	#moka-icon-theme
-	$ADDREPO ppa:moka/stable
-	$UPDATE
-	$INSTALL moka-icon-theme
-	#numix-gtk-theme
-
-	#arc-theme
-	# A changer
-
-	#cd /tmp
-	#wget http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.04/all/arc-theme-solid_1450051815.946cbf5_all.deb
-	#sudo gdebi arc-theme-solid_1450051815.946cbf5_all.deb
-	#cd -
-
-    # Font awesome
-    $INSTALL fonts-font-awesome
+    # feh for setting background
+    $INSTALL feh
+    # Take screenshots
+    $INSTALL scrot
+    # Image manipulation
+    $INSTALL imagemagick
+    # GTK Theme utility
+    $INSTALL lxappearance
+    # Paper icon theme
+    $INSTALL paper-icon-theme-git
+    # GTK Arc theme
+    $INSTALL gtk-theme-arc
+    # Font rendering lib
+    $INSTALL --confirm fontconfig-infinality
+    $INSTALL --confirm freetype2-infinality
+    # Fonts
+    $INSTALL otf-inconsolata-powerline-git
+    $INSTALL ttf-impallari-cabin-font
+    $INSTALL ttf-font-awesome
+    $INSTALL terminus-font
 }
 
 installFileTools() {
-	# PDF Viewer
-	$INSTALL evince
-	# File Browser
-	$INSTALL nautilus
-	# Dropbox integration
-	$INSTALL nautilus-dropbox
-	# Zip utility
-	$INSTALL unzip
-	# Versionning systems
-	$INSTALL git subversion
+    # Nautilus
+    $INSTALL nautilus
+    # PDF Viewer
+    $INSTALL evince
+    # Zip utility
+    $INSTALL unzip
+    # Versionning systems
+    $INSTALL git subversion
 }
 
 installMedias() {
-	$INSTALL vlc
-	installKodi
-	installSpotify
-}
-
-installKodi() {
-	 # Kodi dependance
-	 $INSTALL software-properties-common
-	 $ADDREPO ppa:team-xbmc/ppa
-	 $UPDATE
-	 $INSTALL kodi
-}
-
-installSpotify() {
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-	echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-	$UPDATE
-	$INSTALL spotify-client
+    $INSTALL vlc
+    $INSTALL kodi
+    $INSTALL spotify-stable
 }
 
 installZsh() {
-	# Install zsh
-	$INSTALL zsh
-	# Install OhMyZsh
-	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    # Install zsh
+    $INSTALL zsh
+    # Install OhMyZsh
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
-cleanPackages() {
-	$REMOVE abiword
-	$REMOVE brasero
-	$REMOVE firefox
-	$REMOVE gimp
-	$REMOVE libreoffice-calc
-	$REMOVE libreoffice-math
-	$REMOVE libreoffice-common
-	$REMOVE libreoffice-core
-	$REMOVE libreoffice-writer
-	$REMOVE libreoffice-gtk
-	$REMOVE pidgin
-	$REMOVE thunderbird
-
-	# Clean
-	$APT autoremove
-}
+all

@@ -33,11 +33,11 @@ Xft.hintstyle: hintslight
 ! URxvt
 ! ------------------------------------------------------------------------------
 
-URxvt*font:            xft:Hack:pixelsize=12:antialias=true
-URxvt*boldFont:        xft:Hack:pixelsize=12:antialias=true:bold
-URxvt*italicFont:      xft:Hack:pixelsize=12:antialias=true:italic
-URxvt*boldItalicFont:  xft:Hack:pixelsize=12:antialias=true:bold:italic
-URxvt*letterSpace: -2
+URxvt*font:            xft:Inconsolata for Powerline:pixelsize=12:antialias=true
+URxvt*boldFont:        xft:Inconsolata for Powerline:pixelsize=12:antialias=true:bold
+URxvt*italicFont:      xft:Inconsolata for Powerline:pixelsize=12:antialias=true:italic
+URxvt*boldItalicFont:  xft:Inconsolata for Powerline:pixelsize=12:antialias=true:bold:italic
+!URxvt*letterSpace: -2
 URxvt*saveLines: 0
 URxvt*scrollBar: false
 URxvt*internalBorder: 0

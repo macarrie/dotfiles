@@ -38,6 +38,7 @@ create_link() {
 echo "========== ZSH"
 echo "=============================="
 create_link ".zshrc"
+create_link ".zprofile"
 create_link ".oh-my-zsh/themes/amuse.zsh-theme"
 echo -e "\n"
 
@@ -53,10 +54,10 @@ echo -e "\n"
 echo "========== TMUX"
 echo "=============================="
 # Powerline
-pip install --user powerline-status
 # Plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 create_link ".tmux.conf"
+tmux run-shell $HOME/.tmux/plugins/tpm/bindings/install_plugins
 echo -e "\n"
 
 
@@ -76,16 +77,6 @@ create_link ".config/dunst/dunstrc"
 echo -e "\n"
 
 
-echo "========== TERMINATOR"
-echo "=============================="
-if [ ! -e $HOME/.config/terminator/ ]
-then
-    mkdir -p $HOME/.config/dunst
-fi
-create_link ".config/terminator/config"
-echo -e "\n"
-
-
 echo "========== I3"
 echo "=============================="
 create_link ".i3"
@@ -98,14 +89,20 @@ echo "=============================="
 cp -v $DOTFILES/gtk3_fix.css $HOME/.config/gtk-3.0/gtk.css
 echo -e "\n"
 
-echo "========== XRESOURCES"
+echo "========== XINITRC"
 echo "=============================="
-create_link ".Xresources"
+create_link ".xinitrc"
 echo -e "\n"
 
 
-echo "========== FONTS"
+echo "========== XRESOURCES"
 echo "=============================="
-cp -v -r $DOTFILES/.fonts $HOME/
-echo "Updating font cache"
-fc-cache -f
+create_link ".Xresources"
+xrdb ~/.Xresources
+echo -e "\n"
+
+
+echo "========== YAOURT"
+echo "=============================="
+create_link ".yaourtrc"
+echo -e "\n"
