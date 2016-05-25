@@ -10,14 +10,13 @@ rofi.fixed-num-lines: true
 rofi.lines: 10
 rofi.mesg: ' '
 rofi.color-enabled: true
-rofi.color-window: argb:CC000000, argb:22000000
+rofi.color-window: argb:CC000000, argb:EE000000
 rofi.color-normal: argb:00000000, #C1C1C1, argb:00000000, argb:00000000, #4D97F5
 rofi.color-active: argb:00000000, #91D687, argb:00000000, argb:00000000, #5ADB48
 rofi.color-urgent: argb:00000000, #FF1844, argb:00000000, argb:00000000, #FF1844
 rofi.hide-scrollbar: true
 rofi.bw: 5
 rofi.font: Inconsolata for Powerline 12
-rofi.fake-transparency: true
 
 ! ------------------------------------------------------------------------------
 ! Xft
@@ -33,12 +32,11 @@ Xft.hintstyle: hintslight
 ! URxvt
 ! ------------------------------------------------------------------------------
 
-URxvt*font:            xft:Hack:pixelsize=12:antialias=true
-URxvt*boldFont:        xft:Hack:pixelsize=12:antialias=true:bold
-URxvt*italicFont:      xft:Hack:pixelsize=12:antialias=true:italic
-URxvt*boldItalicFont:  xft:Hack:pixelsize=12:antialias=true:bold:italic
-URxvt*letterSpace: -2
-URxvt*saveLines: 0
+URxvt*font:            xft:Inconsolata for Powerline:pixelsize=12:antialias=true
+URxvt*boldFont:        xft:Inconsolata for Powerline:pixelsize=12:antialias=true:bold
+URxvt*italicFont:      xft:Inconsolata for Powerline:pixelsize=12:antialias=true:italic
+URxvt*boldItalicFont:  xft:Inconsolata for Powerline:pixelsize=12:antialias=true:bold:italic
+URxvt*letterSpace: -1
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
 URxvt*bordeless: true

@@ -1,6 +1,7 @@
 [global_config]
   borderless = True
   inactive_color_offset = 0.72
+  tab_position = hidden
 [keybindings]
 [layouts]
   [[default]]
@@ -16,8 +17,7 @@
     background_color = "#2f343f"
     background_image = None
     copy_on_selection = True
-    cursor_shape = underline
-    font = Inconsolata for Powerline Medium 11
+    font = Inconsolata for Powerline Medium 9
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False

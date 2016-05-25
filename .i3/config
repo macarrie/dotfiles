@@ -18,6 +18,7 @@ set $mod Mod4
 
 	#arc
 	set $bg                     #2F343F
+	set $bg_a                   #992F343F
 	set $bg_accent              #404552
 	set $primary                #5294E2
 	set $workspace_active       #FFFFFF
@@ -32,7 +33,14 @@ set $mod Mod4
     set $unfocused_indicator    #FF0000
     set $urgent                 #FF3863
 
-set $borderSize 3
+set $borderSize 4
+set $gapsOuter 0
+set $gapsInner 20
+
+gaps outer $gapsOuter
+gaps inner $gapsInner
+smart_gaps on
+smart_borders on
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -195,15 +203,14 @@ bar {
 		workspace_buttons yes
         status_command i3blocks
         strip_workspace_numbers yes
-		# status_command ~/.i3/status.sh
 		font pango:Cabin, FontAwesome 11px
 		workspace_buttons yes
 
 		colors {
-                statusline #FF0000
                 background $bg
                 focused_workspace 	$bg_accent	$bg_accent	$workspace_active
                 inactive_workspace 	$bg			$bg			$workspace_inactive
+                urgent_workspace    $urgent     $urgent     $workspace_active
         }
 }
 
@@ -250,30 +257,36 @@ bindsym $mod+c exec chromium
 bindsym $mod+shift+Return exec nautilus
 
 # Autopositionning settings
-for_window [window_role="browser"]			border none
 for_window [window_role="pop-up"] 			floating enable
 for_window [window_role="task_dialog"] 		floating enable
 for_window [title="/usr/bin/alsamixer"]		floating enable
 for_window [title="Telegram Web"]			floating enable
-for_window [class="Spotify"]                border none
 for_window [class="X-terminal-emulator"]	border pixel $borderSize
 assign [window_role="browser"] $ws1
 assign [title="Telegram Web"]  $ws9
 assign [class="Kodi"]          $ws8
 assign [class="Spotify"]       $ws10
 
- #Border controls
+# Border controls
 bindsym $mod+t border normal $borderSize
 bindsym $mod+y border pixel $borderSize
 bindsym $mod+u border none
 new_window 	pixel $borderSize
 new_float 	pixel $borderSize
 
+# Gaps control
+bindsym $mod+g gaps inner all set $gapsInner; gaps outer all set $gapsOuter
+bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0
+
 # Wallchanger shortcut
 bindsym $mod+w exec ~/scripts/random_wallpaper.sh
 
 # Startup apps
 exec --no-startup-id dunst
+exec --no-startup-id compton
+# Start tmux and restore session
+exec --no-startup-id tmux
+exec --no-startup-id tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh
 exec --no-startup-id unclutter
 exec --no-startup-id dropbox start
 exec --no-startup-id nm-applet
