@@ -2,23 +2,35 @@
 setopt HIST_IGNORE_DUPS
 
 # Vi mode
+    # Update on keymap change
+    function zle-keymap-select() {
+        zle reset-prompt
+        zle -R
+    }
+
     bindkey -v
+    zle -N zle-keymap-select
+
     bindkey '^P' up-history
     bindkey '^N' down-history
 
-    function vi_mode_prompt_info() {
-      echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
+    function vi_mode_prompt() {
+        echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
     }
 
     # if mode indicator wasn't setup by theme, define default
     if [[ "$MODE_INDICATOR" == "" ]]; then
-      MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
+      MODE_INDICATOR="<<<"
     fi
     if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
-      RPS1='$(vi_mode_prompt_info)'
+        RPROMPT='$(vi_mode_prompt)'
     fi
 
-    GIT_PROMPT_PREFIX="\uE0A0 "
+# Prompt
+
+    # Git
+
+    GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}\uE0A0 "
     GIT_PROMPT_SUFFIX="%{$reset_color%}"
     GIT_PROMPT_DIRTY="%{$fg[red]%}!"
 
@@ -31,17 +43,18 @@ setopt HIST_IGNORE_DUPS
         if [ $? -eq 0 ]
         then
             echo $GIT_PROMPT_DIRTY
+        else
+            echo ""
         fi
     }
 
-    function git_prompt_info() {
+    function git_prompt() {
         if [ -d .git ]
         then
-            echo "$GIT_PROMPT_PREFIX$(git_branch)$(git_is_dirty)$GIT_PROMPT_SUFFIX"
+            echo "on %{$fg[magenta]%}\uE0A0$(git_branch)$(git_is_dirty)%{$reset_color%}"
         fi
     }
 
-# Theme
     autoload -Uz colors && colors
     setopt prompt_subst
 
@@ -51,8 +64,21 @@ setopt HIST_IGNORE_DUPS
         color="red" 
     fi
 
+    function identifier() {
+        echo "%{$fg_bold[$color]%}%n@%m"
+    }
+
+    function current_dir() {
+        echo "%{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}"
+    }
+
+    function hour() {
+        echo "%{$fg_bold[red]%}%*%{$reset_color%}"
+    }
+
+    RPROMPT='$(vi_mode_prompt) $(hour)'
     PROMPT='
-%{$fg_bold[$color]%}%n@%m: %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} on %{$fg[magenta]%} $(git_prompt_info)   %{$fg_bold[red]%}%*%{$reset_color%}
+$(identifier): $(current_dir) $(git_prompt)
 %# '
 
 # EXPORTS
@@ -62,10 +88,13 @@ setopt HIST_IGNORE_DUPS
     export RAILS_LOGGER='default'
 
 # ALIAS
+    alias sudo='_'
     # Tmux
     alias tmux='tmux -2'
-    alias tls='tmux ls'
-    alias tma='tmux a'
+    alias t='tmux'
+    alias ta='tmux attach -t'
+    alias ts='tmux new-session -s'
+    alias tl='tmux list-sessions'
 
     # Git
     alias g='git'
@@ -85,8 +114,21 @@ setopt HIST_IGNORE_DUPS
     alias gst='git status'
     alias gsta='git stash'
 
-    # Other
-    alias mkdir='mkdir -p'
+    # Dir utils
+    alias lsa='ls -lah'
+    alias l='ls -lah'
+    alias ll='ls -lh'
+    alias la='ls -lAh'
+    alias mkdir='mkdir -pv'
+    alias rm='rm -I'
+    alias cp='cp -v'
+    alias ..='cd ..'
+    alias ...='cd ../../../'
+    alias ....='cd ../../../../'
+    alias .....='cd ../../../../'
+    
+    # File search
+    alias grep='grep --color=auto'
 
 # Colored man pages
 man() {
@@ -99,3 +141,9 @@ man() {
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
 }
+
+# Terminal startup
+if [[ ! $TMUX ]]
+then
+    tmux attach -t tmp
+fi

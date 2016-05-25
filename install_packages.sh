@@ -19,7 +19,6 @@ all() {
 	installThemes
     installFileTools
 	installMedias
-    installZsh
 
 	# Remove unwanted packages
 	cleanPackages
@@ -55,6 +54,8 @@ installUtilities() {
 	# URxvt
     $INSTALL rxvt-unicode-256color
     update-alternativves --set x-terminal-emulator $(which urxvt)
+	# Install zsh
+	$INSTALL zsh
 	# Vim
 	$INSTALL vim
     # Tmux
@@ -164,10 +165,6 @@ installSpotify() {
 }
 
 installZsh() {
-	# Install zsh
-	$INSTALL zsh
-	# Install OhMyZsh
-	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
 cleanPackages() {
