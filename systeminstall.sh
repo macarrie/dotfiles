@@ -69,7 +69,7 @@ createUser() {
     passwd $USERNAME
 
     echo "Adding user to wheel group"
-    sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL' /etc/sudoers
+    sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
     usermod -aG wheel $USERNAME
     echo -e "\n"
 }
