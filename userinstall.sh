@@ -17,6 +17,9 @@ all() {
     # Setup git identity
     configureGit
 
+    # Setup default shell
+    setupShell
+
     # Deploy config
     sh deploy.sh
     createRootLinks
@@ -62,6 +65,14 @@ configureGit() {
     reap -p "Enter git user name" GIT_USERNAME
     git config --global user.name "$GIT_USERNAME"
     git config --global push.default upstream
+}
+
+setupShell() {
+    echo "Changing default shell"
+    echo "Shell list: "
+    chsh -l
+    echo "----------"
+    chsh
 }
 
 
