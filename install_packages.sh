@@ -1,6 +1,6 @@
 PACKAGE_MANAGER="yaourt "
 UPDATE="$PACKAGE_MANAGER -Syu"
-INSTALL="$PACKAGE_MANAGER -S --noconfirm"
+INSTALL="$PACKAGE_MANAGER -S --noconfirm --needed"
 REMOVE="$PACKAGE_MANAGER -R"
 
 all() {

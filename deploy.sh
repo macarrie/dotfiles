@@ -39,7 +39,6 @@ echo "========== ZSH"
 echo "=============================="
 create_link ".zshrc"
 create_link ".zprofile"
-create_link ".oh-my-zsh/themes/amuse.zsh-theme"
 echo -e "\n"
 
 
