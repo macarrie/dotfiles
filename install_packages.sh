@@ -30,8 +30,10 @@ installXorg() {
 }
 
 installVirtualboxSpecifics() {
-    # Install packages needed to run X in an Arhc Virtualbox
     # Not needed for regular install
+    # Virtualbox guest additions
+    $INSTALL virtualbox-guest-utils
+    # Arch specific
     $INSTALL virtualbox-guest-modules-arch
 }
 
