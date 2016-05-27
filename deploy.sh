@@ -38,7 +38,6 @@ create_link() {
 echo "========== ZSH"
 echo "=============================="
 create_link ".zshrc"
-create_link ".zprofile"
 echo -e "\n"
 
 

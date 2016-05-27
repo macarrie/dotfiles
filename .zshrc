@@ -1,5 +1,58 @@
-# Ignore duplicates in history
-setopt HIST_IGNORE_DUPS
+# Setopts
+    # don't beep on error
+    setopt NO_BEEP
+
+    # Directory handling
+        # If you type foo, and it isn't a command, and it is a directory in your cdpath, go there
+        setopt AUTO_CD
+
+    # History
+        # Allow multiple terminal sessions to all append to one zsh command history
+        setopt APPEND_HISTORY
+
+        # Share history between zsh instances
+        setopt SHARE_HISTORY
+
+        # Add comamnds as they are typed, don't wait until shell exit
+        setopt INC_APPEND_HISTORY
+
+        # Do not write events to history that are duplicates of previous events
+        setopt HIST_IGNORE_DUPS
+
+        # When searching history don't display results already cycled through twice
+        setopt HIST_FIND_NO_DUPS
+
+        # Remove extra blanks from each command line being added to history
+        setopt HIST_REDUCE_BLANKS
+
+    # Completion
+        # Allow completion from within a word/phrase
+        setopt COMPLETE_IN_WORD
+
+        # When completing from the middle of a word, move the cursor to the end of the word
+        setopt ALWAYS_TO_END
+
+    # Correction
+        # spelling correction for commands
+        setopt correct
+        # spelling correction for arguments
+        setopt correctall
+
+    # Expansion
+        # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
+        setopt PROMPT_SUBST
+
+# Completion
+    autoload -U compinit && compinit
+    zmodload -i zsh/complist
+
+    zstyle ':completion:*' completer _expand _complete _correct _approximate
+    # Highlight current tab selected completion
+    zstyle ':completion:*' menu select=2
+    # Fallback to built in ls colors
+    zstyle ':completion:*' list-colors ''
+    # Case insensitive completion
+    zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+l:|=* r:|=*'
 
 # Vi mode
     # Update on keymap change
@@ -15,34 +68,23 @@ setopt HIST_IGNORE_DUPS
     bindkey '^N' down-history
 
     function vi_mode_prompt() {
+        MODE_INDICATOR="%{$fg_bold[yellow]%}[NORMAL]%{$reset_color%}"
         echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
     }
 
-    # if mode indicator wasn't setup by theme, define default
-    if [[ "$MODE_INDICATOR" == "" ]]; then
-      MODE_INDICATOR="<<<"
-    fi
-    if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
-        RPROMPT='$(vi_mode_prompt)'
-    fi
-
 # Prompt
+    autoload -Uz colors && colors
 
     # Git
-
-    GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}\uE0A0 "
-    GIT_PROMPT_SUFFIX="%{$reset_color%}"
-    GIT_PROMPT_DIRTY="%{$fg[red]%}!"
 
     function git_branch() {
         echo `git branch 2> /dev/null | sed -n 's/* \(\w\)/\1/p'`
     }
 
     function git_is_dirty() {
-        git status &> /dev/null
-        if [ $? -eq 0 ]
+        if [[ `git status --porcelain` ]]
         then
-            echo $GIT_PROMPT_DIRTY
+            echo "%{$fg[red]%}(\u00B1)"
         else
             echo ""
         fi
@@ -51,17 +93,16 @@ setopt HIST_IGNORE_DUPS
     function git_prompt() {
         if [ -d .git ]
         then
-            echo "on %{$fg[magenta]%}\uE0A0$(git_branch)$(git_is_dirty)%{$reset_color%}"
+            echo "on %{$fg[magenta]%}\uE0A0 $(git_branch)$(git_is_dirty)%{$reset_color%}"
         fi
     }
 
-    autoload -Uz colors && colors
-    setopt prompt_subst
+    # Prompt line
 
     color="cyan"
     if [ "$USER" = "root" ]
     then
-        color="red" 
+        color="red"
     fi
 
     function identifier() {
@@ -84,11 +125,9 @@ $(identifier): $(current_dir) $(git_prompt)
 # EXPORTS
     export EDITOR=vim
     export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin"
-    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-    export RAILS_LOGGER='default'
 
 # ALIAS
-    alias sudo='_'
+    alias _='sudo'
     # Tmux
     alias tmux='tmux -2'
     alias t='tmux'
@@ -115,18 +154,19 @@ $(identifier): $(current_dir) $(git_prompt)
     alias gsta='git stash'
 
     # Dir utils
-    alias lsa='ls -lah'
+    alias ls='ls --color=auto -p --group-directories-first'
     alias l='ls -lah'
     alias ll='ls -lh'
     alias la='ls -lAh'
     alias mkdir='mkdir -pv'
     alias rm='rm -I'
     alias cp='cp -v'
-    alias ..='cd ..'
-    alias ...='cd ../../../'
-    alias ....='cd ../../../../'
-    alias .....='cd ../../../../'
-    
+    alias mv='mv -v'
+    alias -g ..='cd ..'
+    alias -g ...='cd ../../../'
+    alias -g ....='cd ../../../../'
+    alias -g .....='cd ../../../../'
+
     # File search
     alias grep='grep --color=auto'
 
@@ -141,6 +181,12 @@ man() {
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
 }
+
+# Source local zshrc modifs
+if [ -f ~/.zshrc.local ]
+then
+    source ~/.zshrc.local
+fi
 
 # Terminal startup
 if [[ ! $TMUX ]]
