@@ -56,8 +56,6 @@ installUtilities() {
     $INSTALL xrandr arandr
     # URxvt
     $INSTALL rxvt-unicode-256xresources
-    # ZSH
-    installZsh
     # htop
     $INSTALL htop
 }
@@ -65,6 +63,8 @@ installUtilities() {
 installDev() {
     # Python pip
     $INSTALL python-pip
+    # Zsh
+    $INSTALL zsh
     # Vim
     $INSTALL vim
     # Tmux
@@ -107,20 +107,21 @@ installThemes() {
     $INSTALL scrot
     # Image manipulation
     $INSTALL imagemagick
-    # GTK Theme utility
-    $INSTALL lxappearance
-    # Paper icon theme
-    $INSTALL paper-icon-theme-git
-    # GTK Arc theme
-    $INSTALL gtk-theme-arc
-    # Font rendering lib
-    $INSTALL --confirm fontconfig-infinality
-    $INSTALL --confirm freetype2-infinality
     # Fonts
     $INSTALL otf-inconsolata-powerline-git
     $INSTALL ttf-impallari-cabin-font
     $INSTALL ttf-font-awesome
     $INSTALL terminus-font
+    $INSTALL ephifonts-no-helvetica
+    # Font rendering lib
+    $INSTALL --confirm fontconfig-infinality
+    $INSTALL --confirm freetype2-infinality
+    # GTK Theme utility
+    $INSTALL lxappearance
+    # Paper icon theme
+    $INSTALL --confirm paper-icon-theme-git
+    # GTK Arc theme
+    $INSTALL  --confirm gtk-theme-arc
 }
 
 installFileTools() {
@@ -138,13 +139,6 @@ installMedias() {
     $INSTALL vlc
     $INSTALL kodi
     $INSTALL spotify-stable
-}
-
-installZsh() {
-    # Install zsh
-    $INSTALL zsh
-    # Install OhMyZsh
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
 all

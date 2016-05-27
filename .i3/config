@@ -283,17 +283,5 @@ bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0
 bindsym $mod+w exec ~/scripts/random_wallpaper.sh
 
 # Startup apps
-exec --no-startup-id dunst
-exec --no-startup-id tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh
-exec --no-startup-id unclutter
-exec --no-startup-id dropbox start
-exec --no-startup-id nm-applet
-exec --no-startup-id xsetroot -solid "$bg"
-exec --no-startup-id xautolock -locker '~/scripts/i3lock-wrapper.sh --logo' -time 10 -notify 30 -notifier "notify-send 'Autolock in 30s' 'Réveille toi, tocard' -u critical -t 15000"
-exec --no-startup-id setxkbmap -option caps:escape
-exec --no-startup-id syndaemon -i 0.5 -d
-exec --no-startup-id synclient tapbutton1=1 # Kali bugfix
-exec --no-startup-id xset b off
-
 # Set volume to 20% at startup
 exec "amixer -q set Master 20% unmute && pkill -SIGRTMIN+10 i3blocks"
