@@ -11,6 +11,7 @@ all() {
     setupRamdisk
     installBootloader
     createUser
+    enableNetworking
 }
 
 setupHostname() {
@@ -72,6 +73,10 @@ createUser() {
     sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
     usermod -aG wheel $USERNAME
     echo -e "\n"
+}
+
+enableNetworking() {
+     systemctl enable dhcpcd.service
 }
 
 # Procede installation
