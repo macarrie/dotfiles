@@ -1,3 +1,6 @@
+#!/bin/bash
+/usr/bin/VBoxClient-all
+
 # Set keymap
 setxkbmap fr
 
