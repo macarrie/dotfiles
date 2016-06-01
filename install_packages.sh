@@ -31,10 +31,10 @@ installXorg() {
 
 installVirtualboxSpecifics() {
     # Not needed for regular install
-    # Virtualbox guest additions
-    $INSTALL virtualbox-guest-utils
     # Arch specific
     $INSTALL virtualbox-guest-modules-arch
+    # Virtualbox guest additions
+    $INSTALL virtualbox-guest-utils
 }
 
 installUtilities() {
