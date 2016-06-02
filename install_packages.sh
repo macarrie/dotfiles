@@ -140,7 +140,6 @@ installFileTools() {
 installMedias() {
     $INSTALL vlc
     $INSTALL kodi
-    $INSTALL spotify-stable
 }
 
 all

@@ -56,6 +56,8 @@ echo "=============================="
 # Plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 create_link ".tmux.conf"
+tmux kill-server
+tmux new-session -s tmp -d
 tmux run-shell $HOME/.tmux/plugins/tpm/bindings/install_plugins
 echo -e "\n"
 

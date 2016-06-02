@@ -31,6 +31,9 @@ synclient tapbutton1=1 &
 xset b off
 # Compositor
 compton &
+# Start tmux
+tmux new-session -s tmp -d
+tmux run-shell $HOME/.tmux/plugins/tmp/bindings/install_plugins
 
 # Start WM
 exec i3
