@@ -75,16 +75,6 @@ create_link ".config/dunst/dunstrc"
 echo -e "\n"
 
 
-echo "========== TERMINATOR"
-echo "=============================="
-if [ ! -e $HOME/.config/terminator/ ]
-then
-    mkdir -p $HOME/.config/dunst
-fi
-create_link ".config/terminator/config"
-echo -e "\n"
-
-
 echo "========== I3"
 echo "=============================="
 create_link ".i3"
@@ -100,6 +90,12 @@ echo -e "\n"
 echo "========== XRESOURCES"
 echo "=============================="
 create_link ".Xresources"
+echo -e "\n"
+
+
+echo "========== COMPTON"
+echo "=============================="
+create_link ".config/compton.conf"
 echo -e "\n"
 
 
