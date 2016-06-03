@@ -12,6 +12,8 @@ all() {
     installBootloader
     createUser
     enableNetworking
+
+    giveDotfilesToUser
 }
 
 setupHostname() {
@@ -77,6 +79,12 @@ createUser() {
 
 enableNetworking() {
      systemctl enable dhcpcd.service
+}
+
+giveDotfilesToUser() {
+     echo "Moving repo to user"
+     mv ~/dotfiles /home/$USERNAME/dotfiles
+     chown -R $USERNAME:$USERNAME /home/$USERNAME/dotfiles
 }
 
 # Procede installation

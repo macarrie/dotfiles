@@ -17,6 +17,9 @@ all() {
     # Setup git identity
     configureGit
 
+    # Setup default shell
+    setupShell
+
     # Deploy config
     sh deploy.sh
     createRootLinks
@@ -57,11 +60,19 @@ setupCronJobs() {
 
 configureGit() {
     echo "Git setup"
-    reap -p "Enter git user email" GIT_MAIL
+    read -p "Enter git user email: " GIT_MAIL
     git config --global user.email "$GIT_MAIL"
-    reap -p "Enter git user name" GIT_USERNAME
+    read -p "Enter git user name: " GIT_USERNAME
     git config --global user.name "$GIT_USERNAME"
     git config --global push.default upstream
+}
+
+setupShell() {
+    echo "Changing default shell"
+    echo "Shell list: "
+    chsh -l
+    echo "----------"
+    chsh
 }
 
 

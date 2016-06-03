@@ -1,6 +1,6 @@
 PACKAGE_MANAGER="yaourt "
 UPDATE="$PACKAGE_MANAGER -Syu"
-INSTALL="$PACKAGE_MANAGER -S --noconfirm"
+INSTALL="$PACKAGE_MANAGER -S --noconfirm --needed"
 REMOVE="$PACKAGE_MANAGER -R"
 
 all() {
@@ -31,10 +31,10 @@ installXorg() {
 
 installVirtualboxSpecifics() {
     # Not needed for regular install
-    # Virtualbox guest additions
-    $INSTALL virtualbox-guest-utils
     # Arch specific
     $INSTALL virtualbox-guest-modules-arch
+    # Virtualbox guest additions
+    $INSTALL virtualbox-guest-utils
 }
 
 installUtilities() {
@@ -140,7 +140,6 @@ installFileTools() {
 installMedias() {
     $INSTALL vlc
     $INSTALL kodi
-    $INSTALL spotify-stable
 }
 
 all
