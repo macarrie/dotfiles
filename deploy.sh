@@ -52,7 +52,6 @@ echo -e "\n"
 
 echo "========== TMUX"
 echo "=============================="
-# Powerline
 # Plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 create_link ".tmux.conf"
@@ -85,11 +84,6 @@ create_link ".i3blocks.conf"
 echo -e "\n"
 
 
-echo "========== GTK FIX"
-echo "=============================="
-cp -v $DOTFILES/gtk3_fix.css $HOME/.config/gtk-3.0/gtk.css
-echo -e "\n"
-
 echo "========== XINITRC"
 echo "=============================="
 create_link ".xinitrc"
@@ -100,6 +94,12 @@ echo "========== XRESOURCES"
 echo "=============================="
 create_link ".Xresources"
 xrdb ~/.Xresources
+echo -e "\n"
+
+
+echo "========== COMPTON"
+echo "=============================="
+create_link ".config/compton.conf"
 echo -e "\n"
 
 
