@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Start tmux
+tmux new-session -s tmp -d
+tmux run-shell $HOME/.tmux/plugins/tmp/bindings/install_plugins
