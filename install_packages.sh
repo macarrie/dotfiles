@@ -120,8 +120,8 @@ installThemes() {
     $INSTALL --confirm freetype2-infinality
     # GTK Theme utility
     $INSTALL lxappearance
-    # Paper icon theme
-    $INSTALL --confirm paper-icon-theme-git
+    # Arc icon theme
+    $INSTALL --confirm arc-icon-theme-git
     # GTK Arc theme
     $INSTALL  --confirm gtk-theme-arc
 }
