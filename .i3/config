@@ -233,7 +233,7 @@ bindsym XF86AudioLowerVolume 	exec "amixer -q set Master 5%- unmute && pkill -SI
 bindsym $mod+Next			 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
 bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks"
 bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle && pkill -SIGRTMIN+10 i3blocks"
-bindsym $mod+control+v			exec "terminator -x alsamixer"
+bindsym $mod+control+v			exec "urxvt -e alsamixer"
 
 # bar toggle, hide or show
 bindsym $mod+b bar mode toggle
@@ -259,7 +259,7 @@ bindsym $mod+shift+Return exec nautilus
 # Autopositionning settings
 for_window [window_role="pop-up"] 			floating enable
 for_window [window_role="task_dialog"] 		floating enable
-for_window [title="/usr/bin/alsamixer"]		floating enable
+for_window [instance="__float__"]           floating enable
 for_window [title="Telegram Web"]			floating enable
 for_window [class="X-terminal-emulator"]	border pixel $borderSize
 assign [window_role="browser"] $ws1
