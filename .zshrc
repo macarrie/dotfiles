@@ -163,9 +163,12 @@ $(identifier): $(current_dir) $(git_prompt)
     alias cp='cp -v'
     alias mv='mv -v'
     alias -g ..='cd ..'
-    alias -g ...='cd ../../../'
-    alias -g ....='cd ../../../../'
-    alias -g .....='cd ../../../../'
+    alias -g ...='cd ../..'
+    alias -g ....='cd ../../..'
+    alias -g .....='cd ../../../..'
+    function mkcd() {
+        mkdir $1 && cd $1
+    }
 
     # File search
     alias grep='grep --color=auto'
