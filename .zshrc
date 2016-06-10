@@ -114,12 +114,12 @@
     }
 
     function hour() {
-        echo "%{$fg_bold[red]%}%*%{$reset_color%}"
+        echo "%{$fg_bold[red]%} %*%{$reset_color%}"
     }
 
-    RPROMPT='$(vi_mode_prompt) $(hour)'
+    RPROMPT='$(vi_mode_prompt)'
     PROMPT='
-$(identifier): $(current_dir) $(git_prompt)
+$(identifier): $(current_dir) $(git_prompt)   $(hour)
 %# '
 
 # EXPORTS
