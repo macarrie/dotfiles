@@ -55,7 +55,7 @@ font pango:Inconsolata for Powerline 12px
 floating_modifier $mod
 
 # start a terminal
-set $term urxvt
+set $term termite
 bindsym $mod+Return exec $term
 
 # kill focused window
@@ -231,7 +231,7 @@ bindsym XF86AudioLowerVolume 	exec "amixer -q set Master 5%- unmute && pkill -SI
 bindsym $mod+Next			 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
 bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks"
 bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle && pkill -SIGRTMIN+10 i3blocks"
-bindsym $mod+control+v			exec "urxvt -x alsamixer"
+bindsym $mod+control+v			exec "$term -x alsamixer"
 
 # bar toggle, hide or show
 bindsym $mod+b bar mode toggle
@@ -240,7 +240,7 @@ bindsym $mod+b bar mode toggle
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # scratchpad
-exec urxvt --title "scratchpad" -e sh -c "~/scripts/tmux_create_or_attach.sh scratchpad"
+exec $term --title "scratchpad" -e sh -c "~/scripts/tmux_create_or_attach.sh scratchpad"
 for_window [title="scratchpad"] floating enable;
 for_window [title="scratchpad"] move scratchpad;
 bindsym $mod+shift+o move scratchpad
@@ -280,5 +280,8 @@ bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0
 bindsym $mod+w exec ~/scripts/random_wallpaper.sh
 
 # Startup apps
+
+exec_always --no-startup-id ~/scripts/random_wallpaper.sh
+
 # Set volume to 20% at startup
 exec "amixer -q set Master 20% unmute && pkill -SIGRTMIN+10 i3blocks"

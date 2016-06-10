@@ -97,6 +97,16 @@ xrdb ~/.Xresources
 echo -e "\n"
 
 
+echo "========== TERMITE"
+echo "=============================="
+if [ ! -e $HOME/.config/termite/ ]
+then
+    mkdir -p $HOME/.config/termite
+fi
+create_link ".config/termite/config"
+echo -e "\n"
+
+
 echo "========== COMPTON"
 echo "=============================="
 create_link ".config/compton.conf"

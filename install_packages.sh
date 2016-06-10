@@ -58,6 +58,8 @@ installUtilities() {
     $INSTALL xrandr arandr
     # URxvt
     $INSTALL rxvt-unicode-256xresources
+    # Termite
+    $INSTALL termite-git
     # htop
     $INSTALL htop
 }
