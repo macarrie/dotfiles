@@ -242,7 +242,7 @@ bindsym $mod+b bar mode toggle
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # scratchpad
-exec i3-sensible-terminal --title "scratchpad"
+exec $term --title "scratchpad" -e sh -c "~/scripts/tmux_create_or_attach.sh scratchpad"
 for_window [title="scratchpad"] floating enable;
 for_window [title="scratchpad"] move scratchpad;
 bindsym $mod+shift+o move scratchpad
