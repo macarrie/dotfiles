@@ -1,7 +1,7 @@
 #!/bin/bash
 
 case $BLOCK_BUTTON in
-  1) urxvt -hold -name __float__ -e cal -3
+  1) urxvt -hold -name __float__ -e cal -3 ;;
 esac
 
 date '+%a %d %b, %Y'
