@@ -34,9 +34,9 @@
 
     # Correction
         # spelling correction for commands
-        setopt correct
+        #setopt correct
         # spelling correction for arguments
-        setopt correctall
+        #setopt correctall
 
     # Expansion
         # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
@@ -114,7 +114,7 @@
     }
 
     function hour() {
-        echo "%{$fg_bold[red]%} %*%{$reset_color%}"
+        echo "%{$fg_bold[red]%}  %*%{$reset_color%}"
     }
 
     RPROMPT='$(vi_mode_prompt)'

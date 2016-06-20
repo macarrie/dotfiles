@@ -9,10 +9,10 @@ all() {
 
     # Install packages
     installXorg
-    installVirtualboxSpecifics
+    #installVirtualboxSpecifics
     installDev
     installUtilities
-    #installLatex
+    installLatex
     installWeb
     installDesktop
     installThemes
@@ -89,6 +89,8 @@ installWeb() {
     $INSTALL curl wget
     # Chromium
     $INSTALL chromium
+    # Transmission
+    $INSTALL transmission-gtk
 }
 
 installDesktop() {
@@ -131,6 +133,8 @@ installThemes() {
 installFileTools() {
     # Nautilus
     $INSTALL nautilus
+    # Dropbox
+    $INSTALL nautilus-dropbox
     # PDF Viewer
     $INSTALL evince
     # Zip utility

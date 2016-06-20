@@ -1,5 +1,5 @@
 #!/bin/bash
-/usr/bin/VBoxClient-all
+#/usr/bin/VBoxClient-all
 
 # Set keymap
 setxkbmap fr
@@ -30,7 +30,7 @@ synclient tapbutton1=1 &
 # Disable effing hardware bell
 xset b off
 # Compositor
-compton &
+#compton &
 # Start tmux
 tmux new-session -s tmp -d
 tmux run-shell $HOME/.tmux/plugins/tmp/bindings/install_plugins

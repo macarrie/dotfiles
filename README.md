@@ -50,10 +50,20 @@
 % cd dotfiles
 % ./systeminstall.sh
 ```
+* If on Wifi, install networkmanager before rebooting
+```bash
+% pacman -S networkmanager
+```
 * Reboot
 
 ### User setup
-* Login as newly created user and execute user install script
+* Login as newly created user 
+* If not on wired network, connect to Wifi
+```bash
+% sudo systemctl start NetworkManager.service
+% nmtui
+```
+* Execute user install script
 ```bash
 % cd dotfiles
 % ./userinstall.sh
