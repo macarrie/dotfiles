@@ -23,14 +23,16 @@ set $mod Mod4
 	set $workspace_active       #FFFFFF
 	set $workspace_inactive     #676E7A
 	set $focused                #EEEEEE
-	set $focused_bg             #3971B8
-	set $focused_border         #3971B8
+	#set $focused_bg             #3971B8
+	#set $focused_border         #3971B8
+	set $focused_bg             #1565C0
+	set $focused_border         #1565C0
     set $focused_indicator      #6EAAF7
 	set $unfocused              #666666
 	set $unfocused_bg           #1E232E
 	set $unfocused_border       #1E232E
     set $unfocused_indicator    #FF0000
-    set $urgent                 #FF3863
+    set $urgent                 #C62828
 
 set $borderSize 4
 set $gapsOuter 0
