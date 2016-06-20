@@ -19,6 +19,6 @@ then
     exit 33
 elif [ `echo "$cpu_load > $CPU_WARNING_THRESHOLD" | bc -l`  -eq 1 ]
 then
-    echo "#FFFC00"
+    echo "#FFEA00"
     exit 0
 fi

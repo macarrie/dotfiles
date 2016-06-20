@@ -34,9 +34,9 @@
 
     # Correction
         # spelling correction for commands
-        setopt correct
+        #setopt correct
         # spelling correction for arguments
-        setopt correctall
+        #setopt correctall
 
     # Expansion
         # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt

@@ -18,7 +18,7 @@ fi
 color="#FF4300"
 if [ $STATUS == "Up" ]
 then
-    color="#28FC36"
+    color="#00E676"
 fi
 
 echo "VPN <i>$STATUS</i>"
