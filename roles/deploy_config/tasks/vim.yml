@@ -1,0 +1,19 @@
+---
+- name: VIM | Clone Vundle
+  tags: [vim]
+  git: repo=https://github.com/VundleVim/Vundle.vim.git
+       dest=~/.vim/bundle/Vundle.vim
+
+- name: VIM | Link config
+  tags: [vim]
+  file: src=~/dotfiles/.vimrc
+        dest=~/.vimrc
+        state=link 
+        force=yes
+
+- name: VIM | Install plugins
+  shell: vim +PluginInstall +qall
+
+- name: VIM | Create tmp dir
+  file: state=directory
+        path=~/.vimtmp

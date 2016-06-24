@@ -1,0 +1,15 @@
+---
+- name: XFILES | Link xinitrc
+  file: src=~/dotfiles/.xinitrc
+        dest=~/.xinitrc
+        state=link
+        force=yes
+
+- name: XFILES | Link Xresources
+  file: src=~/dotfiles/.Xresources
+        dest=~/.Xresources
+        state=link
+        force=yes
+
+- name: XFILES | Reload Xresources
+  shell: xrdb ~/.Xresources

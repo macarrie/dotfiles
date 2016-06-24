@@ -1,0 +1,12 @@
+---
+- include: zsh.yml
+- include: vim.yml
+#- include: tmux.yml
+- include: scripts.yml
+- include: dunst.yml
+- include: i3.yml
+- include: xfiles.yml
+- include: termite.yml
+- include: compton.yml
+- include: yaourt.yml
+  when: ansible_os_family == "Archlinux"

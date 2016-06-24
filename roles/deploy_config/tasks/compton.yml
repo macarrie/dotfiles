@@ -1,0 +1,6 @@
+---
+- name: COMPTON | Link config
+  file: src=~/dotfiles/.config/compton.conf
+        dest=~/.config/compton.conf
+        state=link
+        force=yes

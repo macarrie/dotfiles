@@ -1,0 +1,20 @@
+---
+- name: TMUX | Link config file
+  file: src=~/dotfiles/.tmux.conf
+        dest=~/.tmux.conf
+        state=link
+        force=yes
+
+- name: TMUX | Clone plugin manager
+  git:  repo=https://github.com/tmux-plugins/tpm
+        dest=~/.tmux/plugins/tpm
+
+- name: TMUX | Stop server
+  shell: tmux kill-server
+  ignore_errors: yes
+
+- name: TMUX | Start server
+  shell: tmux new-session -s tmp -d
+
+- name: TMUX | Install plugins
+  shell: tmux run-shell ~/.tmux/plugins/tpm/bindings/install_plugins
