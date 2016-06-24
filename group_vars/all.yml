@@ -1,0 +1,9 @@
+---
+
+# System install vars
+primary_disk: /dev/sda
+hostname: test
+username: test
+
+# Config deployment vars
+dotfiles_path: ~/dotfiles/files

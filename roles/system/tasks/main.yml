@@ -1,0 +1,21 @@
+---
+- name: Setup hostname
+  hostname: name={{ hostname }}
+
+- include: locale.yml
+
+- name: Setup vconsole.conf
+  template: src=vconsole.conf.j2
+            dest=/etc/vconsole.conf
+
+- name: Setup ramdisk
+  shell: mkinitcpio -p linux
+
+- include: bootloader.yml
+
+- include: users.yml
+
+- name: Enable dhcpcd service
+  service: name=dhcpcd
+           enable=yes
+           state=started

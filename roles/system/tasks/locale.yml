@@ -1,0 +1,14 @@
+---
+- name: Setup timezone to Europe/Paris
+  file: src=/usr/share/zoneinfo/Europe/Paris
+        dest=/etc/localtime
+
+- name: Enable en_US.UTF-8 locale
+  locale_gen: name=en_US.UTF-8 state=present
+
+- name: Write /etc/locale.conf
+  copy: content="LANG=en_US.UTF-8"
+        dest=/etc/locale.conf
+
+- name: Set hardware clock
+  shell: hwclock --systohc --localtime

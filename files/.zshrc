@@ -125,6 +125,7 @@ $(identifier): $(current_dir) $(git_prompt)   $(hour)
 # EXPORTS
     export EDITOR=vim
     export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin"
+    export TERMINAL=termite
 
 # ALIAS
     alias _='sudo'

@@ -1,7 +1,7 @@
 ---
 - include: zsh.yml
 - include: vim.yml
-#- include: tmux.yml
+- include: tmux.yml
 - include: scripts.yml
 - include: dunst.yml
 - include: i3.yml
