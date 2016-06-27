@@ -1,0 +1,12 @@
+---
+- name: I3 | Link i3wm config
+  file: src={{ dotfiles_path }}/.i3
+        dest=~/.i3
+        state=link
+        force=yes
+
+- name: I3 | Link i3blocks config
+  file: src={{ dotfiles_path }}/.i3blocks.conf
+        dest=~/.i3blocks.conf
+        state=link
+        force=yes

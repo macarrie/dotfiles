@@ -1,0 +1,6 @@
+---
+- name: COMPTON | Link config
+  file: src={{ dotfiles_path }}/.config/compton.conf
+        dest=~/.config/compton.conf
+        state=link
+        force=yes

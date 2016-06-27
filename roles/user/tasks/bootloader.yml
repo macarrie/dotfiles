@@ -1,0 +1,9 @@
+---
+- name: Install grub and os-prober packages
+  pacman: name=grub,osprober state=present
+
+- name: Install Grub
+  shell: grub-install {{ primary_disk }}
+
+- name: Make grub config
+  shell: grub-mkconfig -o /boot/grub/grub.cfg

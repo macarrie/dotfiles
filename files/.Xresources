@@ -2,7 +2,7 @@
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
 rofi.width: 100
-rofi.padding: 400
+rofi.padding: 200
 rofi.fuzzy: true
 rofi.eh: 2
 rofi.separator-style: none

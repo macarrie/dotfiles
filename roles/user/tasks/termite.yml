@@ -1,0 +1,10 @@
+---
+- name: TERMITE | Create config folder
+  file: state=directory
+        path=~/.config/termite
+
+- name: TERMITE | Link config
+  file: src={{ dotfiles_path }}/.config/termite/config
+        dest=~/.config/termite/config
+        state=link 
+        force=yes

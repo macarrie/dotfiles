@@ -30,8 +30,8 @@ synclient tapbutton1=1 &
 # Disable effing hardware bell
 xset b off
 # Compositor
-#compton &
-# Start tmux
+compton &
+# Start tmux and restore previous session
 tmux new-session -s tmp -d
 tmux run-shell $HOME/.tmux/plugins/tmp/bindings/install_plugins
 

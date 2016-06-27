@@ -1,18 +1,18 @@
 ---
 - hosts: all
-  vars_prompt:
-      - name: root_pwd
-        prompt: "Choose root password: "
-        private: yes
-        encrypt: "sha512_crypt"
-        confirm: yes
+  #vars_prompt:
+      #- name: root_pwd
+        #prompt: "Choose root password: "
+        #private: yes
+        #encrypt: "sha512_crypt"
+        #confirm: yes
 
-      - name: user_pwd
-        prompt: "Choose user password: "
-        private: yes
-        encrypt: "sha512_crypt"
-        confirm: yes
+      #- name: user_pwd
+        #prompt: "Choose user password: "
+        #private: yes
+        #encrypt: "sha512_crypt"
+        #confirm: yes
   roles:
-      - system
+      #- system
       - user
-      - deploy_config
+      #- deploy_config

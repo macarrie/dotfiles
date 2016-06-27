@@ -1,0 +1,6 @@
+---
+- name: YAOURT | Link config
+  file: src={{ dotfiles_path }}/.yaourtrc
+        dest=~/.yaourtrc
+        state=link
+        force=yes

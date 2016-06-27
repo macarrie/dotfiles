@@ -1,0 +1,10 @@
+---
+- name: DUNST | Create config folder
+  file: state=directory
+        path=~/.config/dunst
+
+- name: DUNST | Link config
+  file: src={{ dotfiles_path }}/.config/dunst/dunstrc
+        dest=~/.config/dunst/dunstrc
+        state=link 
+        force=yes

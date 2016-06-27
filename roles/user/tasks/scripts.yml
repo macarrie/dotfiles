@@ -1,0 +1,6 @@
+---
+- name: SCRIPTS | Link folder
+  file: src={{ dotfiles_path }}/scripts
+        dest=~/scripts
+        state=link
+        force=yes

@@ -1,0 +1,9 @@
+---
+- name: ZSH | Link config
+  file: src={{ dotfiles_path }}/{{ item }}
+        dest=~/{{ item  }} 
+        state=link 
+        force=yes
+  with_items:
+    - .zshrc
+    - .zprofile
