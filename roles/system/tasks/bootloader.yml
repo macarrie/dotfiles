@@ -1,6 +1,6 @@
 ---
 - name: Install grub and os-prober packages
-  pacman: name=grub,osprober state=present
+  pacman: name=grub,os-prober state=present
 
 - name: Install Grub
   shell: grub-install {{ primary_disk }}

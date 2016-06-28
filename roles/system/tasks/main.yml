@@ -1,6 +1,6 @@
 ---
 - name: Setup hostname
-  hostname: name={{ hostname }}
+  shell: echo {{ hostname }} > /etc/hostname
 
 - include: locale.yml
 
@@ -17,5 +17,4 @@
 
 - name: Enable dhcpcd service
   service: name=dhcpcd
-           enable=yes
-           state=started
+           enabled=yes
