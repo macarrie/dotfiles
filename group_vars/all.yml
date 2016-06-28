@@ -7,3 +7,5 @@ username: test
 
 # Config deployment vars
 dotfiles_path: ~/dotfiles/files
+git_mail: mathieu0carrie@gmail.com
+git_user: macarrie

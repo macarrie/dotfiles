@@ -1,0 +1,10 @@
+---
+- name: Link zsh config for root
+  file: src=/home/{{ username }}/.zshrc
+        dest=/root/.zshrc
+        state=link
+
+- name: Link vim config for root
+  file: src=/home/{{ username }}/.vimrc
+        dest=/root/.vimrc
+        state=link

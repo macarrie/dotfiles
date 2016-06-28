@@ -8,6 +8,7 @@
 - name: TMUX | Clone plugin manager
   git:  repo=https://github.com/tmux-plugins/tpm
         dest=~/.tmux/plugins/tpm
+        update=yes
 
 - name: TMUX | Start tmux server
   shell: tmux new-session -s tmp -d

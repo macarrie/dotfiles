@@ -1,0 +1,11 @@
+---
+- name: GIT | Setup user email
+  shell:
+    git config --global user.email "{{ git_mail }}"
+
+- name: GIT | Setup username
+  shell:
+    git config --global user.name "{{ git_user }}"
+
+- name: GIT | Default push settings
+    git config --global push.default upstream

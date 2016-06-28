@@ -20,3 +20,5 @@
 
 - include: yaourt.yml
   when: ansible_os_family == "Archlinux"
+
+- include: root.yml
