@@ -17,5 +17,4 @@
 
 - name: Enable dhcpcd service
   service: name=dhcpcd
-           enable=yes
-           state=started
+           enabled=yes
