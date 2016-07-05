@@ -2,21 +2,22 @@
 - hosts: all
   vars_prompt:
       - name: root_pwd
-        prompt: "Choose root password: "
+        prompt: "Chosen root password"
         private: yes
         encrypt: "sha512_crypt"
         confirm: yes
 
       - name: user_pwd
-        prompt: "Choose user password: "
+        prompt: "Chosen user password"
         private: yes
         encrypt: "sha512_crypt"
         confirm: yes
   roles:
-      - system
+      #- system
 
 - hosts: all
   become_user: "{{ username }}"
+  become: yes
   roles:
       - user
       - deploy_config

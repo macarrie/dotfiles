@@ -1,102 +1,117 @@
 ---
-- include: yaourt.yml
-  when: ansible_os_family == "Archlinux"
+#- include: yaourt.yml
+  #when: ansible_os_family == "Archlinux"
 
-- name: Install packages
-  shell: yaourt -S {{ item }} --noconfirm --needed
-  when: ansible_os_family == "Archlinux"
-  with_items:
-    # Xorg
-    - xorg-server
-    - xorg-server-utils
-    - xorg-xinit
-    - xclip
-    - xautolock
+#- name: Install packages
+  #shell: yaourt -S {{ item }} --noconfirm --needed
+  #when: ansible_os_family == "Archlinux"
+  #ignore_errors: True
+  #with_items:
+    ## Xorg
+    #- xorg-server
+    #- xorg-server-utils
+    #- xorg-xinit
+    #- xclip
+    #- xautolock
 
-    # Virtualbox
-    - virtualbox-guest-modules-arch
+    ## Virtualbox
+    #- virtualbox-guest-modules-arch
 
-    # Utilies
-    - xf86-input-synaptics
-    - alsa-utils
-    - networkmanager
-    - network-manager-applet
-    - sysstat
-    - acpi
-    - cronie
-    - libnotify
-    - dunst
-    - xrandr
-    - arandr
-    - rxvt-unicode-256xresources
-    - termite-git
-    - htop
+    ## Utilies
+    #- xf86-input-synaptics
+    #- alsa-utils
+    #- networkmanager
+    #- network-manager-applet
+    #- sysstat
+    #- acpi
+    #- cronie
+    #- libnotify
+    #- dunst
+    #- xorg-xrandr
+    #- arandr
+    #- rxvt-unicode-256xresources
+    #- termite-git
+    #- htop
 
-    # Dev utils
-    - python-pip
-    - zsh
-    - vim
-    - tmux
-    - ack
+    ## Dev utils
+    #- python-pip
+    #- zsh
+    #- vim
+    #- tmux
+    #- ack
 
-    # Latex
-    - texlive-most
+    ## Latex
+    #- texlive-most
 
-    # Web and network
-    - openssl
-    - curl
-    - wget
-    - chromium
-    - transmission-gtk
+    ## Web and network
+    #- openssl
+    #- curl
+    #- wget
+    #- chromium
+    #- transmission-gtk
 
-    # Desktop environment
-    - i3-gaps
-    - i3lock
-    - i3blocks
-    - rofi
-    - unclutter
-    - bc
-    - compton
+    ## Desktop environment
+    #- i3-gaps
+    #- i3lock
+    #- i3blocks
+    #- rofi
+    #- unclutter
+    #- bc
+    #- compton
 
-    # Theming
-    - feh
-    - scrot
-    - imagemagick
-    - otf-inconsolata-powerline-git
-    - ttf-impallari-cabin-font
-    - ttf-font-awesome
-    - terminus-font
-    - ephifonts-no-helvetica
-    - fontconfig-infinality
-    - freetype2-infinality
-    - lxappearance
-    - arc-icon-theme-git
-    - gtk-theme-arc
+    ## Theming
+    #- feh
+    #- scrot
+    #- imagemagick
+    #- otf-inconsolata-powerline-git
+    #- ttf-impallari-cabin-font
+    #- ttf-font-awesome
+    #- terminus-font
+    #- ephifonts-no-helvetica
+    #- fontconfig-infinality
+    #- freetype2-infinality
+    #- lxappearance
+    #- arc-icon-theme-git
+    #- gtk-theme-arc
 
-    # File tools
-    - nautilus
-    - nautilus-dropbox
-    - evince
-    - unzip
-    - git
-    - subversion
+    ## File tools
+    #- nautilus
+    #- nautilus-dropbox
+    #- evince
+    #- unzip
+    #- git
+    #- subversion
 
-    # Multimedia
-    - vlc
-    - kodi
+    ## Multimedia
+    #- vlc
+    #- kodi
 
-- name: Enable services
-  service: name={{ item }}
-           enabled=yes
-  with_items:
-      - NetworkManager
-      - cronie
+#- name: Install fontconfig
+  #shell: yes | yaourt -S {{ item }} --noconfirm --needed
+  #when: ansible_os_family == "Archlinux"
+  #ignore_errors: True
+  #with_items:
+    #- fontconfig-infinality
+    #- freetype2-infinality
 
-- name: Setup Cron jobs
-  cron: name="Wallpaper"
-        state=present
-        minute="*/15"
-        job="DISPLAY=:0.0 /home/{{ username }}/scripts/random_wallpaper.sh"
-        user="{{ username }}"
+#- name: Enable services
+  #service: name={{ item }}
+           #enabled=yes
+  #become: yes
+  #become_user: root
+  #with_items:
+      #- NetworkManager
+      #- cronie
 
-- include: git.yml
+#- name: Setup Cron jobs
+  #become: yes
+  #become_user: root
+  #cron: name="Wallpaper"
+        #state=present
+        #minute="*/15"
+        #job="DISPLAY=:0.0 /home/{{ username }}/scripts/random_wallpaper.sh"
+        #user="{{ username }}"
+
+#- include: git.yml
+
+- include: chsh.yml

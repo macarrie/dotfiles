@@ -1,0 +1,12 @@
+---
+- name: Get zsh path
+  shell: which zsh
+  register: zsh_path
+
+- name: Change default shell
+  become: yes
+  become_user: root
+  shell: chsh -s {{ zsh_path.stdout }} {{ item }}
+  with_items:
+      - "{{ username }}"
+      - root

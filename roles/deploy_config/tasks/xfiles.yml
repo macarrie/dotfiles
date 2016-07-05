@@ -10,6 +10,3 @@
         dest=~/.Xresources
         state=link
         force=yes
-
-- name: XFILES | Reload Xresources
-  shell: xrdb ~/.Xresources

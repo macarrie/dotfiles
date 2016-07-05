@@ -3,9 +3,9 @@
 # System install vars
 primary_disk: /dev/sda
 hostname: test
-username: test
+username: mat
 
 # Config deployment vars
-dotfiles_path: ~/dotfiles/files
+dotfiles_path: /home/{{ username }}/dotfiles/files
 git_mail: mathieu0carrie@gmail.com
 git_user: macarrie

@@ -9,10 +9,17 @@
         password={{ user_pwd }}
         state=present
 
-- name: Update sudoers file
-  shell: sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+- name: Deploy sudoers file
+  template: src=sudoers.j2
+            dest=/etc/sudoers
 
 - name: Add {{ username }} to wheel group
   user: name={{ username }}
         groups=wheel
         append=yes
+
+- name: Clone repo for user
+  ignore_errors: True
+  git: repo=https://github.com/macarrie/dotfiles
+       dest=/home/{{ username }}/dotfiles
+       version=ansible

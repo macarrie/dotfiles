@@ -8,15 +8,18 @@
        dest=~/tmp/package-query
 
 - name: YAOURT | Compile package-query
-  command: makepkg -si
+  command: makepkg -si --noconfirm --needed
   args:
       chdir: ~/tmp/package-query/
+
+- name: YAOURT | Update repos
+  command: yaourt -Syyu --noconfirm --force
 
 - name: YAOURT | Clone yaourt repo
   git: repo=https://aur.archlinux.org/yaourt.git
        dest=~/tmp/yaourt
 
 - name: YAOURT | Compile yaourt
-  command: makepkg -si
+  command: makepkg -si --noconfirm --needed --force
   args:
       chdir: ~/tmp/yaourt/

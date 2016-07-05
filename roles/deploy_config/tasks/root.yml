@@ -1,10 +1,24 @@
 ---
 - name: Link zsh config for root
-  file: src=/home/{{ username }}/.zshrc
+  become: yes
+  file: src={{ dotfiles_path }}/.zshrc
         dest=/root/.zshrc
         state=link
 
 - name: Link vim config for root
-  file: src=/home/{{ username }}/.vimrc
+  become: yes
+  file: src={{ dotfiles_path }}/.vimrc
         dest=/root/.vimrc
         state=link
+
+- name: Remove /root/.vim folder if existing
+  become: yes
+  file: name=/root/.vim
+        state=absent
+
+- name: Link vim data folder for root
+  become: yes
+  file: src=/home/{{ username }}/.vim
+        dest=/root/.vim
+        state=link
+        force=yes
