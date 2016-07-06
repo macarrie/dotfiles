@@ -13,7 +13,7 @@
         force=yes
 
 - name: VIM | Install plugins
-  shell: vim +PluginInstall +qall
+  shell: echo | echo | vim +PluginInstall +qall
 
 - name: VIM | Create tmp dir
   file: state=directory

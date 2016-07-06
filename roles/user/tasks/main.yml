@@ -1,117 +1,118 @@
 ---
-#- include: yaourt.yml
-  #when: ansible_os_family == "Archlinux"
+- include: yaourt.yml
+  when: ansible_os_family == "Archlinux"
 
-#- name: Install packages
-  #shell: yaourt -S {{ item }} --noconfirm --needed
-  #when: ansible_os_family == "Archlinux"
-  #ignore_errors: True
-  #with_items:
-    ## Xorg
-    #- xorg-server
-    #- xorg-server-utils
-    #- xorg-xinit
-    #- xclip
-    #- xautolock
+- name: Update repos
+  shell: yaourt -Syyu --noconfirm
 
-    ## Virtualbox
-    #- virtualbox-guest-modules-arch
+- name: Install packages
+  shell: yaourt -S {{ item }} --noconfirm --needed
+  when: ansible_os_family == "Archlinux"
+  ignore_errors: True
+  with_items:
+    # Xorg
+    - xorg-server
+    - xorg-server-utils
+    - xorg-xinit
+    - xclip
+    - xautolock
 
-    ## Utilies
-    #- xf86-input-synaptics
-    #- alsa-utils
-    #- networkmanager
-    #- network-manager-applet
-    #- sysstat
-    #- acpi
-    #- cronie
-    #- libnotify
-    #- dunst
-    #- xorg-xrandr
-    #- arandr
-    #- rxvt-unicode-256xresources
-    #- termite-git
-    #- htop
+    # Virtualbox
+    - virtualbox-guest-modules-arch
 
-    ## Dev utils
-    #- python-pip
-    #- zsh
-    #- vim
-    #- tmux
-    #- ack
+    # Utilies
+    - xf86-input-synaptics
+    - alsa-utils
+    - networkmanager
+    - network-manager-applet
+    - sysstat
+    - acpi
+    - cronie
+    - libnotify
+    - dunst
+    - xorg-xrandr
+    - arandr
+    - rxvt-unicode-256xresources
+    - termite-git
+    - htop
 
-    ## Latex
-    #- texlive-most
+    # Dev utils
+    - python-pip
+    - zsh
+    - vim
+    - tmux
+    - ack
 
-    ## Web and network
-    #- openssl
-    #- curl
-    #- wget
-    #- chromium
-    #- transmission-gtk
+    # Latex
+    - texlive-most
 
-    ## Desktop environment
-    #- i3-gaps
-    #- i3lock
-    #- i3blocks
-    #- rofi
-    #- unclutter
-    #- bc
-    #- compton
+    # Web and network
+    - openssl
+    - curl
+    - wget
+    - chromium
+    - transmission-gtk
 
-    ## Theming
-    #- feh
-    #- scrot
-    #- imagemagick
-    #- otf-inconsolata-powerline-git
-    #- ttf-impallari-cabin-font
-    #- ttf-font-awesome
-    #- terminus-font
-    #- ephifonts-no-helvetica
-    #- fontconfig-infinality
-    #- freetype2-infinality
-    #- lxappearance
-    #- arc-icon-theme-git
-    #- gtk-theme-arc
+    # Desktop environment
+    - i3-gaps
+    - i3lock
+    - i3blocks
+    - rofi
+    - unclutter
+    - bc
+    - compton
 
-    ## File tools
-    #- nautilus
-    #- nautilus-dropbox
-    #- evince
-    #- unzip
-    #- git
-    #- subversion
+    # Theming
+    - feh
+    - scrot
+    - imagemagick
+    - otf-inconsolata-powerline-git
+    - ttf-impallari-cabin-font
+    - ttf-font-awesome
+    - terminus-font
+    - ephifonts-no-helvetica
+    - lxappearance
+    - arc-icon-theme-git
+    - gtk-theme-arc
 
-    ## Multimedia
-    #- vlc
-    #- kodi
+    # File tools
+    - nautilus
+    - nautilus-dropbox
+    - evince
+    - unzip
+    - git
+    - subversion
 
-#- name: Install fontconfig
-  #shell: yes | yaourt -S {{ item }} --noconfirm --needed
-  #when: ansible_os_family == "Archlinux"
-  #ignore_errors: True
-  #with_items:
-    #- fontconfig-infinality
-    #- freetype2-infinality
+    # Multimedia
+    - vlc
+    - kodi
 
-#- name: Enable services
-  #service: name={{ item }}
-           #enabled=yes
-  #become: yes
-  #become_user: root
-  #with_items:
-      #- NetworkManager
-      #- cronie
+- name: Install fontconfig
+  shell: yes | yaourt -S {{ item }} --noconfirm --needed
+  when: ansible_os_family == "Archlinux"
+  ignore_errors: True
+  with_items:
+    - fontconfig-infinality
+    - freetype2-infinality
 
-#- name: Setup Cron jobs
-  #become: yes
-  #become_user: root
-  #cron: name="Wallpaper"
-        #state=present
-        #minute="*/15"
-        #job="DISPLAY=:0.0 /home/{{ username }}/scripts/random_wallpaper.sh"
-        #user="{{ username }}"
+- name: Enable services
+  service: name={{ item }}
+           enabled=yes
+  become: yes
+  become_user: root
+  with_items:
+      - NetworkManager
+      - cronie
 
-#- include: git.yml
+- name: Setup Cron jobs
+  become: yes
+  become_user: root
+  cron: name="Wallpaper"
+        state=present
+        minute="*/15"
+        job="DISPLAY=:0.0 /home/{{ username }}/scripts/random_wallpaper.sh"
+        user="{{ username }}"
+
+- include: git.yml
 
 - include: chsh.yml

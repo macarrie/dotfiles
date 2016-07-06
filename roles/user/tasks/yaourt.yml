@@ -12,9 +12,6 @@
   args:
       chdir: ~/tmp/package-query/
 
-- name: YAOURT | Update repos
-  command: yaourt -Syyu --noconfirm --force
-
 - name: YAOURT | Clone yaourt repo
   git: repo=https://aur.archlinux.org/yaourt.git
        dest=~/tmp/yaourt

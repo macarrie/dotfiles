@@ -13,7 +13,7 @@
         encrypt: "sha512_crypt"
         confirm: yes
   roles:
-      #- system
+     - system
 
 - hosts: all
   become_user: "{{ username }}"
