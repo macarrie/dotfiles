@@ -87,14 +87,6 @@
     - vlc
     - kodi
 
-- name: Install fontconfig
-  shell: yes | yaourt -S {{ item }} --noconfirm --needed
-  when: ansible_os_family == "Archlinux"
-  ignore_errors: True
-  with_items:
-    - fontconfig-infinality
-    - freetype2-infinality
-
 - name: Enable services
   service: name={{ item }}
            enabled=yes

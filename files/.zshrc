@@ -174,6 +174,9 @@ $(identifier): $(current_dir) $(git_prompt)   $(hour)
     # File search
     alias grep='grep --color=auto'
 
+    # Vim
+    alias vi='vim'
+
 # Colored man pages
 man() {
     env LESS_TERMCAP_mb=$'\E[01;31m' \
