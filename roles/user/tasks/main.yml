@@ -108,3 +108,8 @@
 - include: git.yml
 
 - include: chsh.yml
+
+- name: Change sudoers file
+  become: yes
+  become_user: root
+  shell: sed -i 's/%wheel ALL=(ALL) NOPASSWD:ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers

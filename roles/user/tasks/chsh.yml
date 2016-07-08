@@ -1,6 +1,6 @@
 ---
 - name: Get zsh path
-  shell: which zsh
+  shell: cat /etc/shells | grep zsh | head -n 1
   register: zsh_path
 
 - name: Change default shell
