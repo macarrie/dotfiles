@@ -89,11 +89,10 @@
 
 - name: Install virtualbox guest packages
   shell: yaourt -S {{ item }} --noconfirm --needed
-  when: ansible_os_family == "Archlinux"
+  when: ansible_os_family == "Archlinux", virtualmachine == True
   ignore_errors: True
   with_items:
     - virtualbox-guest-modules-arch
-  when: virtualmachine == True
 
 - name: Enable services
   service: name={{ item }}

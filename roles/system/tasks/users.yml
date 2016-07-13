@@ -20,6 +20,7 @@
 
 - name: Clone repo for user
   ignore_errors: True
+  become_user: {{ username }}
   git: repo=https://github.com/macarrie/dotfiles
        dest=/home/{{ username }}/dotfiles
        version=ansible
