@@ -8,21 +8,7 @@
 
 ### Disk setup
 
-* Identify drives and create partitions. At least a root partition is needed, and swap is recommended
-```bash
-% lsblk
-% cfdisk /dev/sdx
-```
-* Make root partition ext4 and swapon
-```bash
-% mkfs.ext4 /dev/sdxY
-% mkswap /dev/sdxZ
-% swapon /dev/sdxZ
-```
-* Mount root partition
-```bash
-% mount /dev/sdXY /mnt
-```
+* Create partitions/swap and mount them in /mnt
 
 ### Base system installation
 
@@ -45,28 +31,18 @@
 * Retrieve and execute install script
 ```bash
 % cd
-% pacman -S git
-% git clone https://github.com/macarrie/dotfiles --branch arch
+% pacman -S git ansible python2-passlib
+% git clone https://github.com/macarrie/dotfiles --branch ansible
 % cd dotfiles
-% ./systeminstall.sh
 ```
-* If on Wifi, install networkmanager before rebooting
+* Edit `group_vars/all.yml`
+* Run playbook
 ```bash
-% pacman -S networkmanager
+% make install
 ```
-* Reboot
-
-### User setup
-* Login as newly created user 
-* If not on wired network, connect to Wifi
+* (Optionnal) Install Infinality font scripts
 ```bash
-% sudo systemctl start NetworkManager.service
-% nmtui
-```
-* Execute user install script
-```bash
-% cd dotfiles
-% ./userinstall.sh
+% yaourt -S fontconfig-infinality freetype2-infinality cairo-infinality
 ```
 * Reboot
 * Add wallpapers to `~/Pictures` (create folder if needed)
