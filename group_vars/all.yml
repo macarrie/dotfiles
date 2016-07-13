@@ -5,6 +5,9 @@ primary_disk: /dev/sda
 hostname: test
 username: mat
 
+# Is host being installed in a VM ?
+virtualmachine: True
+
 # Config deployment vars
 dotfiles_path: /home/{{ username }}/dotfiles/files
 git_mail: mathieu0carrie@gmail.com

@@ -7,6 +7,8 @@
         setopt AUTO_CD
 
     # History
+        HIST_FILE=~/.zsh_history
+
         # Allow multiple terminal sessions to all append to one zsh command history
         setopt APPEND_HISTORY
 
@@ -123,7 +125,7 @@ $(identifier): $(current_dir) $(git_prompt)   $(hour)
 %# '
 
 # EXPORTS
-    export EDITOR=vim
+    export EDITOR=nvim
     export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin"
     export TERMINAL=termite
 
@@ -176,6 +178,8 @@ $(identifier): $(current_dir) $(git_prompt)   $(hour)
 
     # Vim
     alias vi='vim'
+    alias vim='nvim'
+    alias nv='nvim'
 
 # Colored man pages
 man() {
