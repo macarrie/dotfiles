@@ -42,7 +42,7 @@
 ```
 * (Optionnal) Install Infinality font scripts
 ```bash
-% yaourt -S fontconfig-infinality freetype2-infinality cairo-infinality
+% yaourt -S {cairo,freetype2,fontconfig}-infinality
 ```
 * Reboot
 * Add wallpapers to `~/Pictures` (create folder if needed)
