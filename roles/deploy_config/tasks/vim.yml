@@ -19,6 +19,11 @@
   file: state=directory
         path=~/.vimtmp
 
+- name: Create .config user folder if absent
+  file: path=/home/{{ username }}/.config
+        state=directory
+        owner="{{ username }}"
+
 - name: NVIM | Link vim folder for neovim
   file: src=/home/{{ username }}/.vim
         dest=/home/{{ username }}/.config/nvim
