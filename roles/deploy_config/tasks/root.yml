@@ -26,3 +26,10 @@
         dest=/root/.vim
         state=link
         force=yes
+
+- name: Link nvim conf to root
+  become: yes
+  become_user: root
+  file: src=/home/{{ username }}/.config/nvim
+        dest=/root/.config/nvim
+        state=link
