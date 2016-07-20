@@ -28,6 +28,7 @@
         force=yes
 
 - name: Create root/.config
+  become: yes
   file: path=/root/.config
         state=directory
 
