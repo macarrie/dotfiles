@@ -29,6 +29,7 @@
 
 - name: Create root/.config
   become: yes
+  become_user: root
   file: path=/root/.config
         state=directory
 
