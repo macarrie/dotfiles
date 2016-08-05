@@ -23,3 +23,7 @@
   git: repo=https://github.com/macarrie/dotfiles
        dest=/home/{{ username }}/dotfiles
        version=ansible
+
+- name: chown dotfiles repo to user
+  shell: chown -R {{ username}}:{{ username }} /home/{{ username }}/dotfiles
+  become: yes

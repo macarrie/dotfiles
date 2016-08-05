@@ -18,3 +18,18 @@
 - name: VIM | Create tmp dir
   file: state=directory
         path=~/.vimtmp
+
+- name: Create .config user folder if absent
+  file: path=/home/{{ username }}/.config
+        state=directory
+        owner="{{ username }}"
+
+- name: NVIM | Link vim folder for neovim
+  file: src=/home/{{ username }}/.vim
+        dest=/home/{{ username }}/.config/nvim
+        state=link
+
+- name: NVIM | Link vimrc for nvim
+  file: src=/home/{{ username }}/.vimrc
+        dest=/home/{{ username }}/.config/nvim/init.vim
+        state=link

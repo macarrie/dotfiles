@@ -6,7 +6,8 @@
         force=yes
 
 - name: XFILES | Enable VBoxClient in xinitrc
-  shell: sed -i 's|#/usr/bin/VBoxClient-all|/usr/bin/VBoxClient-all' {{ dotfiles_path }}/.xinitrc
+  become: yes
+  shell: sed -i 's|#/usr/bin/VBoxClient-all|/usr/bin/VBoxClient-all|' {{ dotfiles_path }}/.xinitrc
   when: virtualmachine == True
 
 - name: XFILES | Link Xresources

@@ -2,7 +2,7 @@
 
 # System install vars
 primary_disk: /dev/sda
-hostname: test
+hostname: archtest
 username: mat
 
 # Is host being installed in a VM ?

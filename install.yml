@@ -21,3 +21,9 @@
   roles:
       - user
       - deploy_config
+
+- hosts: all
+  tasks:
+      - name: CLEANUP | Remove root dotfiles folder
+        file: path=/root/dotfiles
+              state=absent
