@@ -1,4 +1,7 @@
 #!/bin/bash
+
+locker='~/scripts/i3lock-pixel.sh'
+
 #/usr/bin/VBoxClient-all
 
 # Set keymap
@@ -20,7 +23,7 @@ nm-applet &
 # Set desktop background color
 xsetroot -solid "#2F343F" &
 # Start autolock
-xautolock -locker '~/scripts/i3lock-wrapper.sh --logo' -time 10 -notify 30 -notifier "notify-send 'Autolock in 30s' 'Réveille toi, tocard' -u critical -t 15000" &
+xautolock -locker $locker -time 10 -notify 30 -notifier "notify-send 'Autolock in 30s' 'Réveille toi, tocard' -u critical -t 15000" &
 # Maps caps lock to additional escape
 setxkbmap -option caps:escape &
 # Disable touchpad when typing
