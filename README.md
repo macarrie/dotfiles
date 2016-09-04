@@ -32,7 +32,7 @@
 ```bash
 % cd
 % pacman -S git ansible python2-passlib
-% git clone https://github.com/macarrie/dotfiles --branch ansible
+% git clone https://github.com/macarrie/dotfiles
 % cd dotfiles
 ```
 * Edit `group_vars/all.yml`
