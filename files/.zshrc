@@ -202,5 +202,5 @@ fi
 # Terminal startup
 if [[ ! $TMUX ]]
 then
-    tmux attach -t tmp
+    /home/$USER/scripts/tmux_create_or_attach.sh tmp
 fi
