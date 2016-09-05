@@ -26,7 +26,7 @@ then
 fi
 
 # Get ip address
-IPADDR=`ip addr show $IFACE | awk '/inet .* scope global/ {print $2}' | head -n 1`
+IPADDR=`ip addr show $IFACE | awk '/inet .* scope global/ {print $2}' | head -n 1 | cut -d / -f 1`
 
 # Check if interface is wired or wireless
 if tail -n+3 /proc/net/wireless | grep -q .
