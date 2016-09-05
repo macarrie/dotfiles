@@ -176,6 +176,9 @@ $(identifier): $(current_dir) $(git_prompt)   $(hour)
     # File search
     alias grep='grep --color=auto'
 
+    # Yaourt
+    alias remove_orphans='yaourt -Rns $(yaourt -Qtdq)'
+
     # Vim
     alias vi='vim'
     #alias vim='nvim'
