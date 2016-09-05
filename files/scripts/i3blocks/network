@@ -1,0 +1,42 @@
+#!/bin/bash
+
+WIRED=""
+WIRELESS=""
+SYMBOL=$WIRED
+
+down() {
+    echo "$SYMBOL <i>Down</i>"
+    echo "$SYMBOL <i>Down</i>"
+    echo "#D32F2F"
+    exit
+}
+
+IFACE=`ip route | awk '/^default/ {print $5}'`
+
+# If no interface connected
+if [[ -z $IFACE ]]
+then
+    down
+fi
+
+# If can't access iface info
+if [[ ! -d "/sys/class/net/$IFACE" ]]
+then
+    down
+fi
+
+# Get ip address
+IPADDR=`ip addr show $IFACE | awk '/inet .* scope global/ {print $2}' | head -n 1`
+
+# Check if interface is wired or wireless
+if tail -n+3 /proc/net/wireless | grep -q .
+then
+    SYMBOL=$WIRELESS
+else
+    SYMBOL=$WIRED
+fi
+
+# Output
+echo "$SYMBOL $IPADDR"
+echo "$SYMBOL $IPADDR"
+echo "#00E676"
