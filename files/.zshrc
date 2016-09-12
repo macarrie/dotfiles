@@ -181,8 +181,6 @@ $(identifier): $(current_dir) $(git_prompt)   $(hour)
 
     # Vim
     alias vi='vim'
-    #alias vim='nvim'
-    #alias nv='nvim'
 
 # Colored man pages
 man() {

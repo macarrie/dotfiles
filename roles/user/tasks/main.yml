@@ -40,7 +40,6 @@
     - python-pip
     - zsh
     - vim
-    - neovim
     - tmux
     - ack
 

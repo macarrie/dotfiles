@@ -6,7 +6,7 @@ hostname: archtest
 username: mat
 
 # Is host being installed in a VM ?
-virtualmachine: True
+virtualmachine: False
 
 # Config deployment vars
 dotfiles_path: /home/{{ username }}/dotfiles/files
