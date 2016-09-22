@@ -16,6 +16,7 @@
     - xorg-xinit
     - xclip
     - xautolock
+    - numlockx
 
     # Virtualbox
     - virtualbox-guest-modules-arch
@@ -35,6 +36,7 @@
     - rxvt-unicode-256xresources
     - termite-git
     - htop
+    - redshift
 
     # Dev utils
     - python-pip

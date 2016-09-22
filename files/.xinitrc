@@ -26,6 +26,8 @@ xsetroot -solid "#2F343F" &
 xautolock -locker $locker -time 10 -notify 30 -notifier "notify-send 'Autolock in 30s' 'Réveille toi, tocard' -u critical -t 15000" &
 # Maps caps lock to additional escape
 setxkbmap -option caps:escape &
+# Numlock at startup
+numlockx &
 # Disable touchpad when typing
 syndaemon -i 0.5 -d &
 # Click when tapping touchpad
@@ -34,6 +36,9 @@ synclient tapbutton1=1 &
 xset b off
 # Compositor
 compton &
+# Screen dim
+redshift-gtk &
+
 # Start tmux and restore previous session
 tmux new-session -s tmp -d
 tmux run-shell $HOME/.tmux/plugins/tmp/bindings/install_plugins
