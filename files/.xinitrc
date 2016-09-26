@@ -16,8 +16,6 @@ xrdb ~/.Xresources
 dunst &
 # Hide mouse when inactive
 unclutter &
-# Dropbox daemon
-dropbox start &
 # Network manager applet
 nm-applet &
 # Set desktop background color
@@ -38,6 +36,10 @@ xset b off
 compton &
 # Screen dim
 redshift-gtk &
+# External USB drives automount
+udiskie -s &
+# Dropbox daemon
+dropbox start &
 
 # Start tmux and restore previous session
 tmux new-session -s tmp -d

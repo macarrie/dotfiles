@@ -37,6 +37,7 @@
     - termite-git
     - htop
     - redshift
+    - udiskie
 
     # Dev utils
     - python-pip
