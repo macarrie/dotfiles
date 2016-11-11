@@ -52,7 +52,11 @@ set nocompatible        " Must be first line
 " Style {
     set t_Co=256
     set background=dark     " Assume a dark background
-    colorscheme Tomorrow-Night-Eighties
+    if empty($DISPLAY)
+        colorscheme default
+    else
+        colorscheme Tomorrow-Night-Eighties
+    endif
 " }
 
 " General {
