@@ -56,24 +56,6 @@
     # Case insensitive completion
     zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+l:|=* r:|=*'
 
-# Vi mode
-    # Update on keymap change
-    function zle-keymap-select() {
-        zle reset-prompt
-        zle -R
-    }
-
-    bindkey -v
-    zle -N zle-keymap-select
-
-    bindkey '^P' up-history
-    bindkey '^N' down-history
-
-    function vi_mode_prompt() {
-        MODE_INDICATOR="%{$fg_bold[yellow]%}[NORMAL]%{$reset_color%}"
-        echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
-    }
-
 # Prompt
     autoload -Uz colors && colors
 
@@ -119,9 +101,9 @@
         echo "%{$fg_bold[red]%}  %*%{$reset_color%}"
     }
 
-    RPROMPT='$(vi_mode_prompt)'
+    RPROMPT='$(hour)'
     PROMPT='
-$(identifier): $(current_dir) $(git_prompt)   $(hour)
+$(identifier): $(current_dir) $(git_prompt)
 %# '
 
 # EXPORTS
