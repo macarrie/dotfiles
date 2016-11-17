@@ -19,6 +19,7 @@
     - numlockx
 
     # Utilies
+    - ntp
     - xf86-input-synaptics
     - alsa-utils
     - networkmanager
@@ -102,6 +103,7 @@
   become_user: root
   with_items:
       - NetworkManager
+      - ntp
       - cronie
 
 - name: Setup Cron jobs
