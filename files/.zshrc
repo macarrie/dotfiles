@@ -98,7 +98,7 @@
     }
 
     function hour() {
-        echo "%{$fg_bold[red]%}  %*%{$reset_color%}"
+        echo "%{$fg_bold[red]%}%* %{$reset_color%}"
     }
 
     RPROMPT='$(hour)'
