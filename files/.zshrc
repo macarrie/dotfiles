@@ -101,9 +101,8 @@
         echo "%{$fg_bold[red]%}%* %{$reset_color%}"
     }
 
-    RPROMPT='$(hour)'
     PROMPT='
-$(identifier): $(current_dir) $(git_prompt)
+$(identifier): $(current_dir) $(git_prompt)     $(hour)
 %# '
 
 # EXPORTS
@@ -162,7 +161,8 @@ $(identifier): $(current_dir) $(git_prompt)
     alias remove_orphans='yaourt -Rns $(yaourt -Qtdq)'
 
     # Vim
-    alias vi='vim'
+    alias v='vim'
+    alias vi='vim -U NONE'
 
 # Colored man pages
 man() {
