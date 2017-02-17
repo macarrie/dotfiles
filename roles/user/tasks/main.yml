@@ -96,15 +96,15 @@
     - virtualbox-guest-modules-arch
     - virtualbox-guest-utils
 
-- name: Enable services
-  service: name={{ item }}
-           enabled=yes
-  become: yes
-  become_user: root
-  with_items:
-      - NetworkManager
-      - ntp
-      - cronie
+#- name: Enable services
+  #service: name={{ item }}
+           #enabled=yes
+  #become: yes
+  #become_user: root
+  #with_items:
+      #- NetworkManager
+      #- ntp
+      #- cronie
 
 - name: Setup Cron jobs
   become: yes

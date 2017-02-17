@@ -2,13 +2,13 @@
 - hosts: all
   vars_prompt:
       - name: root_pwd
-        prompt: "Chosen root password"
+        prompt: "root password"
         private: yes
         encrypt: "sha512_crypt"
         confirm: yes
 
       - name: user_pwd
-        prompt: "Chosen user password"
+        prompt: "user password"
         private: yes
         encrypt: "sha512_crypt"
         confirm: yes
@@ -22,8 +22,8 @@
       - user
       - deploy_config
 
-- hosts: all
-  tasks:
-      - name: CLEANUP | Remove root dotfiles folder
-        file: path=/root/dotfiles
-              state=absent
+#- hosts: all
+  #tasks:
+      #- name: CLEANUP | Remove root dotfiles folder
+        #file: path=/root/dotfiles
+              #state=absent

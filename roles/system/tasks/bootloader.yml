@@ -16,9 +16,18 @@
           #state=present
   #when: bootloader == "uefi"
 
+- name: Check boot manager status
+  shell: cat /boot/loader/loader.conf
+  register: bootctl_status
+  ignore_errors: True
+
 - name: Install boot manager
   shell: bootctl --path=/boot install
-  when: bootloader == "uefi"
+  when: bootloader == "uefi" and bootctl_status|failed
+
+- name: Update boot manager
+  shell: bootctl update
+  when: bootloader == "uefi" and bootctl_status|succeeded
 
 - name: Create loader conf
   copy: src=~/dotfiles/files/boot/loader.conf
