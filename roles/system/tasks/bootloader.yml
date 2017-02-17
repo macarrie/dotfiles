@@ -11,18 +11,18 @@
   shell: grub-mkconfig -o /boot/grub/grub.cfg
   when: bootloader == "grub"
 
-- name: Install uefibootmgr
-  pacman: name=uefibootmgr
-          state=present
-  when: bootloader == "uefi"
+#- name: Install uefibootmgr
+  #pacman: name=uefibootmgr
+          #state=present
+  #when: bootloader == "uefi"
 
 - name: Install boot manager
   shell: bootctl --path=/boot install
   when: bootloader == "uefi"
 
 - name: Create loader conf
-  template: src=boot/loader.conf
-            dest=/boot/loader/loader.conf
+  copy: src=~/dotfiles/files/boot/loader.conf
+        dest=/boot/loader/loader.conf
   when: bootloader == "uefi"
 
 - name: Get boot partition PARTUUID
@@ -31,7 +31,7 @@
   when: bootloader == "uefi"
 
 - name: Create loader entry
-  template: src=boot/arch.conf
+  template: src=~/dotfiles/files/boot/arch.conf
             dest=/boot/loader/entries/arch.conf
   when: bootloader == "uefi"
 
