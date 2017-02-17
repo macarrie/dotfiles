@@ -49,3 +49,9 @@
 * Set GTK theme with `lxappearance`
 * Meow
 * Prout
+
+
+## TODO
+* UEFI
+* BTRFS ou ZFS
+* LUKS
