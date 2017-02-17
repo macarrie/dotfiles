@@ -45,7 +45,7 @@
     - ack
 
     # Latex
-    - texlive-most
+    #- texlive-most
 
     # Web and network
     - openssl

@@ -15,6 +15,6 @@
 
 - include: users.yml
 
-- name: Enable dhcpcd service
-  service: name=dhcpcd
-           enabled=yes
+#- name: Enable dhcpcd service
+  #service: name=dhcpcd
+           #enabled=yes
