@@ -1,7 +1,15 @@
 ---
 
-# System install vars
+# Disks
 primary_disk: /dev/sda
+
+# Bootloader 
+# Bootloader type. Possible values: grub,uefi
+# If uefi, specify boot partition
+bootloader: uefi
+boot_partition: /dev/sda2
+
+# Host and username
 hostname: archtest
 username: mat
 
@@ -12,3 +20,4 @@ virtualmachine: False
 dotfiles_path: /home/{{ username }}/dotfiles/files
 git_mail: mathieu0carrie@gmail.com
 git_user: macarrie
+

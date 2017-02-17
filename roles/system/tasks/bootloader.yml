@@ -1,9 +1,37 @@
 ---
 - name: Install grub and os-prober packages
   pacman: name=grub,os-prober state=present
+  when: bootloader == "grub"
 
 - name: Install Grub
   shell: grub-install {{ primary_disk }}
+  when: bootloader == "grub"
 
 - name: Make grub config
   shell: grub-mkconfig -o /boot/grub/grub.cfg
+  when: bootloader == "grub"
+
+- name: Install uefibootmgr
+  pacman: name=uefibootmgr
+          state=present
+  when: bootloader == "uefi"
+
+- name: Install boot manager
+  shell: bootctl --path=/boot install
+  when: bootloader == "uefi"
+
+- name: Create loader conf
+  template: src=boot/loader.conf
+            dest=/boot/loader/loader.conf
+  when: bootloader == "uefi"
+
+- name: Get boot partition PARTUUID
+  shell: blkid -s PARTUUID -o value {{ boot_partition }}
+  register: boot_partuuid
+  when: bootloader == "uefi"
+
+- name: Create loader entry
+  template: src=boot/arch.conf
+            dest=/boot/loader/entries/arch.conf
+  when: bootloader == "uefi"
+
