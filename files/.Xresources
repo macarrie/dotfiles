@@ -40,7 +40,7 @@ URxvt*scrollBar: false
 URxvt*internalBorder: 0
 URxvt*bordeless: true
 
-*foreground: #AAAAAA
+*foreground: #CCCCCC
 *background: #2F343F
 
 ! ------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ URxvt*bordeless: true
 *.color8:       #555753
 
 ! red
-*.color1:       #cc0000
+*.color1:       #FF1414
 *.color9:       #ef2929
 
 ! green
