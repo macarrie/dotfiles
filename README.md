@@ -52,6 +52,5 @@
 
 
 ## TODO
-* UEFI
-* BTRFS ou ZFS
+* BTRFS
 * LUKS
