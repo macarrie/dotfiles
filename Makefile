@@ -7,4 +7,4 @@ install:
 	ansible-playbook -i hosts -c local install.yml
 
 after_install:
-	ansible-playbook -i hosts -c local after_install.yml
+	ansible-playbook -i hosts -c local after_install.yml -K
