@@ -35,8 +35,8 @@
   when: bootloader == "uefi"
 
 - name: Get boot partition PARTUUID
-  shell: blkid -s PARTUUID -o value {{ boot_partition }}
-  register: boot_partuuid
+  shell: blkid -s PARTUUID -o value {{ root_partition }}
+  register: root_partuuid
   when: bootloader == "uefi"
 
 - name: Create loader entry

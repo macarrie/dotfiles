@@ -8,6 +8,7 @@ primary_disk: /dev/sda
 # If uefi, specify boot partition
 bootloader: uefi
 boot_partition: /dev/sda2
+root_partition: /dev/sda1
 
 # Host and username
 hostname: archtest
