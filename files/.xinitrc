@@ -7,6 +7,9 @@ locker='~/scripts/i3lock-pixel.sh'
 # Set keymap
 setxkbmap fr
 
+# Export localtime
+export TZ=/etc/localtime
+
 # Merge Xresources
 xrdb ~/.Xresources
 
