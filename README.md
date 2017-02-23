@@ -52,5 +52,7 @@
 
 
 ## TODO
-* BTRFS
-* LUKS
+- Fstab noatime (https://lonesysadmin.net/2013/12/08/gain-30-linux-disk-performance-noatime-nodiratime-relatime/)
+- Export Timezone (https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/)
+- BTRFS
+- LUKS
