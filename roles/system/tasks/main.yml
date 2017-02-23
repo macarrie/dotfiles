@@ -11,6 +11,12 @@
 - name: Setup ramdisk
   shell: mkinitcpio -p linux
 
+- name: Change fstab mount options (noatime)
+  replace:  path=/etc/fstab
+            regexp='relatime'
+            replace='noatime'
+            backup=yes
+
 - include: bootloader.yml
 
 - include: users.yml
