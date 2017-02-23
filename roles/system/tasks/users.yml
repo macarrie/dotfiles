@@ -24,5 +24,7 @@
        dest=/home/{{ username }}/dotfiles
 
 - name: chown dotfiles repo to user
-  shell: chown -R {{ username}}:{{ username }} /home/{{ username }}/dotfiles
-  become: yes
+  file: path=/home/{{ username  }}/dotfiles
+        owner="{{ username }}:{{ username }}"
+  #shell: chown -R {{ username}}:{{ username }} /home/{{ username }}/dotfiles
+  #become: yes
