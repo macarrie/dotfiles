@@ -12,6 +12,12 @@
                 line='/usr/bin/VBoxClient-all'
   when: virtualmachine == True
 
+- name: XFILES | Disable lockscreen
+  become: yes
+  lineinfile:   dest={{dotfiles_path}}/.xinitrc
+                line='xautolock -disable'
+  when: virtualmachine == True
+
 - name: XFILES | Link Xresources
   file: src={{ dotfiles_path }}/.Xresources
         dest=~/.Xresources
