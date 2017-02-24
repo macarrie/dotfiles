@@ -25,6 +25,7 @@
 
 - name: chown dotfiles repo to user
   file: path=/home/{{ username  }}/dotfiles
-        owner="{{ username }}:{{ username }}"
+        owner={{ username }}
+        group={{ username }}
+  become: yes
   #shell: chown -R {{ username}}:{{ username }} /home/{{ username }}/dotfiles
-  #become: yes
