@@ -16,6 +16,7 @@
   become: yes
   lineinfile:   dest={{dotfiles_path}}/.xinitrc
                 line='xautolock -disable'
+                insertbefore='# Start tmux.*'
   when: virtualmachine == True
 
 - name: XFILES | Link Xresources
