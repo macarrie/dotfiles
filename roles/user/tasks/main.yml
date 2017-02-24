@@ -122,7 +122,6 @@
 - name: Change sudoers file
   become: yes
   become_user: root
-  shell: sed -i 's/%wheel ALL=(ALL) NOPASSWD:ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-  lineinfile: path=/etc/sudoers
+  lineinfile: dest=/etc/sudoers
               regexp="%wheel ALL=(ALL) NOPASSWD:ALL"
               line="%wheel ALL=(ALL) ALL"

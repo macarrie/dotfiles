@@ -12,7 +12,7 @@
   shell: mkinitcpio -p linux
 
 - name: Change fstab mount options (noatime)
-  replace:  path=/etc/fstab
+  replace:  dest=/etc/fstab
             regexp='relatime'
             replace='noatime'
             backup=yes
