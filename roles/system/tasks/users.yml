@@ -27,5 +27,6 @@
   file: path=/home/{{ username  }}/dotfiles
         owner={{ username }}
         group={{ username }}
+        recurse=yes
   become: yes
   #shell: chown -R {{ username}}:{{ username }} /home/{{ username }}/dotfiles
