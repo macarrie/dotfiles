@@ -42,11 +42,10 @@ redshift-gtk &
 # External USB drives automount
 udiskie -s &
 # Dropbox daemon
-dropbox start &
+#dropbox start &
 
-# Start tmux and restore previous session
-tmux new-session -s tmp -d
-tmux run-shell $HOME/.tmux/plugins/tmp/bindings/install_plugins
+# Load tmux sessions
+tmuxp load -d ~/.tmuxp/*.tmuxp.yaml
 
 # Start WM
 exec i3

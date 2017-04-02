@@ -1,3 +1,0 @@
----
-- name: Start tmux server
-  shell: tmux new-session -s tmp -d

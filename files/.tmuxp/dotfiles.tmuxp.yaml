@@ -1,0 +1,10 @@
+session_name: dotfiles
+windows:
+    - window_name: vim
+      layout: main-vertical
+      options:
+          main-pane-width: 160
+      panes:
+          - vim
+          - pane
+      start_directory: /home/mat/dotfiles

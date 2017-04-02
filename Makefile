@@ -1,7 +1,7 @@
 all: deploy
 
 deploy:
-	ansible-playbook -i hosts -c local deploy.yml
+	ansible-playbook -i hosts -c local deploy.yml -K
 
 install:
 	ansible-playbook -i hosts -c local install.yml

@@ -57,6 +57,8 @@
     zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+l:|=* r:|=*'
 
 # Prompt
+    bindkey -e
+
     autoload -Uz colors && colors
 
     # Git
@@ -185,5 +187,5 @@ fi
 # Terminal startup
 if [[ ! $TMUX ]]
 then
-    /home/$USER/scripts/tmux_create_or_attach.sh tmp
+    tmux attach -t tmp
 fi

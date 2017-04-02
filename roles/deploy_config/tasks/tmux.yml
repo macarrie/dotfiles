@@ -5,14 +5,11 @@
         state=link
         force=yes
 
-- name: TMUX | Clone plugin manager
-  git:  repo=https://github.com/tmux-plugins/tpm
-        dest=~/.tmux/plugins/tpm
-        update=yes
+- name: TMUX | Link tmuxp configuration
+  file: src={{dotfiles_path }}/.tmuxp
+        dest=~/.tmuxp
+        state=link
+        force=yes
 
-- name: TMUX | Start tmux server
-  shell: tmux new-session -s tmp -d
-  ignore_errors: yes
-
-- name: TMUX | Install plugins
-  shell: tmux run-shell ~/.tmux/plugins/tpm/bindings/install_plugins
+- name: TMUX | Load sessions
+  shell: tmuxp load -d ~/.tmuxp/*
