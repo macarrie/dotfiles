@@ -36,6 +36,7 @@
 % cd dotfiles
 ```
 * Edit `group_vars/all.yml`
+* Enable Ansible logging (just in case) in /etc/ansible/ansible.cfg
 * Run playbook
 ```bash
 % make install

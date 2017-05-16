@@ -42,5 +42,10 @@
 - name: Create loader entry
   template: src=~/dotfiles/files/boot/arch.conf
             dest=/boot/loader/entries/arch.conf
-  when: bootloader == "uefi"
+  when: bootloader == "uefi" and btrfs == False
+
+- name: Create loader entry (btrfs)
+  template: src=~/dotfiles/files/boot/arch_btrfs.conf
+            dest=/boot/loader/entries/arch.conf
+  when: bootloader == "uefi" and btrfs == True
 
