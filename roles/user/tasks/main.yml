@@ -31,9 +31,7 @@
     - dunst
     - xorg-xrandr
     - arandr
-    - rxvt-unicode-256xresources
     - termite-git
-    - htop
     - redshift
     - udiskie
 
@@ -125,4 +123,4 @@
   become_user: root
   lineinfile: dest=/etc/sudoers
               regexp="%wheel ALL=(ALL) NOPASSWD:ALL"
-              line="%wheel ALL=(ALL) ALL"
+             line="%wheel ALL=(ALL) ALL"
