@@ -3,7 +3,7 @@ font = Inconsolata for Powerline 9
 
 [colors]
 background = #2F343F
-foreground = #CCCCCC
+foreground = #E5E5E5
 # black
 color0 = #2e3436
 color8 = #555753
