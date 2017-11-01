@@ -23,28 +23,24 @@ set nocompatible        " Must be first line
     Plugin 'jistr/vim-nerdtree-tabs'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'tacahiroy/ctrlp-funky'
+    Plugin 'junegunn/fzf'
     Plugin 'easymotion/vim-easymotion'
     Plugin 'powerline/fonts'
     Plugin 'tpope/vim-surround'
     Plugin 'tpope/vim-repeat'
     Plugin 'rhysd/conflict-marker.vim'
     Plugin 'jiangmiao/auto-pairs'
-    Plugin 'terryma/vim-multiple-cursors'
     Plugin 'matchit.zip'
     Plugin 'bling/vim-bufferline'
     Plugin 'flazz/vim-colorschemes'
     Plugin 'mbbill/undotree'
-    Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'mhinz/vim-signify'
     Plugin 'osyo-manga/vim-over'
-    Plugin 'kana/vim-textobj-user'
-    Plugin 'kana/vim-textobj-indent'
-    Plugin 'gcmt/wildfire.vim'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'lifepillar/vim-mucomplete'
     Plugin 'godlygeek/tabular'
     Plugin 'luochen1990/rainbow'
+    Plugin 'fatih/vim-go'
 
     call vundle#end() 
 " }
@@ -193,20 +189,6 @@ set nocompatible        " Must be first line
     nnoremap j gj
     nnoremap k gk
 
-    " Bubble single lines (kicks butt)
-    " http://vimcasts.org/episodes/bubbling-text/
-    nmap <C-Up> ddkP
-    nmap <C-Down> ddp
-
-    " Bubble multiple lines
-    vmap <C-Up> xkP`[V`]
-    vmap <C-Down> xp`[V`]
-
-    " Shortcuts
-    " Change Working Directory to that of the current file
-    cmap cwd lcd %:p:h<CR>
-    cmap cd. lcd %:p:h<CR>
-
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
@@ -264,16 +246,8 @@ set nocompatible        " Must be first line
         let g:nerdtree_tabs_open_on_gui_startup=0
     " }
 
-    " Ctrlp {
-        let g:ctrlp_working_path_mode = 0
-        let g:ctrlp_extensions = ['funky']
-        nnoremap <Leader>fu :CtrlPFunky<Cr>
-        nnoremap <Leader>b  :CtrlPBuffer<CR>
-        let g:ctrlp_show_hidden = 1
-    " }
-
-    " Indent guides {
-        let g:indent_guides_enable_on_vim_startup = 0
+    " FZF {
+        nnoremap <C-p> :call fzf#run(fzf#wrap('my-stuff', {'source': 'fd --hidden .'}, 0))<CR>
     " }
 
     " Enable rainbow parenthesis {
@@ -318,6 +292,17 @@ set nocompatible        " Must be first line
     " OverCommandLine {
         nnoremap <Leader>o :OverCommandLine<CR>
         vnoremap <Leader>o :OverCommandLine<CR>
+    " }
+
+    " Autocompletion {
+		set completeopt=menuone,noinsert,noselect
+		set shortmess+=c " Turn off completion messages
+
+		inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
+		inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
+		inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
+
+		let g:mucomplete#enable_auto_at_startup = 1
     " }
 " }
 
