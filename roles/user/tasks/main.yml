@@ -39,6 +39,7 @@
     - python-pip
     - zsh
     - vim
+    - neovim
     - tmux
     - tmuxp
     - ack
@@ -68,7 +69,7 @@
     - imagemagick
     - otf-inconsolata-powerline-git
     - ttf-impallari-cabin-font
-    - ttf-font-awesome
+    - ttf-font-awesome-4
     - terminus-font
     - ephifonts-no-helvetica
     - lxappearance

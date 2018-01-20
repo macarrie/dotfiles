@@ -129,7 +129,7 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
 
 # EXPORTS
     export EDITOR=vim
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:/usr/bin/vendor_perl:/usr/local/go/bin"
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:/usr/bin/vendor_perl:/usr/local/go/bin:$HOME/go/bin"
     export TERMINAL=termite
 
 # ALIAS
@@ -185,7 +185,7 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
     # Vim
     alias v='nvim'
     alias vi='vim -U NONE'
-    alias vf='vim $(fzf)'
+    alias vf='nvim $(fd . --hidden | fzf)'
 
 # Colored man pages
 man() {
@@ -210,7 +210,7 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd --hidden . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 
 # Terminal startup
 if [[ ! $TMUX ]]

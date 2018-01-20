@@ -23,7 +23,8 @@ set nocompatible        " Must be first line
     Plugin 'jistr/vim-nerdtree-tabs'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'junegunn/fzf'
+    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'tacahiroy/ctrlp-funky'
     Plugin 'easymotion/vim-easymotion'
     Plugin 'powerline/fonts'
     Plugin 'tpope/vim-surround'
@@ -246,8 +247,32 @@ set nocompatible        " Must be first line
         let g:nerdtree_tabs_open_on_gui_startup=0
     " }
 
-    " FZF {
-        nnoremap <C-p> :call fzf#run(fzf#wrap('my-stuff', {'source': 'fd --hidden .'}, 0))<CR>
+    " Ctrlp {
+        let g:ctrlp_working_path_mode = 0
+        let g:ctrlp_extensions = ['funky']
+        nnoremap <Leader>fu :CtrlPFunky<Cr>
+        nnoremap <Leader>b  :CtrlPBuffer<CR>
+        let g:ctrlp_show_hidden = 1
+    " }
+
+    " vim-go {
+        let g:go_fmt_command = "goimports"
+
+        autocmd FileType go nmap <leader>r  <Plug>(go-run)
+        autocmd FileType go nmap <leader>t  <Plug>(go-test)
+        autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+
+        " run :GoBuild or :GoTestCompile based on the go file
+        function! s:build_go_files()
+            let l:file = expand('%')
+            if l:file =~# '^\f\+_test\.go$'
+                call go#test#Test(0, 1)
+            elseif l:file =~# '^\f\+\.go$'
+                call go#cmd#Build(0)
+            endif
+        endfunction
+
+        autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
     " }
 
     " Enable rainbow parenthesis {

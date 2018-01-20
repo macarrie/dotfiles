@@ -13,13 +13,27 @@
         force=yes
 
 - name: VIM | Install plugins
+  tags: [vim]
   shell: echo | echo | vim +PluginInstall +qall
 
 - name: VIM | Create tmp dir
+  tags: [vim]
   file: state=directory
         path=~/.vimtmp
 
-- name: Create .config user folder if absent
+- name: VIM | Create .config user folder if absent
   file: path=/home/{{ username }}/.config
         state=directory
         owner="{{ username }}"
+
+- name: VIM | Create nvim conf folder if absent
+  file: path=/home/{{ username }}/.config/nvim
+        state=directory
+        owner="{{ username }}"
+
+- name: VIM | Copy nvim config
+  tags: [vim]
+  file: src={{ dotfiles_path }}/nvim.init.vim
+        dest= path=/home/{{ username }}/.config/nvim/init.vim
+        state=link 
+        force=yes
