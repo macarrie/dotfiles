@@ -1,6 +1,7 @@
 #!/bin/bash
 
-locker='~/scripts/i3lock-pixel.sh'
+#locker='~/scripts/i3lock-pixel.sh'
+locker='~/scripts/lock.sh'
 
 #/usr/bin/VBoxClient-all
 
