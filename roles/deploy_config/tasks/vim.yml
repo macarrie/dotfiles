@@ -34,6 +34,6 @@
 - name: VIM | Copy nvim config
   tags: [vim]
   file: src={{ dotfiles_path }}/nvim.init.vim
-        dest= path=/home/{{ username }}/.config/nvim/init.vim
+        dest=/home/{{ username }}/.config/nvim/init.vim
         state=link 
         force=yes
