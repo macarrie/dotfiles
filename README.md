@@ -9,6 +9,35 @@
 ### Disk setup
 
 * Create partitions/swap and mount them in /mnt
+In btrfs:
+```bash
+## Partition disk
+cfdisk /dev/sdX
+
+## Mount partitions
+mkfs.vfat -F 32 $boot_partition
+mkfs.btrfs $root_partition
+
+## Mount btrfs root volume
+mkdir /mnt/btrfs-vol
+mount -o defaults,relatime,discard,ssd,nodev,nosuid $root_partition /mnt/btrfs-vol
+
+## Create subvolumes
+mkdir -p /mnt/btrfs-vol/__snapshots
+mkdir -p /mnt/btrfs-vol/__active
+btrfs subvolume create /mnt/btrfs-vol/__active/root
+btrfs subvolume create /mnt/btrfs-vol/__active/home
+
+## Mount subvolumes
+mkdir -p /mnt/btrfs-active
+mount -o subvol=__active/root $root_partition /mnt/btrfs-active
+mkdir -p /mnt/btrfs-active/home
+mount -o subvol=__active/home $root_partition /mnt/btrfs-active/home
+
+## Mount boot partition into __active/root btrfs subvolume
+mkdir -p /mnt/btrfs-active/boot
+mount $boot_partition /mnt/btrfs-active/boot
+```
 
 ### Base system installation
 
@@ -20,13 +49,17 @@
 ```bash
 % pacstrap -i /mnt base base-devel
 ```
+If btrfs install, install btrfs-progs as well
+```bash
+% pacstrap -i /mnt base base-devel btrfs-progs
+```
 * Generate fstab
 ```bash
-% genfstab -p /mnt >> /mnt/etc/fstab
+% genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 * Arch-root into freshly installed system
 ```bash
-% arch-chroot /mnt /bin/bash
+% arch-chroot ROOT_PARTITION /bin/bash
 ```
 * Retrieve and execute install script
 ```bash
@@ -41,11 +74,8 @@
 ```bash
 % make install
 ```
-* (Optionnal) Install Infinality font scripts
-```bash
-% yaourt -S {cairo,freetype2,fontconfig}-infinality
-```
 * Reboot
+* Execute after install script in dotfiles folder
 * Add wallpapers to `~/Pictures` (create folder if needed)
 * Set GTK theme with `lxappearance`
 * Meow
@@ -53,7 +83,4 @@
 
 
 ## TODO
-- Fstab noatime (https://lonesysadmin.net/2013/12/08/gain-30-linux-disk-performance-noatime-nodiratime-relatime/)
-- Export Timezone (https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/)
-- BTRFS
 - LUKS

@@ -43,6 +43,7 @@
     - tmux
     - tmuxp
     - ack
+    - fzf
 
     # Latex
     #- texlive-most
