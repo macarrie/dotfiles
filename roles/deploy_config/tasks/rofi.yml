@@ -1,0 +1,11 @@
+---
+- name: ROFI | Create rofi conf folder if absent
+  file: path=/home/{{ username }}/.config/rofi
+        state=directory
+        owner="{{ username }}"
+
+- name: ROFI | Copy rofi config
+  file: src={{ dotfiles_path }}/rofi.cfg
+        dest=/home/{{ username }}/.config/rofi/config
+        state=link 
+        force=yes

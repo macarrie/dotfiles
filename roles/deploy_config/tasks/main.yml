@@ -13,6 +13,8 @@
 
 - include: xfiles.yml
 
+- include: rofi.yml
+
 - include: termite.yml
   when: ansible_os_family == "Archlinux"
 
