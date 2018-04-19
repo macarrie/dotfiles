@@ -3,7 +3,7 @@
 # Show session menu
 
 #DMENU="dmenu -i -nb $1 -nf #eeeeee -sb $1 -sf $2"
-DMENU="rofi -i -dmenu"
+DMENU="rofi -i -dmenu -theme rofi.rasi"
 
 choice=$(echo -e "Logout\nHibernate\nReboot\nPoweroff" | $DMENU)
 

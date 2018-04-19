@@ -1,0 +1,36 @@
+* {
+    background: rgba(0,0,0,0.5);
+    foreground: #ffffff;
+    lightblue: #4D97F5;
+    transparent: rgba(0,0,0,0);
+
+    background-color: @transparent;
+    color: @foreground;
+}
+
+#window {
+    location: center;
+    anchor: center;
+    fullscreen: true;
+    transparency: "screenshot";
+}
+
+#mainbox {
+    padding: 20%;
+    background-color: @background;
+    spacing: 20px;
+}
+
+#inputbar {
+    spacing: 20px;
+}
+
+#prompt {
+    color: @lightblue;
+    highlight: italic;
+}
+
+#listview {
+    columns: 1;
+    spacing: 5px;
+}

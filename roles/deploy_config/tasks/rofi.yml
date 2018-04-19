@@ -5,7 +5,7 @@
         owner="{{ username }}"
 
 - name: ROFI | Copy rofi config
-  file: src={{ dotfiles_path }}/rofi.cfg
-        dest=/home/{{ username }}/.config/rofi/config
+  file: src={{ dotfiles_path }}/rofi.rasi
+        dest=/home/{{ username }}/.config/rofi/rofi.rasi
         state=link 
         force=yes
