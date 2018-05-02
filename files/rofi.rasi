@@ -1,5 +1,5 @@
 * {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
     foreground: #ffffff;
     lightblue: #4D97F5;
     transparent: rgba(0,0,0,0);
@@ -32,5 +32,5 @@
 
 #listview {
     columns: 1;
-    spacing: 5px;
+    spacing: 15px;
 }
