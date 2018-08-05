@@ -1,0 +1,18 @@
+session_name: go
+windows:
+    - window_name: backend
+      panes:
+          - vim
+      start_directory: /home/mat/dev/flemzerd
+    - window_name: frontend
+      panes:
+          - vim
+      start_directory: /home/mat/dev/flemzerd/server/ui
+    - window_name: build
+      panes:
+          - blank
+      start_directory: /home/mat/dev/flemzerd
+    - window_name: cfg
+      panes:
+          - blank
+      start_directory: /etc/flemzerd

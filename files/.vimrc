@@ -42,6 +42,8 @@ set nocompatible        " Must be first line
     Plugin 'godlygeek/tabular'
     Plugin 'luochen1990/rainbow'
     Plugin 'fatih/vim-go'
+    Plugin 'mattn/emmet-vim'
+    Plugin 'leafgarland/typescript-vim'
 
     call vundle#end() 
 " }
