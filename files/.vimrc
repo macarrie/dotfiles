@@ -44,6 +44,8 @@ set nocompatible        " Must be first line
     Plugin 'fatih/vim-go'
     Plugin 'mattn/emmet-vim'
     Plugin 'leafgarland/typescript-vim'
+    Plugin 'macarrie/shinken.vim'
+    Plugin 'cespare/vim-toml'
 
     call vundle#end() 
 " }
