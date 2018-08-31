@@ -22,21 +22,20 @@ lock() {
             -i $lock_bg_file \
             --clock \
             --force-clock \
-            --timepos="w-cw-30:h-ch+30" \
+            --timepos="w-30:h-65" \
             --time-align=2 \
             --date-align=2 \
             --timestr="%H:%M" \
             --datestr "Type password to unlock..." \
-            --datefont=Cabin \
+            --date-font=Cabin \
             --timesize=100 \
-            --timefont=Source-Code-Pro \
+            --time-font=Source-Code-Pro \
             --line-uses-inside \
             --insidecolor=$background \
             --radius=20 \
             --ring-width=4 \
             --veriftext="" \
             --wrongtext="" \
-            --textcolor="$foreground" \
             --timecolor="$foreground" \
             --datecolor="$foreground" \
             --ringcolor=$foreground \

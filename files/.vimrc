@@ -46,6 +46,8 @@ set nocompatible        " Must be first line
     Plugin 'leafgarland/typescript-vim'
     Plugin 'macarrie/shinken.vim'
     Plugin 'cespare/vim-toml'
+    Plugin 'junegunn/goyo.vim'
+    Plugin 'junegunn/limelight.vim'
 
     call vundle#end() 
 " }
@@ -234,7 +236,7 @@ set nocompatible        " Must be first line
     " Airline {
         let g:airline_powerline_fonts=1
         let g:airline#extensions#tabline#enabled = 1
-        let g:airline_theme='murmur'
+        let g:airline_theme='deus'
     " }
 
     " NERDTree {
@@ -332,6 +334,13 @@ set nocompatible        " Must be first line
 		inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
 
 		let g:mucomplete#enable_auto_at_startup = 1
+    " }
+
+    " Limelight & Goyo {
+        autocmd! User GoyoEnter Limelight
+        autocmd! User GoyoLeave Limelight!
+
+        let g:goyo_width = 120
     " }
 " }
 

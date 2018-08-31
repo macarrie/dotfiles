@@ -19,6 +19,7 @@
     - numlockx
 
     # Utilies
+    - pacman-contrib
     - ntp
     - xf86-input-synaptics
     - alsa-utils
@@ -56,8 +57,8 @@
 
     # Desktop environment
     - i3-gaps
-    - i3lock
-    - i3blocks
+    - i3lock-color
+    - polybar
     - rofi
     - unclutter
     - bc
@@ -70,6 +71,7 @@
     - otf-inconsolata-powerline-git
     - ttf-impallari-cabin-font
     - ttf-font-awesome-4
+    - ttf-envy-code-r
     - terminus-font
     - ephifonts-no-helvetica
     - lxappearance
@@ -78,11 +80,9 @@
 
     # File tools
     - nautilus
-    - nautilus-dropbox
     - evince
     - unzip
     - git
-    - subversion
 
     # Multimedia
     - vlc

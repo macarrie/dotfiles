@@ -1,9 +1,14 @@
 [options]
 font = Inconsolata for Powerline 9
+scrollbar = off
+allow_bold = true
+clickable_url = true
+audible_bell = false
 
 [colors]
-background = #2F343F
-foreground = #E5E5E5
+background = #112936
+foreground = #E6EFF7
+
 # black
 color0 = #2e3436
 color8 = #555753

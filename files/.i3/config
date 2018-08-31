@@ -17,17 +17,36 @@ set $mod Mod4
 	#set $unfocused_bg	#D64937
 
 	#arc
-	set $bg                     #2F343F
+    #set $bg                     #2F343F
+	#set $bg_accent              #404552
+	#set $primary                #5294E2
+	#set $workspace_active       #FFFFFF
+	#set $workspace_inactive     #676E7A
+	#set $focused                #EEEEEE
+	##set $focused_bg             #3971B8
+	##set $focused_border         #3971B8
+	#set $focused_bg             #1565C0
+	#set $focused_border         #1565C0
+    #set $focused_indicator      #6EAAF7
+	#set $unfocused              #666666
+	#set $unfocused_bg           #1E232E
+	#set $unfocused_border       #1E232E
+    #set $unfocused_indicator    #FF0000
+    #set $urgent                 #C62828
+
+	#arc
+	set $bg                     #112936
 	set $bg_accent              #404552
-	set $primary                #5294E2
+	set $primary                #DEE8FF
 	set $workspace_active       #FFFFFF
 	set $workspace_inactive     #676E7A
-	set $focused                #EEEEEE
+	set $focused                #C4D7FF
 	#set $focused_bg             #3971B8
 	#set $focused_border         #3971B8
-	set $focused_bg             #1565C0
-	set $focused_border         #1565C0
+	#set $focused_bg             $primary
+	#set $focused_border         $primary
     set $focused_indicator      #6EAAF7
+    set $focused_text           #444444
 	set $unfocused              #666666
 	set $unfocused_bg           #1E232E
 	set $unfocused_border       #1E232E
@@ -81,10 +100,10 @@ bindsym $mod+Right 	focus right
 bindsym $mod+l		focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
+bindsym $mod+Shift+m move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left 	move left
@@ -201,23 +220,6 @@ bindsym $mod+r mode "resize"
 # Click to focus
 focus_follows_mouse no
 
-bar {
-		mode dock
-		position top
-		workspace_buttons yes
-        status_command i3blocks
-        strip_workspace_numbers yes
-		font pango:Cabin, FontAwesome 11px
-		workspace_buttons yes
-
-		colors {
-                background $bg
-                focused_workspace 	$bg_accent	$bg_accent	$workspace_active
-                inactive_workspace 	$bg			$bg			$workspace_inactive
-                urgent_workspace    $urgent     $urgent     $workspace_active
-        }
-}
-
 # colors
 # class							border					backgr.				text                indicator
 client.focused					$focused_border		    $focused_bg		    $focused_text       $focused_indicator
@@ -229,19 +231,16 @@ client.urgent                   $urgent                 $urgent             #444
 bindsym $mod+control+l exec --no-startup-id xautolock -locknow
 
 # Sound keymaps
-bindsym XF86AudioRaiseVolume 	exec "amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks"
-bindsym $mod+Prior			 	exec "amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks"
-bindsym XF86AudioLowerVolume 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
-bindsym $mod+Next			 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
-bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks"
-bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle && pkill -SIGRTMIN+10 i3blocks"
+bindsym XF86AudioRaiseVolume 	exec "amixer -q set Master 5%+ unmute"
+bindsym $mod+Prior			 	exec "amixer -q set Master 5%+ unmute"
+bindsym XF86AudioLowerVolume 	exec "amixer -q set Master 5%- unmute"
+bindsym $mod+Next			 	exec "amixer -q set Master 5%- unmute"
+bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle"
+bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle"
 bindsym $mod+control+v			exec "$term -x alsamixer"
 
 # bar toggle, hide or show
 bindsym $mod+b bar mode toggle
-
-# Caps lock control
-bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # scratchpad
 exec $term --title "scratchpad" -e "tmux attach -t scratchpad"
@@ -288,6 +287,7 @@ bindsym $mod+w exec ~/scripts/random_wallpaper.sh
 # Startup apps
 
 exec_always --no-startup-id ~/scripts/random_wallpaper.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Set volume to 20% at startup
 exec "amixer -q set Master 20% unmute && pkill -SIGRTMIN+10 i3blocks"

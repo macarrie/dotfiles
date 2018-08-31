@@ -37,13 +37,11 @@ synclient tapbutton1=1 &
 # Disable effing hardware bell
 xset b off
 # Compositor
-#compton &
+compton &
 # Screen dim
 redshift-gtk &
 # External USB drives automount
 udiskie -s &
-# Dropbox daemon
-#dropbox start &
 
 # Load tmux sessions
 tmuxp load -d ~/.tmuxp/*.tmuxp.yaml

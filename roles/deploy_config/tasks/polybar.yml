@@ -1,0 +1,5 @@
+- name: POLYBAR | Link polybar config
+  file: src={{ dotfiles_path }}/.config/polybar
+        dest=/home/{{ username }}/.config/polybar
+        state=link 
+        force=yes
