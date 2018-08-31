@@ -1,0 +1,10 @@
+session_name: rust
+windows:
+    - window_name: dev
+      panes:
+          - vim
+      start_directory: /home/mat/dev/vidocq
+    - window_name: build
+      panes:
+          - blank
+      start_directory: /home/mat/dev/vidocq
