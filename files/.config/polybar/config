@@ -89,7 +89,7 @@ format-mounted-prefix-foreground = ${self.format-mounted-underline}
 format-mounted-prefix-padding = 1
 format-mounted-underline = #FFC400
 
-label-mounted = %percentage_used%%
+label-mounted = %free% free/%total%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
