@@ -50,8 +50,8 @@ font-0 = Envy Code R:pixelsize=9;1
 font-1 = Font Awesome:pixelsize=9;1
 
 modules-left = i3 xwindow
-modules-center = date
-modules-right = filesystem separator alsa separator pkg_updates separator memory separator loadavg separator wlan eth separator battery
+modules-center = blank
+modules-right = filesystem separator alsa separator pkg_updates separator memory separator loadavg separator wlan eth separator battery separator date
 
 tray-position = right
 tray-padding = 2
@@ -183,7 +183,7 @@ label = %output%
 [module/pkg_updates]
 type = custom/script
 exec = nb=`/usr/bin/checkupdates | wc -l`; if [ $nb -gt 0 ]; then notify-send "New packages available" "$nb packages can be updated"; fi; echo $nb
-interval = 720
+interval = 1440
 
 format = <label>
 format-prefix = " "
@@ -256,7 +256,7 @@ format-prefix = 
 format-prefix-foreground = ${self.format-underline}
 format-prefix-padding = 1
 format-underline = #ECEFF1
-format-padding = 8
+format-padding = 0
 
 label =  %time% %date%
 
