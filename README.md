@@ -1,5 +1,7 @@
 ## Arch linux install steps
 
+[![GuardRails badge](https://badges.production.guardrails.io/macarrie/dotfiles.svg)](https://www.guardrails.io)
+
 * Boot into live archiso
 * Set azerty keymap
 ```bash
