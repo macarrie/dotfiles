@@ -27,7 +27,7 @@ alert = #bd2c40
 
 [bar/top]
 width = 100%
-height = 25
+height = 20
 radius = 0.0
 fixed-center = true
 
@@ -206,12 +206,12 @@ label = %mb_free% free/%mb_total%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp4s0
 interval = 3.0
 
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${self.format-connected-underline}
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 format-connected-underline = #9F78E1
 label-connected = %essid% (%local_ip%)
 
@@ -230,7 +230,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp0s3
+interface = enp5s0
 interval = 3.0
 
 format-connected-prefix = " "
@@ -258,7 +258,7 @@ format-prefix = 
 format-prefix-foreground = ${self.format-underline}
 format-prefix-padding = 1
 format-underline = #ECEFF1
-format-padding = 0
+format-padding = 1
 
 label =  %time% %date%
 

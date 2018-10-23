@@ -254,6 +254,7 @@ set nocompatible        " Must be first line
     " }
 
     " Ctrlp {
+        set wildignore+=*node_modules*
         let g:ctrlp_working_path_mode = 0
         let g:ctrlp_extensions = ['funky']
         nnoremap <Leader>fu :CtrlPFunky<Cr>
