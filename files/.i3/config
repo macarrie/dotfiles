@@ -240,7 +240,7 @@ bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle"
 bindsym $mod+control+v			exec "$term -x alsamixer"
 
 # bar toggle, hide or show
-bindsym $mod+b bar mode toggle
+bindsym $mod+b exec "polybar-msg cmd toggle"
 
 # scratchpad
 exec $term --title "scratchpad" -e "tmux attach -t scratchpad"
