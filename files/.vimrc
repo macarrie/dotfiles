@@ -260,6 +260,7 @@ set nocompatible        " Must be first line
         nnoremap <Leader>fu :CtrlPFunky<Cr>
         nnoremap <Leader>b  :CtrlPBuffer<CR>
         let g:ctrlp_show_hidden = 1
+        set wildignore+=*/node_modules/*
     " }
 
     " vim-go {

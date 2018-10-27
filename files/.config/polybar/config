@@ -65,6 +65,8 @@ wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+enable-ipc = true
+
 [module/separator]
 type = custom/text
 content = 
@@ -183,7 +185,7 @@ label = %output%
 [module/pkg_updates]
 type = custom/script
 exec = nb=`/usr/bin/checkupdates | wc -l`; if [ $nb -gt 0 ]; then notify-send "New packages available" "$nb packages can be updated"; fi; echo $nb
-interval = 720
+interval = 1440
 
 format = <label>
 format-prefix = " "
