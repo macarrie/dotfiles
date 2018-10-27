@@ -73,7 +73,7 @@ content-foreground= #555555
 
 [module/xwindow]
 type = internal/xwindow
-;label = %title:0:30:...%
+label = %title:0:30:...%
 format-prefix = " "
 format-prefix-foreground= #555555
 
@@ -89,7 +89,7 @@ format-mounted-prefix-foreground = ${self.format-mounted-underline}
 format-mounted-prefix-padding = 1
 format-mounted-underline = #FFC400
 
-label-mounted = %free% free/%total%
+label-mounted = %free% free
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -199,7 +199,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${self.format-underline}
 format-underline = #4bffdc
-label = %mb_free% free/%mb_total%
+label = %mb_free% free
 
 
 [module/wlan]
@@ -211,7 +211,7 @@ format-connected-prefix = " "
 format-connected-prefix-foreground = ${self.format-connected-underline}
 format-connected = <label-connected>
 format-connected-underline = #9F78E1
-label-connected = %essid% (%local_ip%)
+label-connected = %essid%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
