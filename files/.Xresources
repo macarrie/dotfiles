@@ -39,6 +39,7 @@ URxvt*boldItalicFont:  xft:Inconsolata for Powerline:pixelsize=12:antialias=true
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
 URxvt*bordeless: true
+URxvt*letterSpace: 0
 
 *foreground: #CCCCCC
 *background: #2F343F

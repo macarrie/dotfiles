@@ -5,19 +5,19 @@
         state=link
         force=yes
 
-- name: XFILES | Enable VBoxClient in xinitrc
-  become: yes
-  lineinfile:   dest={{dotfiles_path}}/.xinitrc
-                regexp='#/usr/bin/VBoxClient-all'
-                line='/usr/bin/VBoxClient-all'
-  when: virtualmachine == True
+        #- name: XFILES | Enable VBoxClient in xinitrc
+        #become: yes
+        #lineinfile:   dest={{dotfiles_path}}/.xinitrc
+        #regexp='#/usr/bin/VBoxClient-all'
+        #line='/usr/bin/VBoxClient-all'
+        #when: virtualmachine == True
 
-- name: XFILES | Disable lockscreen
-  become: yes
-  lineinfile:   dest={{dotfiles_path}}/.xinitrc
-                line='xautolock -disable'
-                insertbefore='# Start tmux.*'
-  when: virtualmachine == True
+        #- name: XFILES | Disable lockscreen
+        #become: yes
+        #lineinfile:   dest={{dotfiles_path}}/.xinitrc
+        #line='xautolock -disable'
+        #insertbefore='# Start tmux.*'
+        #when: virtualmachine == True
 
 - name: XFILES | Link Xresources
   file: src={{ dotfiles_path }}/.Xresources

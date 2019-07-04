@@ -5,11 +5,11 @@
         state=link
         force=yes
 
-- name: TMUX | Link tmuxp configuration
-  file: src={{dotfiles_path }}/.tmuxp
-        dest=~/.tmuxp
-        state=link
-        force=yes
+        #- name: TMUX | Link tmuxp configuration
+        #file: src={{dotfiles_path }}/.tmuxp
+        #dest=~/.tmuxp
+        #state=link
+        #force=yes
 
-- name: TMUX | Load sessions
-  shell: tmuxp load -d ~/.tmuxp/*
+        #- name: TMUX | Load sessions
+        #shell: tmuxp load -d ~/.tmuxp/*

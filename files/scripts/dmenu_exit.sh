@@ -9,7 +9,6 @@ choice=$(echo -e "Logout\nHibernate\nReboot\nPoweroff" | $DMENU)
 
 case "$choice" in
     Logout) i3-msg exit & ;;
-    Hibernate) xautolock -locknow && systemctl hibernate -i & ;;
-    Reboot) systemctl reboot & ;;
-    Poweroff) systemctl poweroff -i & ;;
+    Reboot) doas reboot & ;;
+    Poweroff) doas poweroff -i & ;;
 esac

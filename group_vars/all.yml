@@ -12,7 +12,7 @@ root_partition: /dev/sda1
 btrfs: False
 
 # Host and username
-hostname: archtest
+hostname: freebsd-test
 username: mat
 
 # Is host being installed in a VM ?

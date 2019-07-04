@@ -76,7 +76,7 @@ font pango:Inconsolata for Powerline 12px
 floating_modifier $mod
 
 # start a terminal
-set $term termite
+set $term urxvt
 bindsym $mod+Return exec $term
 
 # kill focused window
@@ -141,7 +141,7 @@ bindsym $mod+a focus parent
 bindsym $mod+shift+a focus child
 
 # Workspace definitions
-set $ws1 "1:"
+set $ws1 "1:?"
 set $ws2 "2:"
 set $ws3 "3:"
 set $ws8 "8:"

@@ -130,10 +130,10 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
 # EXPORTS
     export EDITOR=vim
     export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:/usr/bin/vendor_perl:/usr/local/go/bin:$HOME/go/bin"
-    export TERMINAL=termite
+    export TERMINAL=urxvt
 
 # ALIAS
-    alias _='sudo'
+    alias _='doas'
     # Tmux
     alias tmux='tmux -2'
     alias t='tmux'
@@ -160,7 +160,7 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
     alias gsta='git stash'
 
     # Dir utils
-    alias ls='ls --color=auto -p --group-directories-first'
+    alias ls='ls --color=auto -p'
     alias l='ls -lah'
     alias ll='ls -lh'
     alias la='ls -lAh'
