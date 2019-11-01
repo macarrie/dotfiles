@@ -20,16 +20,17 @@ set nocompatible        " Must be first line
     "Plugin 'luochen1990/rainbow'
     Plugin 'bling/vim-bufferline'
     Plugin 'cespare/vim-toml'
-    Plugin 'ctrlpvim/ctrlp.vim'
+    "Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'easymotion/vim-easymotion'
     Plugin 'fatih/vim-go'
     Plugin 'flazz/vim-colorschemes'
     Plugin 'godlygeek/tabular'
     Plugin 'jiangmiao/auto-pairs'
     Plugin 'jistr/vim-nerdtree-tabs'
-    Plugin 'jremmen/vim-ripgrep'
     Plugin 'junegunn/goyo.vim'
     Plugin 'junegunn/limelight.vim'
+    Plugin 'junegunn/fzf'
+    Plugin 'junegunn/fzf.vim'
     Plugin 'leafgarland/typescript-vim'
     Plugin 'lifepillar/vim-mucomplete'
     Plugin 'macarrie/shinken.vim'
@@ -44,7 +45,7 @@ set nocompatible        " Must be first line
     "Plugin 'rhysd/conflict-marker.vim'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
-    Plugin 'tacahiroy/ctrlp-funky'
+    "Plugin 'tacahiroy/ctrlp-funky'
     Plugin 'tpope/vim-fugitive'
     Plugin 'tpope/vim-repeat'
     Plugin 'tpope/vim-surround'
@@ -255,13 +256,13 @@ set nocompatible        " Must be first line
         let g:nerdtree_tabs_open_on_gui_startup=0
     " }
 
-    " Ctrlp {
-        set wildignore+=*node_modules*
-        let g:ctrlp_working_path_mode = 0
-        let g:ctrlp_extensions = ['funky']
+    " FZF {
+        nnoremap <C-p> :Files<Cr>
         nnoremap <Leader>fu :CtrlPFunky<Cr>
-        nnoremap <Leader>b  :CtrlPBuffer<CR>
-        let g:ctrlp_show_hidden = 1
+        nnoremap <Leader>b  :Buffers<CR>
+        nnoremap <Leader>s :Filetypes<CR>
+        nnoremap <Leader>l :BLines<CR>
+        nnoremap <Leader>L :Lines<CR>
         set wildignore+=*/node_modules/*
     " }
 
@@ -322,7 +323,7 @@ set nocompatible        " Must be first line
     " }
 
     " rg {
-        nnoremap <leader>a :Rg 
+        nnoremap <leader>a :Rg<CR>
     " }
 
     " UndoTree {

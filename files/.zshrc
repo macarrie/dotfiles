@@ -214,7 +214,7 @@ fi
 # fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_COMMAND="fd --hidden . $HOME"
+export FZF_DEFAULT_COMMAND="fd --hidden ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 
