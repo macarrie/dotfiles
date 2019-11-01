@@ -29,26 +29,54 @@ Xft.hinting: true
 Xft.hintstyle: hintslight
 
 ! ------------------------------------------------------------------------------
+! Vars
+! ------------------------------------------------------------------------------
+
+#define     normal_font         xft:Inconsolata for Powerline:pixelsize=12:antialias=true
+#define     bold_font           xft:Inconsolata for Powerline:pixelsize=12:antialias=true:bold
+#define     italic_font         xft:Inconsolata for Powerline:pixelsize=12:antialias=true:italic
+#define     bold_italic_font    xft:Inconsolata for Powerline:pixelsize=12:antialias=true:bold:italic
+
+! ------------------------------------------------------------------------------
+! XTerm
+! ------------------------------------------------------------------------------
+!
+XTerm*font:             normal_font
+XTerm*boldFont:         bold_font
+XTerm*italicFont:       italic_font
+XTerm*boldItalicFont:   bold_italic_font
+!XTerm*scrollBar: false
+!XTerm*internalBorder: 0
+!XTerm*bordeless: true
+
+! ------------------------------------------------------------------------------
 ! URxvt
 ! ------------------------------------------------------------------------------
 
-URxvt*font:            xft:Inconsolata for Powerline:pixelsize=12:antialias=true
-URxvt*boldFont:        xft:Inconsolata for Powerline:pixelsize=12:antialias=true:bold
-URxvt*italicFont:      xft:Inconsolata for Powerline:pixelsize=12:antialias=true:italic
-URxvt*boldItalicFont:  xft:Inconsolata for Powerline:pixelsize=12:antialias=true:bold:italic
-URxvt*scrollBar: false
-URxvt*internalBorder: 0
-URxvt*bordeless: true
+URxvt*font:             normal_font
+URxvt*boldFont:         bold_font
+URxvt*italicFont:       italic_font
+URxvt*boldItalicFont:   bold_italic_font
 
-*foreground: #CCCCCC
-*background: #2F343F
+URxvt*scrollBar:        false
+URxvt*internalBorder:   0
+URxvt*bordeless:        true
+URxvt*letterSpace:      -1
+
+URxvt.perl-ext-common:  default,selection-to-clipboard,resize-font
+
+URxvt.keysym.C-Down:  resize-font:smaller
+URxvt.keysym.C-Up:    resize-font:bigger
+
+URxvt.iso14755:         false
+URxvt.iso14755_52:      false
 
 ! ------------------------------------------------------------------------------
-! Tango color scheme (modified)
+! Colors
 ! ------------------------------------------------------------------------------
-! special
-*.foreground:   #babdb6
-*.cursorColor:  #babdb6
+
+*.foreground: #E6EFF7
+*.background:  #112936
 
 ! black
 *.color0:       #2e3436

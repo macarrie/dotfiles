@@ -99,7 +99,7 @@
     function git_prompt() {
         if [ -d .git ]
         then
-            echo "on %{$fg[magenta]%}\uE0A0 $(git_branch)$(git_is_dirty)%{$reset_color%}"
+            echo "on %{$fg[magenta]%} $(git_branch)$(git_is_dirty)%{$reset_color%}"
         fi
     }
 
@@ -130,7 +130,6 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
 # EXPORTS
     export EDITOR=vim
     export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:/usr/bin/vendor_perl:/usr/local/go/bin:$HOME/go/bin"
-    export TERMINAL=termite
 
 # ALIAS
     alias _='sudo'
@@ -172,6 +171,7 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
     alias -g ...='cd ../..'
     alias -g ....='cd ../../..'
     alias -g .....='cd ../../../..'
+    alias cat='bat'
     function mkcd() {
         mkdir $1 && cd $1
     }
@@ -186,6 +186,12 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
     alias v='nvim'
     alias vi='vim -U NONE'
     alias vf='nvim $(fd . --hidden | fzf)'
+
+    # fzf REPL
+    function ff() {
+        query=$(echo '' | fzf  --print-query --preview-window=up:99% --preview $1)
+        echo $1 | sed "s/\(.*\){q}\(.*\)/\1$query\2/"
+    }
 
 # Colored man pages
 man() {
@@ -211,6 +217,8 @@ source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd --hidden . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+
+source ~/.zshrc.local
 
 # Terminal startup
 if [[ ! $TMUX ]]

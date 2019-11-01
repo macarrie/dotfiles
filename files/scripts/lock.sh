@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 wallpaper=$(< ~/.wallpaper)
 lock_bg_file="/tmp/lock_bg_$(basename $wallpaper)"

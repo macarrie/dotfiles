@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 wall=$(find ~/Pictures | shuf -n1)
 echo "$wall" > ~/.wallpaper

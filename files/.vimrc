@@ -17,37 +17,39 @@ set nocompatible        " Must be first line
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
 
-    Plugin 'mileszs/ack.vim'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'jistr/vim-nerdtree-tabs'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'tacahiroy/ctrlp-funky'
-    Plugin 'easymotion/vim-easymotion'
-    Plugin 'powerline/fonts'
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-repeat'
-    Plugin 'rhysd/conflict-marker.vim'
-    Plugin 'jiangmiao/auto-pairs'
-    Plugin 'matchit.zip'
+    "Plugin 'luochen1990/rainbow'
     Plugin 'bling/vim-bufferline'
-    Plugin 'flazz/vim-colorschemes'
-    Plugin 'mbbill/undotree'
-    Plugin 'mhinz/vim-signify'
-    Plugin 'osyo-manga/vim-over'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'lifepillar/vim-mucomplete'
-    Plugin 'godlygeek/tabular'
-    Plugin 'luochen1990/rainbow'
-    Plugin 'fatih/vim-go'
-    Plugin 'mattn/emmet-vim'
-    Plugin 'leafgarland/typescript-vim'
-    Plugin 'macarrie/shinken.vim'
     Plugin 'cespare/vim-toml'
+    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'easymotion/vim-easymotion'
+    Plugin 'fatih/vim-go'
+    Plugin 'flazz/vim-colorschemes'
+    Plugin 'godlygeek/tabular'
+    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'jistr/vim-nerdtree-tabs'
+    Plugin 'jremmen/vim-ripgrep'
     Plugin 'junegunn/goyo.vim'
     Plugin 'junegunn/limelight.vim'
+    Plugin 'leafgarland/typescript-vim'
+    Plugin 'lifepillar/vim-mucomplete'
+    Plugin 'macarrie/shinken.vim'
+    Plugin 'matchit.zip'
+    Plugin 'mattn/emmet-vim'
+    "Plugin 'mbbill/undotree'
+    Plugin 'mhinz/vim-signify'
+    Plugin 'mxw/vim-jsx'
+    Plugin 'osyo-manga/vim-over'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'powerline/fonts'
+    "Plugin 'rhysd/conflict-marker.vim'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'tacahiroy/ctrlp-funky'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-repeat'
+    Plugin 'tpope/vim-surround'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
 
     call vundle#end() 
 " }
@@ -270,6 +272,8 @@ set nocompatible        " Must be first line
         autocmd FileType go nmap <leader>t  <Plug>(go-test)
         autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 
+        autocmd BufNewFile,BufRead *.tpl   set filetype=html
+
         " run :GoBuild or :GoTestCompile based on the go file
         function! s:build_go_files()
             let l:file = expand('%')
@@ -281,6 +285,11 @@ set nocompatible        " Must be first line
         endfunction
 
         autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+        let g:go_highlight_types = 1
+        let g:go_highlight_fields = 1
+        let g:go_highlight_functions = 1
+        let g:go_highlight_function_calls = 1
     " }
 
     " Enable rainbow parenthesis {
@@ -312,8 +321,8 @@ set nocompatible        " Must be first line
         vmap <Leader>t<Bar> :Tabularize /<Bar><CR>
     " }
 
-    " Ack {
-        nnoremap <leader>a :Ack 
+    " rg {
+        nnoremap <leader>a :Rg 
     " }
 
     " UndoTree {

@@ -76,7 +76,8 @@ font pango:Inconsolata for Powerline 12px
 floating_modifier $mod
 
 # start a terminal
-set $term termite
+set $term urxvt
+set $browser brave
 bindsym $mod+Return exec $term
 
 # kill focused window
@@ -237,13 +238,13 @@ bindsym XF86AudioLowerVolume 	exec "amixer -q set Master 5%- unmute"
 bindsym $mod+Next			 	exec "amixer -q set Master 5%- unmute"
 bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle"
 bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle"
-bindsym $mod+control+v			exec "$term -x alsamixer"
+bindsym $mod+control+v			exec "$term -e alsamixer"
 
 # bar toggle, hide or show
 bindsym $mod+b exec "polybar-msg cmd toggle"
 
 # scratchpad
-exec $term --title "scratchpad" -e "tmux attach -t scratchpad"
+exec $term -title "scratchpad" -e "tmux attach -t scratchpad"
 for_window [title="scratchpad"] floating enable;
 for_window [title="scratchpad"] resize set 900 600;
 for_window [title="scratchpad"] move position center;
@@ -256,7 +257,7 @@ bindsym Print 		exec scrot '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && 
 bindsym $mod+Print 	exec scrot -u '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
 
 # Apps shortcuts
-bindsym $mod+c exec chromium
+bindsym $mod+c exec $browser
 bindsym $mod+shift+Return exec nautilus
 
 # Autopositionning settings
