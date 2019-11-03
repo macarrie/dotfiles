@@ -261,8 +261,7 @@ set nocompatible        " Must be first line
         nnoremap <Leader>fu :CtrlPFunky<Cr>
         nnoremap <Leader>b  :Buffers<CR>
         nnoremap <Leader>s :Filetypes<CR>
-        nnoremap <Leader>l :BLines<CR>
-        nnoremap <Leader>L :Lines<CR>
+        nnoremap <Leader>/ :BLines<CR>
         set wildignore+=*/node_modules/*
     " }
 

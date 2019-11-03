@@ -99,7 +99,7 @@
     function git_prompt() {
         if [ -d .git ]
         then
-            echo "on %{$fg[magenta]%} $(git_branch)$(git_is_dirty)%{$reset_color%}"
+            echo "on %{$fg[magenta]%} $(git_branch)$(git_is_dirty)%{$reset_color%}"
         fi
     }
 
@@ -120,7 +120,7 @@
     }
 
     function hour() {
-        echo "%{$fg_bold[red]%}%* %{$reset_color%}"
+        echo "%{$fg_bold[red]%}%* %{$reset_color%}"
     }
 
     PROMPT='
@@ -180,7 +180,7 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
     alias grep='grep --color=auto'
 
     # Yaourt
-    alias remove_orphans='yaourt -Rns $(yaourt -Qtdq)'
+    alias remove_orphans='yay -Rns $(yay -Qtdq)'
 
     # Vim
     alias v='nvim'
